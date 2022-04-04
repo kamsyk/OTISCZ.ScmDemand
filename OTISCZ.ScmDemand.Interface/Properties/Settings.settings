@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="OTISCZ.ScmDemand.Interface.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="OTISCZ_ScmDemand_Interface_WsScmDemandDebug_ScmDemand" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:55039/ScmDemand.svc</Value>
+    </Setting>
+    <Setting Name="OTISCZ_ScmDemand_Interface_WsScmDemand_ScmDemand" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://oczbrd03/wcfscmdemand/ScmDemand.svc</Value>
+    </Setting>
+    <Setting Name="OTISCZ_ScmDemand_Interface_WsConcordeSupplier_InternalRequest" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://intranetcz.cz.otis.com/ConcordeWebService/internalrequest.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

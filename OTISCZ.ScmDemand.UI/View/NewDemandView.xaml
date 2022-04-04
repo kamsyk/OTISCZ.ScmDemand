@@ -1,0 +1,962 @@
+﻿<UserControl x:Class="OTISCZ.ScmDemand.UI.View.NewDemandView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OTISCZ.ScmDemand.UI.View"
+             xmlns:ucScmControl="clr-namespace:OTISCZ.ScmDemand.UI.ScmUserControl"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+
+
+
+    <Grid x:Name="grdMain" Style="{StaticResource GrdBkg}">
+        <!--<Grid.Background>
+            
+            <ImageBrush ImageSource="/OTISCZ.ScmDemand.UI;component/Images/cat.png" TileMode="FlipX" AlignmentY="Top" AlignmentX="Left" Viewport="50,50,50,50" ViewportUnits="Absolute" Stretch="UniformToFill"/>
+        </Grid.Background>-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="0" Visibility="{Binding HeaderTitleVisibility}">
+            <ucScmControl:UcWindowHeader x:Name="ucWindowHeader" WindowTitle="{Binding WindowTitle, Mode=TwoWay}" HorizontalAlignment="Stretch" Loaded="UcWindowHeader_Loaded"/>
+        </DockPanel>
+
+        <DockPanel Grid.Row="1" Margin="15">
+            <Grid >
+                <Grid.Background>
+                    <ImageBrush/>
+                </Grid.Background>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{Binding NomenclaturesHeight, Mode=TwoWay}" />
+                    <RowDefinition Height="{Binding SuppliersHeight, Mode=TwoWay}"/>
+                    <RowDefinition Height="{Binding AttachmentsHeight, Mode=TwoWay}"/>
+                    <RowDefinition Height="{Binding MailsHeight, Mode=TwoWay}"/>
+                </Grid.RowDefinitions>
+
+                <DockPanel x:Name="dpNomenclature" Grid.Row="0" Visibility="{Binding NomenclaturesVisibility, Mode=TwoWay}" HorizontalAlignment="Stretch" Background="#FFF">
+                    <Grid x:Name="grdNom">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0*" />
+                            <ColumnDefinition Width="7" />
+                            <ColumnDefinition Width="95*" MinWidth="5" />
+                        </Grid.ColumnDefinitions>
+
+                        <Border x:Name="brdNom" Grid.Column="0" Style="{StaticResource GridBorder}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <DockPanel Grid.Row="0">
+                                    <ucScmControl:UcDataGridHeader x:Name="ucDataGridHeaderNomenclature" HorizontalAlignment="Stretch"/>
+                                </DockPanel>
+
+                                <DockPanel Grid.Row="1">
+
+                                    <ScrollViewer x:Name="svGrdNomenclature" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Style="{StaticResource GrdScroll}">
+                                        <DataGrid x:Name="grdNomenclature" 
+                                                    ItemsSource="{Binding NomenclatureList, Mode=TwoWay}"
+                                                    IsReadOnly="True"
+                                                    AutoGenerateColumns="False"
+                                                    VerticalAlignment="Top" HorizontalAlignment="Left" Width="Auto"
+                                                    Style="{StaticResource ScmDataGrid}">
+
+                                            <DataGrid.Resources>
+                                                <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource ScmDataGridColumnHeader}" >
+                                                    <EventSetter Event="Click" Handler="DataGridColumnHeaderNomenclature_Click" />
+                                                </Style>
+                                            </DataGrid.Resources>
+
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn x:Name="grdColRowIndex_NoSort" IsReadOnly="True" Binding="{Binding row_index}"
+                                                                            ElementStyle="{StaticResource GridColumnElementStyleRowIndex}"
+                                                                            local:DataGridUtil.IsSortDisabled="True">
+
+                                                </DataGridTextColumn>
+
+                                                <DataGridTemplateColumn>
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <CheckBox x:Name="ckbSelectedNom" 
+                                                                      IsChecked="{Binding is_selected, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Checked="CkbSelectedNom_Checked" Unchecked="CkbSelectedNom_Checked" 
+                                                                      VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,5,0" />
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+
+
+                                                <DataGridTextColumn Header="Nomenclature" IsReadOnly="True" Binding="{Binding nomenclature_key}" local:DataGridUtil.ScmColumnName="nomenclature_key"
+                                                                                ElementStyle="{StaticResource GridColumnElementStyleTextBlock}" >
+                                                    <DataGridTextColumn.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <StackPanel>
+                                                                <ucScmControl:UcGrdColHeaderFilterText 
+                                                                        Title="{Binding Content, RelativeSource={RelativeSource Mode=TemplatedParent}}"  
+                                                                        FieldName="nomenclature_key"
+                                                                        HorizontalAlignment="Left" MinWidth="150" FilterTextChanged="UcDataGridFilterText_FilterTextChanged"/>
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </DataGridTextColumn.HeaderTemplate>
+                                                </DataGridTextColumn>
+
+                                                <DataGridTextColumn x:Name="grdhName"  Header="Name" IsReadOnly="True" Binding="{Binding name}" ElementStyle="{StaticResource GridColumnElementStyleTextBlock}" 
+                                                                                local:DataGridUtil.ScmColumnName="name">
+                                                    <DataGridTextColumn.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <StackPanel>
+                                                                <ucScmControl:UcGrdColHeaderFilterText 
+                                                                            Title="{Binding Content, RelativeSource={RelativeSource Mode=TemplatedParent}}"  
+                                                                            FieldName="name"
+                                                                            HorizontalAlignment="Stretch" MinWidth="250" FilterTextChanged="UcDataGridFilterText_FilterTextChanged"/>
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </DataGridTextColumn.HeaderTemplate>
+                                                </DataGridTextColumn>
+
+                                                <DataGridTextColumn x:Name="grdhSpecification"  Header="Specification" IsReadOnly="True" Binding="{Binding specification}" ElementStyle="{StaticResource GridColumnElementStyleTextBlock}" 
+                                                                                local:DataGridUtil.ScmColumnName="specification"  CanUserResize="True"  >
+                                                    <DataGridTextColumn.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <StackPanel>
+                                                                <ucScmControl:UcGrdColHeaderFilterText 
+                                                                            Title="{Binding Content, RelativeSource={RelativeSource Mode=TemplatedParent}}"  
+                                                                            FieldName="specification"
+                                                                            HorizontalAlignment="Stretch" MinWidth="250" FilterTextChanged="UcDataGridFilterText_FilterTextChanged"/>
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </DataGridTextColumn.HeaderTemplate>
+                                                </DataGridTextColumn>
+
+                                                <DataGridTextColumn Header="Name" IsReadOnly="True" Binding="{Binding material_group_text}" ElementStyle="{StaticResource GridColumnElementStyleTextBlock}" 
+                                                                        local:DataGridUtil.ScmColumnName="material_group_text">
+                                                    <DataGridTextColumn.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <StackPanel>
+                                                                <ucScmControl:UcGrdColHeaderFilterText 
+                                                                            Title="{Binding Content, RelativeSource={RelativeSource Mode=TemplatedParent}}"  
+                                                                            FieldName="material_group_text"
+                                                                            HorizontalAlignment="Stretch" MinWidth="100" FilterTextChanged="UcDataGridFilterText_FilterTextChanged"/>
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </DataGridTextColumn.HeaderTemplate>
+                                                </DataGridTextColumn>
+
+                                                <DataGridTextColumn x:Name="grdhCreated"  Header="Created" IsReadOnly="True" Binding="{Binding created_date_text}" ElementStyle="{StaticResource GridColumnElementStyleTextBlock}" 
+                                                                        local:DataGridUtil.ScmColumnName="created_date">
+                                                    <DataGridTextColumn.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <StackPanel>
+                                                                <ucScmControl:UcGrdColHeaderFilterDate x:Name="fltCreatedNom"
+                                                                            Title="{Binding Content, RelativeSource={RelativeSource Mode=TemplatedParent}}"  
+                                                                            FieldName="created_date"
+                                                                            HorizontalAlignment="Stretch" MinWidth="100"
+                                                                            FilterFromChanged="FltCreatedNom_FilterFromChanged"
+                                                                            FilterToChanged="FltCreatedNom_FilterToChanged"/>
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </DataGridTextColumn.HeaderTemplate>
+                                                </DataGridTextColumn>
+
+
+                                            </DataGrid.Columns>
+
+                                        </DataGrid>
+                                    </ScrollViewer>
+
+                                </DockPanel>
+
+                                <DockPanel Grid.Row="2">
+                                    <ucScmControl:UcDataGridFooter x:Name="ucDataGridFooterNomenclature"/>
+                                </DockPanel>
+                            </Grid>
+                        </Border>
+
+                        <GridSplitter Grid.Column="1" Width="7" HorizontalAlignment="Stretch" 
+                                      Background="{Binding Converter={StaticResource ButtonStandardBkgConverter}}" DragCompleted="GridSplitter_DragCompleted" 
+                                       />
+
+                        <Grid Grid.Column="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Border x:Name="brDispHalf" Grid.Column="0" Margin="-20,0,-5,0" Height="30px" Width="30px" Panel.ZIndex="100"
+                                    BorderThickness="1" CornerRadius="20" BorderBrush="{Binding Converter={StaticResource ButtonStandardBkgConverter}}"
+                                    Background="{Binding Converter={StaticResource ButtonStandardBkgConverter}}" MouseDown="ImgDispHalf_MouseDown">
+
+                                <Image x:Name="imgDispHalf" Source="/OTISCZ.ScmDemand.UI;component/Images/DispHalf.png" Width="16" Height="16"  
+                                       Panel.ZIndex="101" MouseDown="ImgDispHalf_MouseDown" />
+                            </Border>
+                            
+                            <Border Grid.Column="1" Style="{StaticResource GridBorder}" MinWidth="350">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <DockPanel Grid.Row="0">
+                                        <ucScmControl:UcDataGridHeader x:Name="ucGrdHeadeSelectedNoms" HorizontalAlignment="Stretch"/>
+                                    </DockPanel>
+
+                                    <DockPanel Grid.Row="1">
+                                        <ListView x:Name="lstSelectedNomenclatures" ItemsSource="{Binding SelectedNomenclatures, Mode=TwoWay}" FontSize="14" MouseLeftButtonUp="LstSelectedNomenclatures_MouseLeftButtonUp">
+                                            <ListView.View>
+                                                <GridView AllowsColumnReorder="true">
+                                                    <GridViewColumn>
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Button x:Name="btnRemoveNomenclature" Style="{StaticResource ButtonGridSelected}" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,10,5,10" Click="BtnRemoveNomenclature_Click" >
+                                                                    <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Remove.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,0,0,0" />
+                                                                </Button>
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                    <GridViewColumn DisplayMemberBinding="{Binding Path=nomenclature_key}" Width="150">
+                                                        <GridViewColumnHeader Style="{StaticResource GridViewColHeader}">Nomenclature</GridViewColumnHeader>
+                                                    </GridViewColumn>
+                                                    <GridViewColumn DisplayMemberBinding="{Binding Path=name}" Width="200" >
+                                                        <GridViewColumnHeader Style="{StaticResource GridViewColHeader}">Name</GridViewColumnHeader>
+                                                    </GridViewColumn>
+                                                    <GridViewColumn DisplayMemberBinding="{Binding Path=specification}" Width="400" >
+                                                        <GridViewColumnHeader Style="{StaticResource GridViewColHeader}">Specification</GridViewColumnHeader>
+                                                    </GridViewColumn>
+
+                                                </GridView>
+                                            </ListView.View>
+                                        </ListView>
+                                    </DockPanel>
+
+                                    <DockPanel Grid.Row="2">
+                                        <Border BorderThickness="1" BorderBrush="Black" Padding="15">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Row="0" Grid.Column="0" x:Name="tbCustNomKey" Text="Nomenclature" Style="{StaticResource GridStyleTextBlock}" />
+                                                <TextBox x:Name="txtCustNomKey" Grid.Row="0" Grid.Column="1" Text="{Binding Path=CustNomKey, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnExceptions=True}" Style="{StaticResource ScmTextBoxErrMsg}" IsEnabled="True" />
+
+                                                <TextBlock Grid.Row="1" Grid.Column="0" x:Name="tbCustNomName" Text="Name" Style="{StaticResource GridStyleTextBlock}" />
+                                                <TextBox x:Name="txtCustNomName" Grid.Row="1" Grid.Column="1" Text="{Binding Path=CustNomName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnExceptions=True}" Style="{StaticResource ScmTextBoxErrMsg}" IsEnabled="True" />
+
+                                                <TextBlock Grid.Row="2" Grid.Column="0" x:Name="tbCustNomSpec" Text="Specification" Style="{StaticResource GridStyleTextBlock}" />
+                                                <TextBox x:Name="txtCustNomSpec" Grid.Row="2" Grid.Column="1" Text="{Binding Path=CustNomSpec, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnExceptions=True}" Style="{StaticResource ScmTextBoxErrMsg}" IsEnabled="True" />
+
+                                                <StackPanel  Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+                                                    <Button x:Name="btnAddNom" Style="{StaticResource ButtonStandard}" Width="Auto" 
+                                                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                                                            Visibility="{Binding NewNomVisibility, Mode=TwoWay}"
+                                                        Margin="0,10,10,0" Content="{Binding BtnAddNomText, Mode=TwoWay}" Click="BtnAddNom_Click" />
+
+                                                    <Button x:Name="btnSaveNom" Style="{StaticResource ButtonStandard}" Width="Auto" 
+                                                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                                                            Visibility="{Binding EditNomVisibility, Mode=TwoWay}"
+                                                        Margin="0,10,10,0" Content="{Binding BtnSaveNomText, Mode=TwoWay}" Click="BtnSaveNom_Click"  />
+
+                                                    <Button x:Name="btnCancelNom" Style="{StaticResource ButtonStandard}" Width="Auto" 
+                                                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                                                        Margin="0,10,10,0" Content="{Binding BtnCancelNomText, Mode=TwoWay}" Click="BtnCancelNom_Click" />
+                                                </StackPanel>
+                                            </Grid>
+                                        </Border>
+                                    </DockPanel>
+
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                </DockPanel>
+
+                <DockPanel x:Name="dpSupplier" Grid.Row="1" Visibility="{Binding SuppliersVisibility, Mode=TwoWay}" HorizontalAlignment="Stretch" Background="#FFF">
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="65*" />
+                            <ColumnDefinition Width="5" />
+                            <ColumnDefinition Width="35*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" Style="{StaticResource GridBorder}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <DockPanel Grid.Row="0">
+                                    <ucScmControl:UcDataGridHeader x:Name="ucDataGridHeaderSupplier" HorizontalAlignment="Stretch"/>
+                                </DockPanel>
+
+                                <DockPanel Grid.Row="1">
+                                    <ScrollViewer x:Name="svGrdSupplier" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Style="{StaticResource GrdScroll}">
+                                        <DataGrid x:Name="grdSupplier" 
+                                                ItemsSource="{Binding SupplierList, Mode=TwoWay}"
+                                                IsReadOnly="True"
+                                                AutoGenerateColumns="False"
+                                                VerticalAlignment="Top" HorizontalAlignment="Left" Width="Auto"
+                                                Style="{StaticResource ScmDataGrid}">
+
+                                            <DataGrid.Resources>
+                                                <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource ScmDataGridColumnHeader}" >
+                                                    <EventSetter Event="Click" Handler="DataGridColumnHeaderSupplier_Click" />
+                                                </Style>
+                                            </DataGrid.Resources>
+
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Binding="{Binding row_index}" ElementStyle="{StaticResource GridColumnElementStyleRowIndex}"  >
+                                                </DataGridTextColumn>
+
+                                                <DataGridTemplateColumn>
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <CheckBox x:Name="ckbSelectedSup" IsChecked="{Binding is_selected, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Checked="CkbSelectedSup_Checked" Unchecked="CkbSelectedSup_Checked" 
+                                                                  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,5,0" />
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+
+                                                <DataGridTemplateColumn>
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <Button x:Name="btnEditSupp" Style="{StaticResource ButtonGridStandard}" Click="BtnEditSupp_Click" Width="32">
+                                                                <Image Source="/OTISCZ.ScmDemand.UI;component/Images/Grid/Edit.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,0,0,0" />
+                                                            </Button>
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+
+                                                <DataGridTemplateColumn>
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <Border BorderThickness="1" BorderBrush="#22b14c" Width="16" Height="16" CornerRadius="10" Padding="0"
+                                                        Background="#22b14c" Margin="5,0,5,0" Visibility="{Binding approved_visibility}" ToolTip="{Binding tooltip_approved}" >
+                                                                <Image  Source="{Binding img_approved_path}"  />
+                                                            </Border>
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+
+                                                <DataGridTextColumn Header="Name" Binding="{Binding supp_name}"
+                                                            ElementStyle="{StaticResource GridColumnElementStyleTextBlock}" 
+                                                                    local:DataGridUtil.ScmColumnName="supp_name">
+                                                    <DataGridTextColumn.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <StackPanel>
+                                                                <ucScmControl:UcGrdColHeaderFilterText 
+                                                                    Title="{Binding Content, RelativeSource={RelativeSource Mode=TemplatedParent}}"  
+                                                                    FieldName="supp_name"
+                                                                    HorizontalAlignment="Left" MinWidth="150" FilterTextChanged="UcGrdColHeaderFilterTextSupp_FilterTextChanged"/>
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </DataGridTextColumn.HeaderTemplate>
+                                                </DataGridTextColumn>
+
+                                                <DataGridTextColumn Header="Supplier Id" Binding="{Binding supplier_id}"
+                                                            ElementStyle="{StaticResource GridColumnElementStyleTextBlock}" 
+                                                                    local:DataGridUtil.ScmColumnName="supplier_id">
+                                                    <DataGridTextColumn.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <StackPanel>
+                                                                <ucScmControl:UcGrdColHeaderFilterText 
+                                                        Title="{Binding Content, RelativeSource={RelativeSource Mode=TemplatedParent}}"  
+                                                        FieldName="supplier_id"
+                                                        HorizontalAlignment="Left" MinWidth="150" FilterTextChanged="UcGrdColHeaderFilterTextSupp_FilterTextChanged"/>
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </DataGridTextColumn.HeaderTemplate>
+                                                </DataGridTextColumn>
+
+                                                <DataGridTextColumn Header="Street" Binding="{Binding street_part1}"
+                                                            ElementStyle="{StaticResource GridColumnElementStyleTextBlock}" 
+                                                                    local:DataGridUtil.ScmColumnName="street_part1" >
+                                                    <DataGridTextColumn.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <StackPanel>
+                                                                <ucScmControl:UcGrdColHeaderFilterText 
+                                                                    Title="{Binding Content, RelativeSource={RelativeSource Mode=TemplatedParent}}"  
+                                                                    FieldName="street_part1"
+                                                                    HorizontalAlignment="Left" MinWidth="150" FilterTextChanged="UcGrdColHeaderFilterTextSupp_FilterTextChanged"/>
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </DataGridTextColumn.HeaderTemplate>
+                                                </DataGridTextColumn>
+
+                                                <DataGridTextColumn Header="City" Binding="{Binding city}"
+                                                            ElementStyle="{StaticResource GridColumnElementStyleTextBlock}" 
+                                                                    local:DataGridUtil.ScmColumnName="city" >
+                                                    <DataGridTextColumn.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <StackPanel>
+                                                                <ucScmControl:UcGrdColHeaderFilterText 
+                                                                    Title="{Binding Content, RelativeSource={RelativeSource Mode=TemplatedParent}}"  
+                                                                    FieldName="city"
+                                                                    HorizontalAlignment="Left" MinWidth="175" FilterTextChanged="UcGrdColHeaderFilterTextSupp_FilterTextChanged"/>
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </DataGridTextColumn.HeaderTemplate>
+                                                </DataGridTextColumn>
+
+                                                <DataGridTextColumn Header="Zip" Binding="{Binding zip}"
+                                                            ElementStyle="{StaticResource GridColumnElementStyleTextBlock}" 
+                                                                    local:DataGridUtil.ScmColumnName="zip" >
+                                                    <DataGridTextColumn.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <StackPanel>
+                                                                <ucScmControl:UcGrdColHeaderFilterText 
+                                                                    Title="{Binding Content, RelativeSource={RelativeSource Mode=TemplatedParent}}"  
+                                                                    FieldName="zip"
+                                                                    HorizontalAlignment="Left" MinWidth="50" FilterTextChanged="UcGrdColHeaderFilterTextSupp_FilterTextChanged"/>
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </DataGridTextColumn.HeaderTemplate>
+                                                </DataGridTextColumn>
+
+                                                <DataGridTextColumn Header="Country" Binding="{Binding country}"
+                                                            ElementStyle="{StaticResource GridColumnElementStyleTextBlock}" 
+                                                                    local:DataGridUtil.ScmColumnName="country" >
+                                                    <DataGridTextColumn.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <StackPanel>
+                                                                <ucScmControl:UcGrdColHeaderFilterText 
+                                                                    Title="{Binding Content, RelativeSource={RelativeSource Mode=TemplatedParent}}"  
+                                                                    FieldName="country"
+                                                                    HorizontalAlignment="Left" MinWidth="150" FilterTextChanged="UcGrdColHeaderFilterTextSupp_FilterTextChanged"/>
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </DataGridTextColumn.HeaderTemplate>
+                                                </DataGridTextColumn>
+
+
+                                            </DataGrid.Columns>
+
+                                        </DataGrid>
+                                    </ScrollViewer>
+                                </DockPanel>
+
+                                <DockPanel Grid.Row="2">
+                                    <ucScmControl:UcDataGridFooter2 x:Name="ucDataGridFooterSupplier"/>
+                                </DockPanel>
+                            </Grid>
+                        </Border>
+
+                        <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
+
+                        <Border Grid.Column="2" Style="{StaticResource GridBorder}" MinWidth="350">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <DockPanel Grid.Row="0">
+                                    <ucScmControl:UcDataGridHeader x:Name="ucGrdHeadeSelectedSupp" HorizontalAlignment="Stretch"/>
+                                </DockPanel>
+
+                                <DockPanel Grid.Row="1">
+                                    <ListView x:Name="lstSelectedSuppliers" ItemsSource="{Binding SelectedSuppliers, Mode=TwoWay}" FontSize="14">
+                                        <ListView.View>
+                                            <GridView AllowsColumnReorder="true">
+                                                <GridViewColumn>
+                                                    <GridViewColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <Button x:Name="btnRemoveSupplier" Style="{StaticResource ButtonGridSelected}" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,10,5,10" Click="BtnRemoveSupplier_Click"  >
+                                                                <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Remove.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,0,0,0" />
+                                                            </Button>
+                                                        </DataTemplate>
+                                                    </GridViewColumn.CellTemplate>
+                                                </GridViewColumn>
+                                                <GridViewColumn DisplayMemberBinding="{Binding Path=supp_name}" Width="150" >
+                                                    <GridViewColumnHeader Style="{StaticResource GridViewColHeader}">Supplier Name</GridViewColumnHeader>
+                                                </GridViewColumn>
+                                                <GridViewColumn DisplayMemberBinding="{Binding Path=supplier_id}" Width="250" >
+                                                    <GridViewColumnHeader Style="{StaticResource GridViewColHeader}">Supplier Id</GridViewColumnHeader>
+                                                </GridViewColumn>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </DockPanel>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </DockPanel>
+
+                <DockPanel x:Name="dpAttachment" Grid.Row="2" Visibility="{Binding AttachmentsVisibility, Mode=TwoWay}" HorizontalAlignment="Stretch" MinHeight="150">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50*"/>
+                            <RowDefinition Height="50*"/>
+                        </Grid.RowDefinitions>
+
+
+                        <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" BorderThickness="0,0,0,0" Margin="0,0,0,10" >
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0" Margin="0,0,0,20">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <Border Grid.Row="0" Style="{StaticResource GridBorder}">
+                                        <DockPanel >
+                                            <ListView x:Name="lstAttNom" ItemsSource="{Binding SelectedNomenclatures, Mode=TwoWay}" BorderThickness="0,1,0,0" BorderBrush="#DDD" FontSize="14">
+                                                <ListView.View>
+                                                    <GridView AllowsColumnReorder="false">
+                                                        <GridViewColumn>
+                                                            <GridViewColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <Button x:Name="btnRemoveNomenclature" Style="{StaticResource ButtonGridSelected}" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,10,5,10" Click="BtnRemoveNomenclature_Click" >
+                                                                        <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Remove.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,0,0,0" />
+                                                                    </Button>
+                                                                </DataTemplate>
+                                                            </GridViewColumn.CellTemplate>
+                                                        </GridViewColumn>
+                                                        <GridViewColumn DisplayMemberBinding="{Binding Path=nomenclature_key}" Width="150" >
+                                                            <GridViewColumnHeader Style="{StaticResource GridViewColHeader}">Nomenclature</GridViewColumnHeader>
+                                                        </GridViewColumn>
+                                                        <GridViewColumn DisplayMemberBinding="{Binding Path=name}" Width="250" >
+                                                            <GridViewColumnHeader Style="{StaticResource GridViewColHeader}">Name</GridViewColumnHeader>
+                                                        </GridViewColumn>
+                                                        <GridViewColumn DisplayMemberBinding="{Binding Path=specification}" Width="400" >
+                                                            <GridViewColumnHeader Style="{StaticResource GridViewColHeader}">Specification</GridViewColumnHeader>
+                                                        </GridViewColumn>
+                                                    </GridView>
+                                                </ListView.View>
+                                            </ListView>
+                                        </DockPanel>
+                                    </Border>
+                                </Grid>
+
+                                <Grid Grid.Row="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <Border Grid.Row="0" Style="{StaticResource GridBorder}">
+                                        <DockPanel>
+                                            <ListView x:Name="lstAttSupp" ItemsSource="{Binding SelectedSuppliers, Mode=TwoWay}" BorderThickness="0,1,0,0" BorderBrush="#DDD" FontSize="14">
+                                                <ListView.View>
+                                                    <GridView AllowsColumnReorder="true">
+                                                        <GridViewColumn>
+                                                            <GridViewColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <Button x:Name="btnRemoveSupplier" Style="{StaticResource ButtonGridSelected}" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,10,5,10" Click="BtnRemoveSupplier_Click"  >
+                                                                        <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Remove.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,0,0,0" />
+                                                                    </Button>
+                                                                </DataTemplate>
+                                                            </GridViewColumn.CellTemplate>
+                                                        </GridViewColumn>
+                                                        <GridViewColumn DisplayMemberBinding="{Binding Path=supp_name}" Width="150" >
+                                                            <GridViewColumnHeader Style="{StaticResource GridViewColHeader}">Supplier Name</GridViewColumnHeader>
+                                                        </GridViewColumn>
+                                                        <GridViewColumn DisplayMemberBinding="{Binding Path=supplier_id}" Width="250" >
+                                                            <GridViewColumnHeader Style="{StaticResource GridViewColHeader}">Supplier Id</GridViewColumnHeader>
+                                                        </GridViewColumn>
+                                                    </GridView>
+                                                </ListView.View>
+                                            </ListView>
+                                        </DockPanel>
+                                    </Border>
+                                </Grid>
+
+                            </Grid>
+                        </ScrollViewer>
+
+                        <DockPanel Grid.Row="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Border Grid.Row="0" BorderBrush="#888" BorderThickness="1,1,1,0">
+                                    <!--<TextBlock Text="Attachments (Drag and Drop)" Margin="5" FontWeight="Bold"/>-->
+                                    <ucScmControl:UcDataGridHeader Grid.Row="0" x:Name="ucAttDataGridHeader" GrdTitle="Attachments (Drag and Drop)"  HorizontalAlignment="Stretch"/>
+                                </Border>
+
+                                <!--<ucScmControl:UcDataGridHeader Grid.Row="0" x:Name="ucAttDataGridHeader" GrdTitle="Attachments (Drag and Drop)"  HorizontalAlignment="Stretch"/>-->
+
+                                <Border Grid.Row="1" BorderBrush="#888" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource ScmBorder}">
+                                    <ScrollViewer  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"
+                                                  AllowDrop="True" DragEnter="DockPanel_DragEnter" DragOver="DockPanel_DragOver" Drop="DockPanel_Drop">
+                                        <ListView ItemsSource="{Binding SelectedAttachments, Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="Transparent" BorderThickness="0" >
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <UniformGrid Columns="5" />
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10" MouseDown="StackPanel_MouseDown">
+                                                        <Image Source="{Binding Path=icon}" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Button x:Name="btnRemoveAttachment" Style="{StaticResource ButtonGridSelected}" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,10,5,10" Click="BtnRemoveAttachment_Click"  >
+                                                                <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Remove.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,0,5,0" />
+                                                            </Button>
+                                                            <!--<Image Source="/OTISCZ.ScmDemand.UI;component/Images/Remove.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,5,0" Width="16" Height="16" />-->
+                                                            <TextBlock Text="{Binding Path=file_name}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="12"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                            <ListView.ItemContainerStyle>
+                                                <Style TargetType="ListViewItem">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                                </Style>
+                                            </ListView.ItemContainerStyle>
+                                        </ListView>
+                                    </ScrollViewer>
+                                </Border>
+
+                            </Grid>
+
+
+                        </DockPanel>
+
+                    </Grid>
+
+                </DockPanel>
+
+                <DockPanel x:Name="dpMails" Grid.Row="3" Visibility="{Binding MailsVisibility, Mode=TwoWay}" HorizontalAlignment="Stretch" MinHeight="150">
+                    <ScrollViewer Grid.Row="0" HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" BorderThickness="0,0,0,0">
+                        <ListView x:Name="lstMails" ItemsSource="{Binding ScmMails, Mode=TwoWay}" VerticalAlignment="Top" HorizontalAlignment="Stretch" BorderThickness="0">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <DockPanel VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="0,10,0,10" Background="#FFF">
+                                        <Border Style="{StaticResource GridBorder}" HorizontalAlignment="Stretch">
+                                            <Grid HorizontalAlignment="Stretch">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="{Binding MailContentHeight}" />
+                                                </Grid.RowDefinitions>
+
+                                                <DockPanel Grid.Row="0" HorizontalAlignment="Stretch">
+                                                    <Grid>
+
+                                                        <DockPanel Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                                                            <DockPanel.Background>
+                                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                                    <GradientStop Color="#eff5ff" Offset="0"/>
+                                                                    <GradientStop Color="#e0ecff " Offset="1"/>
+                                                                </LinearGradientBrush>
+                                                            </DockPanel.Background>
+                                                            <Border BorderThickness="0, 0, 0, 1" BorderBrush="#AAA" HorizontalAlignment="Stretch">
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                        <ColumnDefinition Width="*"/>
+                                                                    </Grid.ColumnDefinitions>
+
+                                                                    <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="10,0,0,0">
+                                                                        <Button x:Name="btnCollapse" BorderThickness="0" VerticalAlignment="Center" Visibility="{Binding Path=CollapseButtonVisibility, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }" Click="BtnCollapseExpand_Click">
+                                                                            <Image Source="/OTISCZ.ScmDemand.UI;component/Images/Minus.png" />
+                                                                        </Button>
+                                                                        <Button x:Name="btnExpand" BorderThickness="0" VerticalAlignment="Center" Visibility="{Binding Path=ExpandButtonVisibility, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }" Click="BtnCollapseExpand_Click">
+                                                                            <Image Source="/OTISCZ.ScmDemand.UI;component/Images/Plus.png" />
+                                                                        </Button>
+                                                                    </StackPanel>
+                                                                    <TextBlock Grid.Column="1" x:Name="txtGridColHeader"  Text="{Binding Path=supplier.supp_name}" Margin="10,5,10,5" FontWeight="Bold" FontSize="14"></TextBlock>
+                                                                </Grid>
+                                                            </Border>
+                                                        </DockPanel>
+                                                    </Grid>
+                                                </DockPanel>
+
+                                                <DockPanel Grid.Row="1">
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="Auto" />
+                                                        </Grid.RowDefinitions>
+
+                                                        <DockPanel Grid.Row="0" Margin="0,10,0,5">
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                </Grid.ColumnDefinitions>
+
+                                                                <TextBlock Grid.Column="0" x:Name="txtMailLang"  Text="{Binding loc_select_lang}" Style="{StaticResource GridMailStyleTextBlock}" />
+                                                                <ComboBox x:Name="cmbLang"  Grid.Column="1"  HorizontalAlignment="Left" Style="{StaticResource ScmComboBox}" MinWidth="150" SelectionChanged="CmbLang_SelectionChanged" 
+                                                                          ItemsSource="{Binding Path=MailCultures, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="culture_name" SelectedValuePath="culture_code" SelectedValue="{Binding SelectedCulture, Mode=TwoWay, ValidatesOnExceptions=True}">
+                                                                </ComboBox>
+                                                            </Grid>
+
+                                                        </DockPanel>
+
+                                                        <DockPanel Grid.Row="1" HorizontalAlignment="Stretch" Margin="0">
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                    <ColumnDefinition Width="*" />
+                                                                </Grid.ColumnDefinitions>
+
+                                                                <TextBlock Grid.Column="0" x:Name="txtMailFrom" Text="{Binding loc_from}" Style="{StaticResource GridMailStyleTextBlock}" />
+                                                                <TextBox Grid.Column="1" Text="{Binding Path=from}" Style="{StaticResource ScmTextBoxErrMsg}" IsEnabled="False"/>
+                                                            </Grid>
+                                                        </DockPanel>
+
+                                                        <DockPanel Grid.Row="2" HorizontalAlignment="Stretch" Margin="0">
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                    <ColumnDefinition Width="*" />
+                                                                </Grid.ColumnDefinitions>
+
+                                                                <TextBlock Grid.Column="0" x:Name="txtMailTo" Text="{Binding loc_to}" Style="{StaticResource GridMailStyleTextBlock}" />
+                                                                <TextBox Grid.Column="1" Text="{Binding Path=Recipients, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnExceptions=True}" Style="{StaticResource ScmTextBoxErrMsg}" IsEnabled="True" />
+                                                            </Grid>
+                                                        </DockPanel>
+
+                                                        <DockPanel Grid.Row="3" HorizontalAlignment="Stretch" Margin="0">
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                    <ColumnDefinition Width="*" />
+                                                                </Grid.ColumnDefinitions>
+
+                                                                <TextBlock Grid.Column="0" x:Name="txtMailCc" Text="{Binding loc_cc}" Style="{StaticResource GridMailStyleTextBlock}" />
+                                                                <TextBox Grid.Column="1" Text="{Binding Path=CarbonCopy, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnExceptions=True}" Style="{StaticResource ScmTextBoxErrMsg}" IsEnabled="True" />
+                                                            </Grid>
+                                                        </DockPanel>
+
+                                                        <DockPanel Grid.Row="4" HorizontalAlignment="Stretch" Margin="0">
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                    <ColumnDefinition Width="*" />
+                                                                </Grid.ColumnDefinitions>
+
+                                                                <TextBlock Grid.Column="0" x:Name="txtMailSubject" Text="{Binding loc_subject}" Style="{StaticResource GridMailStyleTextBlock}" />
+                                                                <TextBox Grid.Column="1" Text="{Binding Path=subject}" Style="{StaticResource ScmTextBoxErrMsg}" />
+                                                            </Grid>
+                                                        </DockPanel>
+
+                                                        <DockPanel Grid.Row="5"  HorizontalAlignment="Stretch" Margin="0,5,0,0">
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                    <ColumnDefinition Width="*" />
+                                                                </Grid.ColumnDefinitions>
+
+                                                                <TextBlock Grid.Column="0" Style="{StaticResource GridMailStyleTextBlock}" />
+                                                                <CheckBox x:Name="txtMailBcc" Grid.Column="1" IsChecked="{Binding Path=is_send_bcc, Mode=TwoWay}" Content="{Binding loc_bcc}" />
+
+                                                            </Grid>
+                                                        </DockPanel>
+
+                                                        <DockPanel Grid.Row="6" HorizontalAlignment="Stretch" Margin="5">
+
+                                                            <TextBox Text="{Binding Path=body}" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto" MinHeight="150" MaxHeight="150" Padding="5"/>
+
+                                                        </DockPanel>
+
+                                                        <DockPanel Grid.Row="7"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                            <Grid>
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="Auto"/>
+                                                                    <RowDefinition Height="*"/>
+                                                                </Grid.RowDefinitions>
+
+                                                                <Border Grid.Row="0" BorderBrush="#888" BorderThickness="0,1,0,1">
+                                                                    <TextBlock Text="{Binding loc_attachment}" Margin="5" FontWeight="Bold"/>
+                                                                </Border>
+
+                                                                <Border Grid.Row="1" BorderBrush="#888" BorderThickness="0,0,0,1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinHeight="150" >
+                                                                    <ScrollViewer  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"
+                                                                        AllowDrop="True" DragEnter="DockPanel_DragEnter" DragOver="DockPanel_DragOver" Drop="DockPanel_Drop">
+                                                                        <ListView ItemsSource="{Binding Attachments, Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="Transparent" BorderThickness="0" >
+                                                                            <ItemsControl.ItemsPanel>
+                                                                                <ItemsPanelTemplate>
+                                                                                    <UniformGrid Columns="5" />
+                                                                                </ItemsPanelTemplate>
+                                                                            </ItemsControl.ItemsPanel>
+                                                                            <ListView.ItemTemplate>
+                                                                                <DataTemplate>
+                                                                                    <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10" MouseDown="StackPanel_MouseDown">
+                                                                                        <Image Source="{Binding Path=icon}" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                                                                                        <StackPanel Orientation="Horizontal">
+                                                                                            <Button x:Name="btnRemoveMailAtt" Style="{StaticResource ButtonGridSelected}" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,10,5,10" Click="BtnRemoveMailAtt_Click" >
+                                                                                                <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Remove.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,0,0,0" />
+                                                                                            </Button>
+                                                                                            <TextBlock Text="{Binding Path=file_name}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="10"/>
+                                                                                        </StackPanel>
+                                                                                    </StackPanel>
+                                                                                </DataTemplate>
+                                                                            </ListView.ItemTemplate>
+                                                                            <ListView.ItemContainerStyle>
+                                                                                <Style TargetType="ListViewItem">
+                                                                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                                                                </Style>
+                                                                            </ListView.ItemContainerStyle>
+                                                                        </ListView>
+                                                                    </ScrollViewer>
+                                                                </Border>
+
+                                                            </Grid>
+
+
+                                                        </DockPanel>
+
+                                                        <StackPanel Grid.Row="8" Orientation="Horizontal">
+                                                            <Button x:Name="btnSend" Style="{StaticResource ButtonGreen}" 
+                                                                Visibility="{Binding PreviousVisibility, Mode=TwoWay}"
+                                                                Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                                                Margin="20,15,20,15" Click="BtnSend_Click">
+                                                                <Grid>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="*"/>
+
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="Auto" />
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                    </Grid.ColumnDefinitions>
+
+                                                                    <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Mail.png" HorizontalAlignment="Center" Width="24" Height="16" Margin="0,0,10,0" />
+                                                                    <TextBlock Grid.Column="1" Text="{Binding loc_send}" Margin="0"  ></TextBlock>
+                                                                </Grid>
+                                                            </Button>
+
+                                                            <Button x:Name="btnSendtoMe" Style="{StaticResource ButtonStandard}" 
+                                                                Visibility="{Binding PreviousVisibility, Mode=TwoWay}"
+                                                                Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                                                Height="40" Margin="20,15,20,15" Click="BtnSendtoMe_Click" >
+                                                                <Grid>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="*"/>
+                                                                    </Grid.RowDefinitions>
+
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="Auto" />
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                    </Grid.ColumnDefinitions>
+
+                                                                    <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Mail.png" HorizontalAlignment="Center" Width="24" Height="16" Margin="0,0,10,0" />
+                                                                    <TextBlock Grid.Column="1" Text="{Binding loc_send_to_me}" Margin="0" />
+                                                                </Grid>
+                                                            </Button>
+
+                                                            <Button x:Name="btnCancel" Style="{StaticResource ButtonRed}" 
+                                                                Visibility="{Binding PreviousVisibility, Mode=TwoWay}"
+                                                                Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                                                Height="40" Margin="20,15,20,15" Click="BtnCancel_Click"  >
+                                                                <Grid>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="*"/>
+                                                                    </Grid.RowDefinitions>
+
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="Auto" />
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                    </Grid.ColumnDefinitions>
+
+                                                                    <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Delete.png" HorizontalAlignment="Center" Width="24" Height="16" Margin="0,0,10,0" />
+                                                                    <TextBlock Grid.Column="1" Text="{Binding loc_cancel}" Margin="0"  ></TextBlock>
+                                                                </Grid>
+                                                            </Button>
+                                                        </StackPanel>
+
+                                                    </Grid>
+                                                </DockPanel>
+
+                                            </Grid>
+                                        </Border>
+                                    </DockPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                        </ListView>
+                    </ScrollViewer>
+                </DockPanel>
+            </Grid>
+        </DockPanel>
+
+        <DockPanel Grid.Row="2" Margin="10, 0, 10, 10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="btnPrevious" Grid.Column="1" Style="{StaticResource ButtonStandard}" 
+                        Visibility="{Binding PreviousVisibility, Mode=TwoWay}"
+                        Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Margin="10,10,25,10" Click="BtnPrevious_Click">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Left.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,0,5,0" Grid.RowSpan="2"/>
+                        <TextBlock Grid.Column="1" Text="{Binding PreviousButtonText, Mode=TwoWay}" Margin="0"  ></TextBlock>
+                    </Grid>
+                </Button>
+
+                <Button x:Name="btnNext" Grid.Column="2" Style="{StaticResource ButtonStandard}" Width="Auto" 
+                        Visibility="{Binding NextVisibility, Mode=TwoWay}"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Margin="25,10,10,10" Click="BtnNext_Click">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Column="1" Source="/OTISCZ.ScmDemand.UI;component/Images/Right.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="5,0,0,0" Grid.RowSpan="2"/>
+                        <TextBlock Grid.Column="0" Text="{Binding NextButtonText, Mode=TwoWay}" Margin="0" ></TextBlock>
+                    </Grid>
+                </Button>
+
+            </Grid>
+        </DockPanel>
+
+        <StackPanel VerticalAlignment="Center">
+            <xctk:BusyIndicator x:Name="gridBusyIndicator" IsBusy="{Binding Path=IsBusy, Mode=TwoWay}" 
+                                BusyContent="{Binding Path=LocLoadingData, Mode=OneWay}" />
+        </StackPanel>
+
+    </Grid>
+</UserControl>

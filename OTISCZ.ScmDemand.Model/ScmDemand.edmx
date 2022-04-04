@@ -1,0 +1,2183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ScmDemandModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Active_Demand">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="version" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="version" Type="int" Nullable="false" />
+          <Property Name="status_id" Type="int" Nullable="false" />
+          <Property Name="is_requestor_acive" Type="bit" />
+          <Property Name="is_app_man_active" Type="bit" />
+          <Property Name="remark" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Active_Nomenclature">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="version" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="version" Type="int" Nullable="false" />
+          <Property Name="remark" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Attachment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="file_name" Type="nvarchar" MaxLength="1500" Nullable="false" />
+          <Property Name="file_content" Type="image" Nullable="false" />
+          <Property Name="file_icon" Type="image" />
+          <Property Name="modif_date" Type="datetime" Nullable="false" />
+          <Property Name="modif_user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="company" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="currency_code" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="currency_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Demand">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="version" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="version" Type="int" Nullable="false" />
+          <Property Name="demand_nr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="supplier_id" Type="int" Nullable="false" />
+          <Property Name="requestor_id" Type="int" Nullable="false" />
+          <Property Name="app_man_id" Type="int" />
+          <Property Name="status_id" Type="int" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="last_status_modif_date" Type="datetime" Nullable="false" />
+          <Property Name="last_version" Type="bit" Nullable="false" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="modif_date" Type="datetime" Nullable="false" />
+          <Property Name="modif_user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Demand_Attachment">
+          <Key>
+            <PropertyRef Name="demand_id" />
+            <PropertyRef Name="demand_version" />
+            <PropertyRef Name="attachment_id" />
+          </Key>
+          <Property Name="demand_id" Type="int" Nullable="false" />
+          <Property Name="demand_version" Type="int" Nullable="false" />
+          <Property Name="attachment_id" Type="int" Nullable="false" />
+          <Property Name="att_type" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Demand_LastNr">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="last_nr" Type="int" Nullable="false" />
+          <Property Name="year" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Demand_Nomenclature">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="demand_id" Type="int" Nullable="false" />
+          <Property Name="demand_version" Type="int" Nullable="false" />
+          <Property Name="nomenclature_id" Type="int" Nullable="false" />
+          <Property Name="nomenclature_version" Type="int" Nullable="false" />
+          <Property Name="status_id" Type="int" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="currency_id" Type="int" />
+          <Property Name="locked_by_demand_id" Type="int" />
+          <Property Name="locked_by_demand_version" Type="int" />
+          <Property Name="modif_user_id" Type="int" Nullable="false" />
+          <Property Name="modif_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Demand_Status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EvaluationMethod">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Last_Import">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="last_nomenclature_import_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Material_Group">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nomenclature">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="version" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="version" Type="int" Nullable="false" />
+          <Property Name="nomenclature_key" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="150" />
+          <Property Name="name_wo_dia" Type="nvarchar" MaxLength="150" />
+          <Property Name="specification" Type="nvarchar" MaxLength="500" />
+          <Property Name="specification_wo_dia" Type="nvarchar" MaxLength="500" />
+          <Property Name="unit_id" Type="int" />
+          <Property Name="material_group_id" Type="int" />
+          <Property Name="company_id" Type="int" />
+          <Property Name="buyer_id" Type="int" />
+          <Property Name="created_date" Type="datetime" />
+          <Property Name="create_user_id" Type="int" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="currency_id" Type="int" />
+          <Property Name="evaluation_method_id" Type="int" />
+          <Property Name="status_id" Type="int" Nullable="false" />
+          <Property Name="last_status_modif_date" Type="datetime" Nullable="false" />
+          <Property Name="import_date" Type="datetime" Nullable="false" />
+          <Property Name="source_id" Type="int" Nullable="false" />
+          <Property Name="is_plnaknavrh" Type="bit" Nullable="false" />
+          <Property Name="last_version" Type="bit" Nullable="false" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="modif_date" Type="datetime" Nullable="false" />
+          <Property Name="modif_user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nomenclature_Source">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nomenclature_Status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="status_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Remark">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="demand_id" Type="int" Nullable="false" />
+          <Property Name="demand_version" Type="int" Nullable="false" />
+          <Property Name="remark_text" Type="ntext" Nullable="false" />
+          <Property Name="read_date" Type="datetime" />
+          <Property Name="modif_user_id" Type="int" Nullable="false" />
+          <Property Name="modif_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="role_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ScmSetting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="prodis_input_folder" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="prodis_price_input_folder" Type="nvarchar" MaxLength="500" />
+          <Property Name="plnaknavrh_file_path" Type="nvarchar" MaxLength="500" />
+          <Property Name="last_import_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ScmUser">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="user_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="first_name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="first_name_wo_dia" Type="nvarchar" MaxLength="150" />
+          <Property Name="surname_wo" Type="nvarchar" MaxLength="150" />
+          <Property Name="email" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="phone_nr" Type="nvarchar" MaxLength="50" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Source_File">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="last_modification_date" Type="datetime" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="import_date" Type="datetime" Nullable="false" />
+          <Property Name="import_user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="supp_name" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="supp_name_wo_dia" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="supplier_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="dic" Type="nvarchar" MaxLength="50" />
+          <Property Name="country" Type="nvarchar" MaxLength="100" />
+          <Property Name="country_wo_dia" Type="nvarchar" MaxLength="100" />
+          <Property Name="vat" Type="bit" />
+          <Property Name="contact_person" Type="nvarchar" MaxLength="400" />
+          <Property Name="phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="mobile_phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="street_part1" Type="nvarchar" MaxLength="500" />
+          <Property Name="street_part1_wo_dia" Type="nvarchar" MaxLength="500" />
+          <Property Name="street_part2" Type="nvarchar" MaxLength="150" />
+          <Property Name="street_part2_wo_dia" Type="nvarchar" MaxLength="150" />
+          <Property Name="city" Type="nvarchar" MaxLength="150" />
+          <Property Name="city_wo_dia" Type="nvarchar" MaxLength="150" />
+          <Property Name="zip" Type="nvarchar" MaxLength="25" />
+          <Property Name="email" Type="nvarchar" MaxLength="150" />
+          <Property Name="creditor_group" Type="int" />
+          <Property Name="bank_account" Type="nvarchar" MaxLength="50" />
+          <Property Name="lang" Type="nvarchar" MaxLength="20" />
+          <Property Name="email_used" Type="nvarchar" MaxLength="150" />
+          <Property Name="is_approved" Type="bit" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+          <Property Name="modif_date" Type="datetime" Nullable="false" />
+          <Property Name="modif_user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier_Contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="supplier_id" Type="int" Nullable="false" />
+          <Property Name="first_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="phone_nr" Type="nvarchar" MaxLength="50" />
+          <Property Name="phone_nr2" Type="nvarchar" MaxLength="50" />
+          <Property Name="modif_date" Type="datetime" Nullable="false" />
+          <Property Name="modif_user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="User_Role">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="role_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User_Setting">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="culture" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Active_Demand_Demand">
+          <End Role="Demand" Type="Self.Demand" Multiplicity="1" />
+          <End Role="Active_Demand" Type="Self.Active_Demand" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Demand">
+              <PropertyRef Name="id" />
+              <PropertyRef Name="version" />
+            </Principal>
+            <Dependent Role="Active_Demand">
+              <PropertyRef Name="id" />
+              <PropertyRef Name="version" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Active_Demand_Demand_Status">
+          <End Role="Demand_Status" Type="Self.Demand_Status" Multiplicity="1" />
+          <End Role="Active_Demand" Type="Self.Active_Demand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Demand_Status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Active_Demand">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Active_Nomenclature_Nomenclature">
+          <End Role="Nomenclature" Type="Self.Nomenclature" Multiplicity="1" />
+          <End Role="Active_Nomenclature" Type="Self.Active_Nomenclature" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Nomenclature">
+              <PropertyRef Name="id" />
+              <PropertyRef Name="version" />
+            </Principal>
+            <Dependent Role="Active_Nomenclature">
+              <PropertyRef Name="id" />
+              <PropertyRef Name="version" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attachment_ScmUser">
+          <End Role="ScmUser" Type="Self.ScmUser" Multiplicity="1" />
+          <End Role="Attachment" Type="Self.Attachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Attachment">
+              <PropertyRef Name="modif_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Attachment_Attachment">
+          <End Role="Attachment" Type="Self.Attachment" Multiplicity="1" />
+          <End Role="Demand_Attachment" Type="Self.Demand_Attachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attachment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Demand_Attachment">
+              <PropertyRef Name="attachment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Attachment_Demand">
+          <End Role="Demand" Type="Self.Demand" Multiplicity="1" />
+          <End Role="Demand_Attachment" Type="Self.Demand_Attachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Demand">
+              <PropertyRef Name="id" />
+              <PropertyRef Name="version" />
+            </Principal>
+            <Dependent Role="Demand_Attachment">
+              <PropertyRef Name="demand_id" />
+              <PropertyRef Name="demand_version" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="Nomenclature" Type="Self.Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Nomenclature">
+              <PropertyRef Name="company_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Demand_Status">
+          <End Role="Demand_Status" Type="Self.Demand_Status" Multiplicity="1" />
+          <End Role="Demand" Type="Self.Demand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Demand_Status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Demand">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Material_Group">
+          <End Role="Material_Group" Type="Self.Material_Group" Multiplicity="0..1" />
+          <End Role="Nomenclature" Type="Self.Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material_Group">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Nomenclature">
+              <PropertyRef Name="material_group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Nomenclature_Demand">
+          <End Role="Demand" Type="Self.Demand" Multiplicity="1" />
+          <End Role="Demand_Nomenclature" Type="Self.Demand_Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Demand">
+              <PropertyRef Name="id" />
+              <PropertyRef Name="version" />
+            </Principal>
+            <Dependent Role="Demand_Nomenclature">
+              <PropertyRef Name="demand_id" />
+              <PropertyRef Name="demand_version" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Nomenclature_Nomenclature">
+          <End Role="Nomenclature" Type="Self.Nomenclature" Multiplicity="1" />
+          <End Role="Demand_Nomenclature" Type="Self.Demand_Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nomenclature">
+              <PropertyRef Name="id" />
+              <PropertyRef Name="version" />
+            </Principal>
+            <Dependent Role="Demand_Nomenclature">
+              <PropertyRef Name="nomenclature_id" />
+              <PropertyRef Name="nomenclature_version" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Nomenclature_ScmUser">
+          <End Role="ScmUser" Type="Self.ScmUser" Multiplicity="1" />
+          <End Role="Demand_Nomenclature" Type="Self.Demand_Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Demand_Nomenclature">
+              <PropertyRef Name="modif_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_ScmUser">
+          <End Role="ScmUser" Type="Self.ScmUser" Multiplicity="0..1" />
+          <End Role="Nomenclature" Type="Self.Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Nomenclature">
+              <PropertyRef Name="buyer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_ScmUser1">
+          <End Role="ScmUser" Type="Self.ScmUser" Multiplicity="0..1" />
+          <End Role="Nomenclature" Type="Self.Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Nomenclature">
+              <PropertyRef Name="create_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_ScmUser2">
+          <End Role="ScmUser" Type="Self.ScmUser" Multiplicity="1" />
+          <End Role="Nomenclature" Type="Self.Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Nomenclature">
+              <PropertyRef Name="modif_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_ScmUser3">
+          <End Role="ScmUser" Type="Self.ScmUser" Multiplicity="1" />
+          <End Role="Demand" Type="Self.Demand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Demand">
+              <PropertyRef Name="requestor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_ScmUser4">
+          <End Role="ScmUser" Type="Self.ScmUser" Multiplicity="1" />
+          <End Role="Demand" Type="Self.Demand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Demand">
+              <PropertyRef Name="modif_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_ScmUser5">
+          <End Role="ScmUser" Type="Self.ScmUser" Multiplicity="0..1" />
+          <End Role="Demand" Type="Self.Demand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Demand">
+              <PropertyRef Name="app_man_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Demand" Type="Self.Demand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Demand">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Unit">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="Nomenclature" Type="Self.Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Nomenclature">
+              <PropertyRef Name="unit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nomenclature_Currency">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="Nomenclature" Type="Self.Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Nomenclature">
+              <PropertyRef Name="currency_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nomenclature_EvaluationMethod">
+          <End Role="EvaluationMethod" Type="Self.EvaluationMethod" Multiplicity="0..1" />
+          <End Role="Nomenclature" Type="Self.Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EvaluationMethod">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Nomenclature">
+              <PropertyRef Name="evaluation_method_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nomenclature_Nomenclature_Source">
+          <End Role="Nomenclature_Source" Type="Self.Nomenclature_Source" Multiplicity="1" />
+          <End Role="Nomenclature" Type="Self.Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nomenclature_Source">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Nomenclature">
+              <PropertyRef Name="source_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nomenclature_Nomenclature_Status">
+          <End Role="Nomenclature_Status" Type="Self.Nomenclature_Status" Multiplicity="1" />
+          <End Role="Nomenclature" Type="Self.Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nomenclature_Status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Nomenclature">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Remark_Demand">
+          <End Role="Demand" Type="Self.Demand" Multiplicity="1" />
+          <End Role="Remark" Type="Self.Remark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Demand">
+              <PropertyRef Name="id" />
+              <PropertyRef Name="version" />
+            </Principal>
+            <Dependent Role="Remark">
+              <PropertyRef Name="demand_id" />
+              <PropertyRef Name="demand_version" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Remark_ScmUser">
+          <End Role="ScmUser" Type="Self.ScmUser" Multiplicity="1" />
+          <End Role="Remark" Type="Self.Remark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Remark">
+              <PropertyRef Name="modif_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Source_Files_ScmUser">
+          <End Role="ScmUser" Type="Self.ScmUser" Multiplicity="1" />
+          <End Role="Source_File" Type="Self.Source_File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Source_File">
+              <PropertyRef Name="import_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Contact_ScmUser">
+          <End Role="ScmUser" Type="Self.ScmUser" Multiplicity="1" />
+          <End Role="Supplier_Contact" Type="Self.Supplier_Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Supplier_Contact">
+              <PropertyRef Name="modif_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Contact_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Supplier_Contact" Type="Self.Supplier_Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Supplier_Contact">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_ScmUser">
+          <End Role="ScmUser" Type="Self.ScmUser" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="modif_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User_Role" Type="Self.User_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User_Role">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role_ScmUser">
+          <End Role="ScmUser" Type="Self.ScmUser" Multiplicity="1" />
+          <End Role="User_Role" Type="Self.User_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User_Role">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Setting_ScmUser">
+          <End Role="ScmUser" Type="Self.ScmUser" Multiplicity="1" />
+          <End Role="User_Setting" Type="Self.User_Setting" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User_Setting">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ScmDemandModelStoreContainer">
+          <EntitySet Name="Active_Demand" EntityType="Self.Active_Demand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Active_Nomenclature" EntityType="Self.Active_Nomenclature" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Attachment" EntityType="Self.Attachment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Demand" EntityType="Self.Demand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Demand_Attachment" EntityType="Self.Demand_Attachment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Demand_LastNr" EntityType="Self.Demand_LastNr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Demand_Nomenclature" EntityType="Self.Demand_Nomenclature" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Demand_Status" EntityType="Self.Demand_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EvaluationMethod" EntityType="Self.EvaluationMethod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Last_Import" EntityType="Self.Last_Import" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Material_Group" EntityType="Self.Material_Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nomenclature" EntityType="Self.Nomenclature" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nomenclature_Source" EntityType="Self.Nomenclature_Source" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nomenclature_Status" EntityType="Self.Nomenclature_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Remark" EntityType="Self.Remark" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScmSetting" EntityType="Self.ScmSetting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScmUser" EntityType="Self.ScmUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Source_File" EntityType="Self.Source_File" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier_Contact" EntityType="Self.Supplier_Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Role" EntityType="Self.User_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Setting" EntityType="Self.User_Setting" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Active_Demand_Demand" Association="Self.FK_Active_Demand_Demand">
+            <End Role="Demand" EntitySet="Demand" />
+            <End Role="Active_Demand" EntitySet="Active_Demand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Active_Demand_Demand_Status" Association="Self.FK_Active_Demand_Demand_Status">
+            <End Role="Demand_Status" EntitySet="Demand_Status" />
+            <End Role="Active_Demand" EntitySet="Active_Demand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Active_Nomenclature_Nomenclature" Association="Self.FK_Active_Nomenclature_Nomenclature">
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+            <End Role="Active_Nomenclature" EntitySet="Active_Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attachment_ScmUser" Association="Self.FK_Attachment_ScmUser">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Attachment" EntitySet="Attachment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Attachment_Attachment" Association="Self.FK_Demand_Attachment_Attachment">
+            <End Role="Attachment" EntitySet="Attachment" />
+            <End Role="Demand_Attachment" EntitySet="Demand_Attachment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Attachment_Demand" Association="Self.FK_Demand_Attachment_Demand">
+            <End Role="Demand" EntitySet="Demand" />
+            <End Role="Demand_Attachment" EntitySet="Demand_Attachment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Company" Association="Self.FK_Demand_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Demand_Status" Association="Self.FK_Demand_Demand_Status">
+            <End Role="Demand_Status" EntitySet="Demand_Status" />
+            <End Role="Demand" EntitySet="Demand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Material_Group" Association="Self.FK_Demand_Material_Group">
+            <End Role="Material_Group" EntitySet="Material_Group" />
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Nomenclature_Demand" Association="Self.FK_Demand_Nomenclature_Demand">
+            <End Role="Demand" EntitySet="Demand" />
+            <End Role="Demand_Nomenclature" EntitySet="Demand_Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Nomenclature_Nomenclature" Association="Self.FK_Demand_Nomenclature_Nomenclature">
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+            <End Role="Demand_Nomenclature" EntitySet="Demand_Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Nomenclature_ScmUser" Association="Self.FK_Demand_Nomenclature_ScmUser">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Demand_Nomenclature" EntitySet="Demand_Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_ScmUser" Association="Self.FK_Demand_ScmUser">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_ScmUser1" Association="Self.FK_Demand_ScmUser1">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_ScmUser2" Association="Self.FK_Demand_ScmUser2">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_ScmUser3" Association="Self.FK_Demand_ScmUser3">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Demand" EntitySet="Demand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_ScmUser4" Association="Self.FK_Demand_ScmUser4">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Demand" EntitySet="Demand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_ScmUser5" Association="Self.FK_Demand_ScmUser5">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Demand" EntitySet="Demand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Supplier" Association="Self.FK_Demand_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Demand" EntitySet="Demand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Unit" Association="Self.FK_Demand_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nomenclature_Currency" Association="Self.FK_Nomenclature_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nomenclature_EvaluationMethod" Association="Self.FK_Nomenclature_EvaluationMethod">
+            <End Role="EvaluationMethod" EntitySet="EvaluationMethod" />
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nomenclature_Nomenclature_Source" Association="Self.FK_Nomenclature_Nomenclature_Source">
+            <End Role="Nomenclature_Source" EntitySet="Nomenclature_Source" />
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nomenclature_Nomenclature_Status" Association="Self.FK_Nomenclature_Nomenclature_Status">
+            <End Role="Nomenclature_Status" EntitySet="Nomenclature_Status" />
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Remark_Demand" Association="Self.FK_Remark_Demand">
+            <End Role="Demand" EntitySet="Demand" />
+            <End Role="Remark" EntitySet="Remark" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Remark_ScmUser" Association="Self.FK_Remark_ScmUser">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Remark" EntitySet="Remark" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Source_Files_ScmUser" Association="Self.FK_Source_Files_ScmUser">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Source_File" EntitySet="Source_File" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Contact_ScmUser" Association="Self.FK_Supplier_Contact_ScmUser">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Supplier_Contact" EntitySet="Supplier_Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Contact_Supplier" Association="Self.FK_Supplier_Contact_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Supplier_Contact" EntitySet="Supplier_Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_ScmUser" Association="Self.FK_Supplier_ScmUser">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role_Role" Association="Self.FK_User_Role_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User_Role" EntitySet="User_Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role_ScmUser" Association="Self.FK_User_Role_ScmUser">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="User_Role" EntitySet="User_Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Setting_ScmUser" Association="Self.FK_User_Setting_ScmUser">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="User_Setting" EntitySet="User_Setting" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ScmDemandModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ScmDemandEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Attachment" EntityType="ScmDemandModel.Attachment" />
+          <EntitySet Name="Company" EntityType="ScmDemandModel.Company" />
+          <EntitySet Name="Currency" EntityType="ScmDemandModel.Currency" />
+          <EntitySet Name="Demand" EntityType="ScmDemandModel.Demand" />
+          <EntitySet Name="Demand_Attachment" EntityType="ScmDemandModel.Demand_Attachment" />
+          <EntitySet Name="Demand_LastNr" EntityType="ScmDemandModel.Demand_LastNr" />
+          <EntitySet Name="Demand_Status" EntityType="ScmDemandModel.Demand_Status" />
+          <EntitySet Name="EvaluationMethod" EntityType="ScmDemandModel.EvaluationMethod" />
+          <EntitySet Name="Material_Group" EntityType="ScmDemandModel.Material_Group" />
+          <EntitySet Name="Nomenclature" EntityType="ScmDemandModel.Nomenclature" />
+          <EntitySet Name="Nomenclature_Status" EntityType="ScmDemandModel.Nomenclature_Status" />
+          <EntitySet Name="Role" EntityType="ScmDemandModel.Role" />
+          <EntitySet Name="ScmSetting" EntityType="ScmDemandModel.ScmSetting" />
+          <EntitySet Name="ScmUser" EntityType="ScmDemandModel.ScmUser" />
+          <EntitySet Name="Supplier" EntityType="ScmDemandModel.Supplier" />
+          <EntitySet Name="Unit" EntityType="ScmDemandModel.Unit" />
+          <EntitySet Name="User_Setting" EntityType="ScmDemandModel.User_Setting" />
+          <AssociationSet Name="FK_Attachment_ScmUser" Association="ScmDemandModel.FK_Attachment_ScmUser">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Attachment" EntitySet="Attachment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Attachment_Attachment" Association="ScmDemandModel.FK_Demand_Attachment_Attachment">
+            <End Role="Attachment" EntitySet="Attachment" />
+            <End Role="Demand_Attachment" EntitySet="Demand_Attachment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Company" Association="ScmDemandModel.FK_Demand_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nomenclature_Currency" Association="ScmDemandModel.FK_Nomenclature_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Attachment_Demand" Association="ScmDemandModel.FK_Demand_Attachment_Demand">
+            <End Role="Demand" EntitySet="Demand" />
+            <End Role="Demand_Attachment" EntitySet="Demand_Attachment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Demand_Status" Association="ScmDemandModel.FK_Demand_Demand_Status">
+            <End Role="Demand_Status" EntitySet="Demand_Status" />
+            <End Role="Demand" EntitySet="Demand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_ScmUser3" Association="ScmDemandModel.FK_Demand_ScmUser3">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Demand" EntitySet="Demand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_ScmUser4" Association="ScmDemandModel.FK_Demand_ScmUser4">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Demand" EntitySet="Demand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_ScmUser5" Association="ScmDemandModel.FK_Demand_ScmUser5">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Demand" EntitySet="Demand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Supplier" Association="ScmDemandModel.FK_Demand_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Demand" EntitySet="Demand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nomenclature_EvaluationMethod" Association="ScmDemandModel.FK_Nomenclature_EvaluationMethod">
+            <End Role="EvaluationMethod" EntitySet="EvaluationMethod" />
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Material_Group" Association="ScmDemandModel.FK_Demand_Material_Group">
+            <End Role="Material_Group" EntitySet="Material_Group" />
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_ScmUser" Association="ScmDemandModel.FK_Demand_ScmUser">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_ScmUser1" Association="ScmDemandModel.FK_Demand_ScmUser1">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_ScmUser2" Association="ScmDemandModel.FK_Demand_ScmUser2">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Unit" Association="ScmDemandModel.FK_Demand_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nomenclature_Nomenclature_Status" Association="ScmDemandModel.FK_Nomenclature_Nomenclature_Status">
+            <End Role="Nomenclature_Status" EntitySet="Nomenclature_Status" />
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_ScmUser" Association="ScmDemandModel.FK_Supplier_ScmUser">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Setting_ScmUser" Association="ScmDemandModel.FK_User_Setting_ScmUser">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="User_Setting" EntitySet="User_Setting" />
+          </AssociationSet>
+          <AssociationSet Name="User_Role" Association="ScmDemandModel.User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="ScmUser" EntitySet="ScmUser" />
+          </AssociationSet>
+          <EntitySet Name="Active_Demand" EntityType="ScmDemandModel.Active_Demand" />
+          <AssociationSet Name="FK_Active_Demand_Demand" Association="ScmDemandModel.FK_Active_Demand_Demand">
+            <End Role="Demand" EntitySet="Demand" />
+            <End Role="Active_Demand" EntitySet="Active_Demand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Active_Demand_Demand_Status" Association="ScmDemandModel.FK_Active_Demand_Demand_Status">
+            <End Role="Demand_Status" EntitySet="Demand_Status" />
+            <End Role="Active_Demand" EntitySet="Active_Demand" />
+          </AssociationSet>
+          <EntitySet Name="Active_Nomenclature" EntityType="ScmDemandModel.Active_Nomenclature" />
+          <AssociationSet Name="FK_Active_Nomenclature_Nomenclature" Association="ScmDemandModel.FK_Active_Nomenclature_Nomenclature">
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+            <End Role="Active_Nomenclature" EntitySet="Active_Nomenclature" />
+          </AssociationSet>
+          <EntitySet Name="Last_Import" EntityType="ScmDemandModel.Last_Import" />
+          <EntitySet Name="Supplier_Contact" EntityType="ScmDemandModel.Supplier_Contact" />
+          <AssociationSet Name="FK_Supplier_Contact_Supplier" Association="ScmDemandModel.FK_Supplier_Contact_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Supplier_Contact" EntitySet="Supplier_Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Contact_ScmUser" Association="ScmDemandModel.FK_Supplier_Contact_ScmUser">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Supplier_Contact" EntitySet="Supplier_Contact" />
+          </AssociationSet>
+          <EntitySet Name="Source_File" EntityType="ScmDemandModel.Source_File" />
+          <AssociationSet Name="FK_Source_Files_ScmUser" Association="ScmDemandModel.FK_Source_Files_ScmUser">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Source_File" EntitySet="Source_File" />
+          </AssociationSet>
+          <EntitySet Name="Demand_Nomenclature" EntityType="ScmDemandModel.Demand_Nomenclature" />
+          <AssociationSet Name="FK_Demand_Nomenclature_Currency" Association="ScmDemandModel.FK_Demand_Nomenclature_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="Demand_Nomenclature" EntitySet="Demand_Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Nomenclature_Demand" Association="ScmDemandModel.FK_Demand_Nomenclature_Demand">
+            <End Role="Demand" EntitySet="Demand" />
+            <End Role="Demand_Nomenclature" EntitySet="Demand_Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Nomenclature_Demand1" Association="ScmDemandModel.FK_Demand_Nomenclature_Demand1">
+            <End Role="Demand" EntitySet="Demand" />
+            <End Role="Demand_Nomenclature" EntitySet="Demand_Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Nomenclature_Nomenclature" Association="ScmDemandModel.FK_Demand_Nomenclature_Nomenclature">
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+            <End Role="Demand_Nomenclature" EntitySet="Demand_Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Nomenclature_Nomenclature_Status" Association="ScmDemandModel.FK_Demand_Nomenclature_Nomenclature_Status">
+            <End Role="Nomenclature_Status" EntitySet="Nomenclature_Status" />
+            <End Role="Demand_Nomenclature" EntitySet="Demand_Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Nomenclature_ScmUser" Association="ScmDemandModel.FK_Demand_Nomenclature_ScmUser">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Demand_Nomenclature" EntitySet="Demand_Nomenclature" />
+          </AssociationSet>
+          <EntitySet Name="Remark" EntityType="ScmDemandModel.Remark" />
+          <AssociationSet Name="FK_Remark_Demand" Association="ScmDemandModel.FK_Remark_Demand">
+            <End Role="Demand" EntitySet="Demand" />
+            <End Role="Remark" EntitySet="Remark" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Remark_ScmUser" Association="ScmDemandModel.FK_Remark_ScmUser">
+            <End Role="ScmUser" EntitySet="ScmUser" />
+            <End Role="Remark" EntitySet="Remark" />
+          </AssociationSet>
+          <EntitySet Name="Nomenclature_Source" EntityType="ScmDemandModel.Nomenclature_Source" />
+          <AssociationSet Name="FK_Nomenclature_Nomenclature_Source" Association="ScmDemandModel.FK_Nomenclature_Nomenclature_Source">
+            <End Role="Nomenclature_Source" EntitySet="Nomenclature_Source" />
+            <End Role="Nomenclature" EntitySet="Nomenclature" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Attachment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="file_name" Type="String" Nullable="false" MaxLength="1500" FixedLength="false" Unicode="true" />
+          <Property Name="file_content" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="file_icon" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="modif_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modif_user_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ScmUser" Relationship="ScmDemandModel.FK_Attachment_ScmUser" FromRole="Attachment" ToRole="ScmUser" />
+          <NavigationProperty Name="Demand_Attachment" Relationship="ScmDemandModel.FK_Demand_Attachment_Attachment" FromRole="Attachment" ToRole="Demand_Attachment" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="company1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Nomenclature" Relationship="ScmDemandModel.FK_Demand_Company" FromRole="Company" ToRole="Nomenclature" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="currency_code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="currency_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Nomenclature" Relationship="ScmDemandModel.FK_Nomenclature_Currency" FromRole="Currency" ToRole="Nomenclature" />
+          <NavigationProperty Name="Demand_Nomenclature" Relationship="ScmDemandModel.FK_Demand_Nomenclature_Currency" FromRole="Currency" ToRole="Demand_Nomenclature" />
+        </EntityType>
+        <EntityType Name="Demand">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="version" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="version" Type="Int32" Nullable="false" />
+          <Property Name="demand_nr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="supplier_id" Type="Int32" Nullable="false" />
+          <Property Name="requestor_id" Type="Int32" Nullable="false" />
+          <Property Name="app_man_id" Type="Int32" />
+          <Property Name="status_id" Type="Int32" Nullable="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="last_status_modif_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="last_version" Type="Boolean" Nullable="false" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="modif_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modif_user_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Demand_Attachment" Relationship="ScmDemandModel.FK_Demand_Attachment_Demand" FromRole="Demand" ToRole="Demand_Attachment" />
+          <NavigationProperty Name="Demand_Status" Relationship="ScmDemandModel.FK_Demand_Demand_Status" FromRole="Demand" ToRole="Demand_Status" />
+          <NavigationProperty Name="Requestor" Relationship="ScmDemandModel.FK_Demand_ScmUser3" FromRole="Demand" ToRole="ScmUser" />
+          <NavigationProperty Name="ScmUser1" Relationship="ScmDemandModel.FK_Demand_ScmUser4" FromRole="Demand" ToRole="ScmUser" />
+          <NavigationProperty Name="AppMan" Relationship="ScmDemandModel.FK_Demand_ScmUser5" FromRole="Demand" ToRole="ScmUser" />
+          <NavigationProperty Name="Supplier" Relationship="ScmDemandModel.FK_Demand_Supplier" FromRole="Demand" ToRole="Supplier" />
+          <NavigationProperty Name="Active_Demand" Relationship="ScmDemandModel.FK_Active_Demand_Demand" FromRole="Demand" ToRole="Active_Demand" />
+          <NavigationProperty Name="Demand_Nomenclature" Relationship="ScmDemandModel.FK_Demand_Nomenclature_Demand" FromRole="Demand" ToRole="Demand_Nomenclature" />
+          <NavigationProperty Name="DemandNomenclatureLock" Relationship="ScmDemandModel.FK_Demand_Nomenclature_Demand1" FromRole="Demand" ToRole="Demand_Nomenclature" />
+          <NavigationProperty Name="Remark" Relationship="ScmDemandModel.FK_Remark_Demand" FromRole="Demand" ToRole="Remark" />
+        </EntityType>
+        <EntityType Name="Demand_Attachment">
+          <Key>
+            <PropertyRef Name="demand_id" />
+            <PropertyRef Name="demand_version" />
+            <PropertyRef Name="attachment_id" />
+          </Key>
+          <Property Name="demand_id" Type="Int32" Nullable="false" />
+          <Property Name="demand_version" Type="Int32" Nullable="false" />
+          <Property Name="attachment_id" Type="Int32" Nullable="false" />
+          <Property Name="att_type" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Attachment" Relationship="ScmDemandModel.FK_Demand_Attachment_Attachment" FromRole="Demand_Attachment" ToRole="Attachment" />
+          <NavigationProperty Name="Demand" Relationship="ScmDemandModel.FK_Demand_Attachment_Demand" FromRole="Demand_Attachment" ToRole="Demand" />
+        </EntityType>
+        <EntityType Name="Demand_LastNr">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="last_nr" Type="Int32" Nullable="false" />
+          <Property Name="year" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Demand_Status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Demand" Relationship="ScmDemandModel.FK_Demand_Demand_Status" FromRole="Demand_Status" ToRole="Demand" />
+          <NavigationProperty Name="Active_Demand" Relationship="ScmDemandModel.FK_Active_Demand_Demand_Status" FromRole="Demand_Status" ToRole="Active_Demand" />
+        </EntityType>
+        <EntityType Name="EvaluationMethod">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Nomenclature" Relationship="ScmDemandModel.FK_Nomenclature_EvaluationMethod" FromRole="EvaluationMethod" ToRole="Nomenclature" />
+        </EntityType>
+        <EntityType Name="Material_Group">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Nomenclature" Relationship="ScmDemandModel.FK_Demand_Material_Group" FromRole="Material_Group" ToRole="Nomenclature" />
+        </EntityType>
+        <EntityType Name="Nomenclature">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="version" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="version" Type="Int32" Nullable="false" />
+          <Property Name="nomenclature_key" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="name_wo_dia" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="unit_id" Type="Int32" />
+          <Property Name="material_group_id" Type="Int32" />
+          <Property Name="company_id" Type="Int32" />
+          <Property Name="buyer_id" Type="Int32" />
+          <Property Name="created_date" Type="DateTime" Precision="3" />
+          <Property Name="create_user_id" Type="Int32" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="currency_id" Type="Int32" />
+          <Property Name="evaluation_method_id" Type="Int32" />
+          <Property Name="status_id" Type="Int32" Nullable="false" />
+          <Property Name="last_status_modif_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="import_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="last_version" Type="Boolean" Nullable="false" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="modif_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modif_user_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="ScmDemandModel.FK_Demand_Company" FromRole="Nomenclature" ToRole="Company" />
+          <NavigationProperty Name="Currency" Relationship="ScmDemandModel.FK_Nomenclature_Currency" FromRole="Nomenclature" ToRole="Currency" />
+          <NavigationProperty Name="EvaluationMethod" Relationship="ScmDemandModel.FK_Nomenclature_EvaluationMethod" FromRole="Nomenclature" ToRole="EvaluationMethod" />
+          <NavigationProperty Name="Material_Group" Relationship="ScmDemandModel.FK_Demand_Material_Group" FromRole="Nomenclature" ToRole="Material_Group" />
+          <NavigationProperty Name="ScmUser" Relationship="ScmDemandModel.FK_Demand_ScmUser" FromRole="Nomenclature" ToRole="ScmUser" />
+          <NavigationProperty Name="ScmUser1" Relationship="ScmDemandModel.FK_Demand_ScmUser1" FromRole="Nomenclature" ToRole="ScmUser" />
+          <NavigationProperty Name="ScmUser2" Relationship="ScmDemandModel.FK_Demand_ScmUser2" FromRole="Nomenclature" ToRole="ScmUser" />
+          <NavigationProperty Name="Unit" Relationship="ScmDemandModel.FK_Demand_Unit" FromRole="Nomenclature" ToRole="Unit" />
+          <NavigationProperty Name="Nomenclature_Status" Relationship="ScmDemandModel.FK_Nomenclature_Nomenclature_Status" FromRole="Nomenclature" ToRole="Nomenclature_Status" />
+          <NavigationProperty Name="Active_Nomenclature" Relationship="ScmDemandModel.FK_Active_Nomenclature_Nomenclature" FromRole="Nomenclature" ToRole="Active_Nomenclature" />
+          <Property Name="specification" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="specification_wo_dia" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Demand_Nomenclature" Relationship="ScmDemandModel.FK_Demand_Nomenclature_Nomenclature" FromRole="Nomenclature" ToRole="Demand_Nomenclature" />
+          <Property Name="source_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Nomenclature_Source" Relationship="ScmDemandModel.FK_Nomenclature_Nomenclature_Source" FromRole="Nomenclature" ToRole="Nomenclature_Source" />
+          <Property Name="is_plnaknavrh" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nomenclature_Status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="status_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Nomenclature" Relationship="ScmDemandModel.FK_Nomenclature_Nomenclature_Status" FromRole="Nomenclature_Status" ToRole="Nomenclature" />
+          <NavigationProperty Name="Demand_Nomenclature" Relationship="ScmDemandModel.FK_Demand_Nomenclature_Nomenclature_Status" FromRole="Nomenclature_Status" ToRole="Demand_Nomenclature" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="role_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ScmUser" Relationship="ScmDemandModel.User_Role" FromRole="Role" ToRole="ScmUser" />
+        </EntityType>
+        <EntityType Name="ScmSetting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="prodis_input_folder" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="last_import_date" Type="DateTime" Precision="3" />
+          <Property Name="prodis_price_input_folder" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="plnaknavrh_file_path" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ScmUser">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="user_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="surname" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="first_name_wo_dia" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="surname_wo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Attachment" Relationship="ScmDemandModel.FK_Attachment_ScmUser" FromRole="ScmUser" ToRole="Attachment" />
+          <NavigationProperty Name="Demand" Relationship="ScmDemandModel.FK_Demand_ScmUser3" FromRole="ScmUser" ToRole="Demand" />
+          <NavigationProperty Name="Demand1" Relationship="ScmDemandModel.FK_Demand_ScmUser4" FromRole="ScmUser" ToRole="Demand" />
+          <NavigationProperty Name="Demand2" Relationship="ScmDemandModel.FK_Demand_ScmUser5" FromRole="ScmUser" ToRole="Demand" />
+          <NavigationProperty Name="Nomenclature" Relationship="ScmDemandModel.FK_Demand_ScmUser" FromRole="ScmUser" ToRole="Nomenclature" />
+          <NavigationProperty Name="Nomenclature1" Relationship="ScmDemandModel.FK_Demand_ScmUser1" FromRole="ScmUser" ToRole="Nomenclature" />
+          <NavigationProperty Name="Nomenclature2" Relationship="ScmDemandModel.FK_Demand_ScmUser2" FromRole="ScmUser" ToRole="Nomenclature" />
+          <NavigationProperty Name="Supplier" Relationship="ScmDemandModel.FK_Supplier_ScmUser" FromRole="ScmUser" ToRole="Supplier" />
+          <NavigationProperty Name="User_Setting" Relationship="ScmDemandModel.FK_User_Setting_ScmUser" FromRole="ScmUser" ToRole="User_Setting" />
+          <NavigationProperty Name="Role" Relationship="ScmDemandModel.User_Role" FromRole="ScmUser" ToRole="Role" />
+          <Property Name="phone_nr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Supplier_Contact" Relationship="ScmDemandModel.FK_Supplier_Contact_ScmUser" FromRole="ScmUser" ToRole="Supplier_Contact" />
+          <NavigationProperty Name="Source_File" Relationship="ScmDemandModel.FK_Source_Files_ScmUser" FromRole="ScmUser" ToRole="Source_File" />
+          <NavigationProperty Name="Demand_Nomenclature" Relationship="ScmDemandModel.FK_Demand_Nomenclature_ScmUser" FromRole="ScmUser" ToRole="Demand_Nomenclature" />
+          <NavigationProperty Name="Remark" Relationship="ScmDemandModel.FK_Remark_ScmUser" FromRole="ScmUser" ToRole="Remark" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="supp_name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="supp_name_wo_dia" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="supplier_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="vat" Type="Boolean" />
+          <Property Name="contact_person" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mobile_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="street_part1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="street_part2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="zip" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="creditor_group" Type="Int32" />
+          <Property Name="bank_account" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="email_used" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="is_approved" Type="Boolean" Nullable="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <Property Name="modif_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modif_user_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Demand" Relationship="ScmDemandModel.FK_Demand_Supplier" FromRole="Supplier" ToRole="Demand" />
+          <NavigationProperty Name="ScmUser" Relationship="ScmDemandModel.FK_Supplier_ScmUser" FromRole="Supplier" ToRole="ScmUser" />
+          <NavigationProperty Name="Supplier_Contact" Relationship="ScmDemandModel.FK_Supplier_Contact_Supplier" FromRole="Supplier" ToRole="Supplier_Contact" />
+          <Property Name="street_part1_wo_dia" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="street_part2_wo_dia" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="city_wo_dia" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="country_wo_dia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Nomenclature" Relationship="ScmDemandModel.FK_Demand_Unit" FromRole="Unit" ToRole="Nomenclature" />
+        </EntityType>
+        <EntityType Name="User_Setting">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="culture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ScmUser" Relationship="ScmDemandModel.FK_User_Setting_ScmUser" FromRole="User_Setting" ToRole="ScmUser" />
+        </EntityType>
+        <Association Name="FK_Attachment_ScmUser">
+          <End Type="ScmDemandModel.ScmUser" Role="ScmUser" Multiplicity="1" />
+          <End Type="ScmDemandModel.Attachment" Role="Attachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Attachment">
+              <PropertyRef Name="modif_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Attachment_Attachment">
+          <End Type="ScmDemandModel.Attachment" Role="Attachment" Multiplicity="1" />
+          <End Type="ScmDemandModel.Demand_Attachment" Role="Demand_Attachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attachment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Demand_Attachment">
+              <PropertyRef Name="attachment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Company">
+          <End Type="ScmDemandModel.Company" Role="Company" Multiplicity="0..1" />
+          <End Type="ScmDemandModel.Nomenclature" Role="Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Nomenclature">
+              <PropertyRef Name="company_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nomenclature_Currency">
+          <End Type="ScmDemandModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="ScmDemandModel.Nomenclature" Role="Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Nomenclature">
+              <PropertyRef Name="currency_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Attachment_Demand">
+          <End Type="ScmDemandModel.Demand" Role="Demand" Multiplicity="1" />
+          <End Type="ScmDemandModel.Demand_Attachment" Role="Demand_Attachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Demand">
+              <PropertyRef Name="id" />
+              <PropertyRef Name="version" />
+            </Principal>
+            <Dependent Role="Demand_Attachment">
+              <PropertyRef Name="demand_id" />
+              <PropertyRef Name="demand_version" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Demand_Status">
+          <End Type="ScmDemandModel.Demand_Status" Role="Demand_Status" Multiplicity="1" />
+          <End Type="ScmDemandModel.Demand" Role="Demand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Demand_Status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Demand">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_ScmUser3">
+          <End Type="ScmDemandModel.ScmUser" Role="ScmUser" Multiplicity="1" />
+          <End Type="ScmDemandModel.Demand" Role="Demand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Demand">
+              <PropertyRef Name="requestor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_ScmUser4">
+          <End Type="ScmDemandModel.ScmUser" Role="ScmUser" Multiplicity="1" />
+          <End Type="ScmDemandModel.Demand" Role="Demand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Demand">
+              <PropertyRef Name="modif_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_ScmUser5">
+          <End Type="ScmDemandModel.ScmUser" Role="ScmUser" Multiplicity="0..1" />
+          <End Type="ScmDemandModel.Demand" Role="Demand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Demand">
+              <PropertyRef Name="app_man_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Supplier">
+          <End Type="ScmDemandModel.Supplier" Role="Supplier" Multiplicity="1" />
+          <End Type="ScmDemandModel.Demand" Role="Demand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Demand">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nomenclature_EvaluationMethod">
+          <End Type="ScmDemandModel.EvaluationMethod" Role="EvaluationMethod" Multiplicity="0..1" />
+          <End Type="ScmDemandModel.Nomenclature" Role="Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EvaluationMethod">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Nomenclature">
+              <PropertyRef Name="evaluation_method_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Material_Group">
+          <End Type="ScmDemandModel.Material_Group" Role="Material_Group" Multiplicity="0..1" />
+          <End Type="ScmDemandModel.Nomenclature" Role="Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material_Group">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Nomenclature">
+              <PropertyRef Name="material_group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_ScmUser">
+          <End Type="ScmDemandModel.ScmUser" Role="ScmUser" Multiplicity="0..1" />
+          <End Type="ScmDemandModel.Nomenclature" Role="Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Nomenclature">
+              <PropertyRef Name="buyer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_ScmUser1">
+          <End Type="ScmDemandModel.ScmUser" Role="ScmUser" Multiplicity="0..1" />
+          <End Type="ScmDemandModel.Nomenclature" Role="Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Nomenclature">
+              <PropertyRef Name="create_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_ScmUser2">
+          <End Type="ScmDemandModel.ScmUser" Role="ScmUser" Multiplicity="1" />
+          <End Type="ScmDemandModel.Nomenclature" Role="Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Nomenclature">
+              <PropertyRef Name="modif_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Unit">
+          <End Type="ScmDemandModel.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="ScmDemandModel.Nomenclature" Role="Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Nomenclature">
+              <PropertyRef Name="unit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nomenclature_Nomenclature_Status">
+          <End Type="ScmDemandModel.Nomenclature_Status" Role="Nomenclature_Status" Multiplicity="1" />
+          <End Type="ScmDemandModel.Nomenclature" Role="Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nomenclature_Status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Nomenclature">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_ScmUser">
+          <End Type="ScmDemandModel.ScmUser" Role="ScmUser" Multiplicity="1" />
+          <End Type="ScmDemandModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="modif_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Setting_ScmUser">
+          <End Type="ScmDemandModel.ScmUser" Role="ScmUser" Multiplicity="1" />
+          <End Type="ScmDemandModel.User_Setting" Role="User_Setting" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User_Setting">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="User_Role">
+          <End Type="ScmDemandModel.Role" Role="Role" Multiplicity="*" />
+          <End Type="ScmDemandModel.ScmUser" Role="ScmUser" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Active_Demand">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="version" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="version" Type="Int32" Nullable="false" />
+          <Property Name="status_id" Type="Int32" Nullable="false" />
+          <Property Name="remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Demand" Relationship="ScmDemandModel.FK_Active_Demand_Demand" FromRole="Active_Demand" ToRole="Demand" />
+          <NavigationProperty Name="Demand_Status" Relationship="ScmDemandModel.FK_Active_Demand_Demand_Status" FromRole="Active_Demand" ToRole="Demand_Status" />
+          <Property Name="is_requestor_acive" Type="Boolean" />
+          <Property Name="is_app_man_active" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_Active_Demand_Demand">
+          <End Type="ScmDemandModel.Demand" Role="Demand" Multiplicity="1" />
+          <End Type="ScmDemandModel.Active_Demand" Role="Active_Demand" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Demand">
+              <PropertyRef Name="id" />
+              <PropertyRef Name="version" />
+            </Principal>
+            <Dependent Role="Active_Demand">
+              <PropertyRef Name="id" />
+              <PropertyRef Name="version" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Active_Demand_Demand_Status">
+          <End Type="ScmDemandModel.Demand_Status" Role="Demand_Status" Multiplicity="1" />
+          <End Type="ScmDemandModel.Active_Demand" Role="Active_Demand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Demand_Status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Active_Demand">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Active_Nomenclature">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="version" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="version" Type="Int32" Nullable="false" />
+          <Property Name="remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Nomenclature" Relationship="ScmDemandModel.FK_Active_Nomenclature_Nomenclature" FromRole="Active_Nomenclature" ToRole="Nomenclature" />
+        </EntityType>
+        <Association Name="FK_Active_Nomenclature_Nomenclature">
+          <End Type="ScmDemandModel.Nomenclature" Role="Nomenclature" Multiplicity="1" />
+          <End Type="ScmDemandModel.Active_Nomenclature" Role="Active_Nomenclature" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Nomenclature">
+              <PropertyRef Name="id" />
+              <PropertyRef Name="version" />
+            </Principal>
+            <Dependent Role="Active_Nomenclature">
+              <PropertyRef Name="id" />
+              <PropertyRef Name="version" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Last_Import">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="last_nomenclature_import_date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Supplier_Contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="supplier_id" Type="Int32" Nullable="false" />
+          <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Supplier" Relationship="ScmDemandModel.FK_Supplier_Contact_Supplier" FromRole="Supplier_Contact" ToRole="Supplier" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phone_nr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="modif_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modif_user_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ScmUser" Relationship="ScmDemandModel.FK_Supplier_Contact_ScmUser" FromRole="Supplier_Contact" ToRole="ScmUser" />
+          <Property Name="phone_nr2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Supplier_Contact_Supplier">
+          <End Type="ScmDemandModel.Supplier" Role="Supplier" Multiplicity="1" />
+          <End Type="ScmDemandModel.Supplier_Contact" Role="Supplier_Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Supplier_Contact">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Contact_ScmUser">
+          <End Type="ScmDemandModel.ScmUser" Role="ScmUser" Multiplicity="1" />
+          <End Type="ScmDemandModel.Supplier_Contact" Role="Supplier_Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Supplier_Contact">
+              <PropertyRef Name="modif_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Source_File">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="last_modification_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="import_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="import_user_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ScmUser" Relationship="ScmDemandModel.FK_Source_Files_ScmUser" FromRole="Source_File" ToRole="ScmUser" />
+        </EntityType>
+        <Association Name="FK_Source_Files_ScmUser">
+          <End Type="ScmDemandModel.ScmUser" Role="ScmUser" Multiplicity="1" />
+          <End Type="ScmDemandModel.Source_File" Role="Source_File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Source_File">
+              <PropertyRef Name="import_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Demand_Nomenclature">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="demand_id" Type="Int32" Nullable="false" />
+          <Property Name="demand_version" Type="Int32" Nullable="false" />
+          <Property Name="nomenclature_id" Type="Int32" Nullable="false" />
+          <Property Name="nomenclature_version" Type="Int32" Nullable="false" />
+          <Property Name="status_id" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="currency_id" Type="Int32" />
+          <Property Name="locked_by_demand_id" Type="Int32" />
+          <Property Name="locked_by_demand_version" Type="Int32" />
+          <Property Name="modif_user_id" Type="Int32" Nullable="false" />
+          <Property Name="modif_date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Currency" Relationship="ScmDemandModel.FK_Demand_Nomenclature_Currency" FromRole="Demand_Nomenclature" ToRole="Currency" />
+          <NavigationProperty Name="Demand" Relationship="ScmDemandModel.FK_Demand_Nomenclature_Demand" FromRole="Demand_Nomenclature" ToRole="Demand" />
+          <NavigationProperty Name="DemandLock" Relationship="ScmDemandModel.FK_Demand_Nomenclature_Demand1" FromRole="Demand_Nomenclature" ToRole="Demand" />
+          <NavigationProperty Name="Nomenclature" Relationship="ScmDemandModel.FK_Demand_Nomenclature_Nomenclature" FromRole="Demand_Nomenclature" ToRole="Nomenclature" />
+          <NavigationProperty Name="Nomenclature_Status" Relationship="ScmDemandModel.FK_Demand_Nomenclature_Nomenclature_Status" FromRole="Demand_Nomenclature" ToRole="Nomenclature_Status" />
+          <NavigationProperty Name="ScmUser" Relationship="ScmDemandModel.FK_Demand_Nomenclature_ScmUser" FromRole="Demand_Nomenclature" ToRole="ScmUser" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Demand_Nomenclature_Currency">
+          <End Type="ScmDemandModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="ScmDemandModel.Demand_Nomenclature" Role="Demand_Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Demand_Nomenclature">
+              <PropertyRef Name="currency_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Nomenclature_Demand">
+          <End Type="ScmDemandModel.Demand" Role="Demand" Multiplicity="1" />
+          <End Type="ScmDemandModel.Demand_Nomenclature" Role="Demand_Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Demand">
+              <PropertyRef Name="id" />
+              <PropertyRef Name="version" />
+            </Principal>
+            <Dependent Role="Demand_Nomenclature">
+              <PropertyRef Name="demand_id" />
+              <PropertyRef Name="demand_version" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Nomenclature_Demand1">
+          <End Type="ScmDemandModel.Demand" Role="Demand" Multiplicity="0..1" />
+          <End Type="ScmDemandModel.Demand_Nomenclature" Role="Demand_Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Demand">
+              <PropertyRef Name="id" />
+              <PropertyRef Name="version" />
+            </Principal>
+            <Dependent Role="Demand_Nomenclature">
+              <PropertyRef Name="locked_by_demand_id" />
+              <PropertyRef Name="locked_by_demand_version" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Nomenclature_Nomenclature">
+          <End Type="ScmDemandModel.Nomenclature" Role="Nomenclature" Multiplicity="1" />
+          <End Type="ScmDemandModel.Demand_Nomenclature" Role="Demand_Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nomenclature">
+              <PropertyRef Name="id" />
+              <PropertyRef Name="version" />
+            </Principal>
+            <Dependent Role="Demand_Nomenclature">
+              <PropertyRef Name="nomenclature_id" />
+              <PropertyRef Name="nomenclature_version" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Nomenclature_Nomenclature_Status">
+          <End Type="ScmDemandModel.Nomenclature_Status" Role="Nomenclature_Status" Multiplicity="1" />
+          <End Type="ScmDemandModel.Demand_Nomenclature" Role="Demand_Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nomenclature_Status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Demand_Nomenclature">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Nomenclature_ScmUser">
+          <End Type="ScmDemandModel.ScmUser" Role="ScmUser" Multiplicity="1" />
+          <End Type="ScmDemandModel.Demand_Nomenclature" Role="Demand_Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Demand_Nomenclature">
+              <PropertyRef Name="modif_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Remark">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="demand_id" Type="Int32" Nullable="false" />
+          <Property Name="demand_version" Type="Int32" Nullable="false" />
+          <Property Name="remark_text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="read_date" Type="DateTime" Precision="3" />
+          <Property Name="modif_user_id" Type="Int32" Nullable="false" />
+          <Property Name="modif_date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Demand" Relationship="ScmDemandModel.FK_Remark_Demand" FromRole="Remark" ToRole="Demand" />
+          <NavigationProperty Name="ScmUser" Relationship="ScmDemandModel.FK_Remark_ScmUser" FromRole="Remark" ToRole="ScmUser" />
+        </EntityType>
+        <Association Name="FK_Remark_Demand">
+          <End Type="ScmDemandModel.Demand" Role="Demand" Multiplicity="1" />
+          <End Type="ScmDemandModel.Remark" Role="Remark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Demand">
+              <PropertyRef Name="id" />
+              <PropertyRef Name="version" />
+            </Principal>
+            <Dependent Role="Remark">
+              <PropertyRef Name="demand_id" />
+              <PropertyRef Name="demand_version" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Remark_ScmUser">
+          <End Type="ScmDemandModel.ScmUser" Role="ScmUser" Multiplicity="1" />
+          <End Type="ScmDemandModel.Remark" Role="Remark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScmUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Remark">
+              <PropertyRef Name="modif_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Nomenclature_Source">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Nomenclature" Relationship="ScmDemandModel.FK_Nomenclature_Nomenclature_Source" FromRole="Nomenclature_Source" ToRole="Nomenclature" />
+        </EntityType>
+        <Association Name="FK_Nomenclature_Nomenclature_Source">
+          <End Type="ScmDemandModel.Nomenclature_Source" Role="Nomenclature_Source" Multiplicity="1" />
+          <End Type="ScmDemandModel.Nomenclature" Role="Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nomenclature_Source">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Nomenclature">
+              <PropertyRef Name="source_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ScmDemandModelStoreContainer" CdmEntityContainer="ScmDemandEntities">
+          <EntitySetMapping Name="Attachment">
+            <EntityTypeMapping TypeName="ScmDemandModel.Attachment">
+              <MappingFragment StoreEntitySet="Attachment">
+                <ScalarProperty Name="modif_user_id" ColumnName="modif_user_id" />
+                <ScalarProperty Name="modif_date" ColumnName="modif_date" />
+                <ScalarProperty Name="file_icon" ColumnName="file_icon" />
+                <ScalarProperty Name="file_content" ColumnName="file_content" />
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Company">
+            <EntityTypeMapping TypeName="ScmDemandModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="company1" ColumnName="company" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Currency">
+            <EntityTypeMapping TypeName="ScmDemandModel.Currency">
+              <MappingFragment StoreEntitySet="Currency">
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="currency_name" ColumnName="currency_name" />
+                <ScalarProperty Name="currency_code" ColumnName="currency_code" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Demand">
+            <EntityTypeMapping TypeName="ScmDemandModel.Demand">
+              <MappingFragment StoreEntitySet="Demand">
+                <ScalarProperty Name="modif_user_id" ColumnName="modif_user_id" />
+                <ScalarProperty Name="modif_date" ColumnName="modif_date" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="last_version" ColumnName="last_version" />
+                <ScalarProperty Name="last_status_modif_date" ColumnName="last_status_modif_date" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="app_man_id" ColumnName="app_man_id" />
+                <ScalarProperty Name="requestor_id" ColumnName="requestor_id" />
+                <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+                <ScalarProperty Name="demand_nr" ColumnName="demand_nr" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Demand_Attachment">
+            <EntityTypeMapping TypeName="ScmDemandModel.Demand_Attachment">
+              <MappingFragment StoreEntitySet="Demand_Attachment">
+                <ScalarProperty Name="att_type" ColumnName="att_type" />
+                <ScalarProperty Name="attachment_id" ColumnName="attachment_id" />
+                <ScalarProperty Name="demand_version" ColumnName="demand_version" />
+                <ScalarProperty Name="demand_id" ColumnName="demand_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Demand_LastNr">
+            <EntityTypeMapping TypeName="ScmDemandModel.Demand_LastNr">
+              <MappingFragment StoreEntitySet="Demand_LastNr">
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="last_nr" ColumnName="last_nr" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Demand_Status">
+            <EntityTypeMapping TypeName="ScmDemandModel.Demand_Status">
+              <MappingFragment StoreEntitySet="Demand_Status">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EvaluationMethod">
+            <EntityTypeMapping TypeName="ScmDemandModel.EvaluationMethod">
+              <MappingFragment StoreEntitySet="EvaluationMethod">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Material_Group">
+            <EntityTypeMapping TypeName="ScmDemandModel.Material_Group">
+              <MappingFragment StoreEntitySet="Material_Group">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nomenclature">
+            <EntityTypeMapping TypeName="ScmDemandModel.Nomenclature">
+              <MappingFragment StoreEntitySet="Nomenclature">
+                <ScalarProperty Name="is_plnaknavrh" ColumnName="is_plnaknavrh" />
+                <ScalarProperty Name="source_id" ColumnName="source_id" />
+                <ScalarProperty Name="specification_wo_dia" ColumnName="specification_wo_dia" />
+                <ScalarProperty Name="specification" ColumnName="specification" />
+                <ScalarProperty Name="modif_user_id" ColumnName="modif_user_id" />
+                <ScalarProperty Name="modif_date" ColumnName="modif_date" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="last_version" ColumnName="last_version" />
+                <ScalarProperty Name="import_date" ColumnName="import_date" />
+                <ScalarProperty Name="last_status_modif_date" ColumnName="last_status_modif_date" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="evaluation_method_id" ColumnName="evaluation_method_id" />
+                <ScalarProperty Name="currency_id" ColumnName="currency_id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="create_user_id" ColumnName="create_user_id" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="buyer_id" ColumnName="buyer_id" />
+                <ScalarProperty Name="company_id" ColumnName="company_id" />
+                <ScalarProperty Name="material_group_id" ColumnName="material_group_id" />
+                <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+                <ScalarProperty Name="name_wo_dia" ColumnName="name_wo_dia" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="nomenclature_key" ColumnName="nomenclature_key" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nomenclature_Status">
+            <EntityTypeMapping TypeName="ScmDemandModel.Nomenclature_Status">
+              <MappingFragment StoreEntitySet="Nomenclature_Status">
+                <ScalarProperty Name="status_name" ColumnName="status_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="ScmDemandModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="role_name" ColumnName="role_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScmSetting">
+            <EntityTypeMapping TypeName="ScmDemandModel.ScmSetting">
+              <MappingFragment StoreEntitySet="ScmSetting">
+                <ScalarProperty Name="plnaknavrh_file_path" ColumnName="plnaknavrh_file_path" />
+                <ScalarProperty Name="prodis_price_input_folder" ColumnName="prodis_price_input_folder" />
+                <ScalarProperty Name="last_import_date" ColumnName="last_import_date" />
+                <ScalarProperty Name="prodis_input_folder" ColumnName="prodis_input_folder" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScmUser">
+            <EntityTypeMapping TypeName="ScmDemandModel.ScmUser">
+              <MappingFragment StoreEntitySet="ScmUser">
+                <ScalarProperty Name="phone_nr" ColumnName="phone_nr" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="surname_wo" ColumnName="surname_wo" />
+                <ScalarProperty Name="first_name_wo_dia" ColumnName="first_name_wo_dia" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supplier">
+            <EntityTypeMapping TypeName="ScmDemandModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="country_wo_dia" ColumnName="country_wo_dia" />
+                <ScalarProperty Name="city_wo_dia" ColumnName="city_wo_dia" />
+                <ScalarProperty Name="street_part2_wo_dia" ColumnName="street_part2_wo_dia" />
+                <ScalarProperty Name="street_part1_wo_dia" ColumnName="street_part1_wo_dia" />
+                <ScalarProperty Name="modif_user_id" ColumnName="modif_user_id" />
+                <ScalarProperty Name="modif_date" ColumnName="modif_date" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="is_approved" ColumnName="is_approved" />
+                <ScalarProperty Name="email_used" ColumnName="email_used" />
+                <ScalarProperty Name="lang" ColumnName="lang" />
+                <ScalarProperty Name="bank_account" ColumnName="bank_account" />
+                <ScalarProperty Name="creditor_group" ColumnName="creditor_group" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="zip" ColumnName="zip" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="street_part2" ColumnName="street_part2" />
+                <ScalarProperty Name="street_part1" ColumnName="street_part1" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="mobile_phone" ColumnName="mobile_phone" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="contact_person" ColumnName="contact_person" />
+                <ScalarProperty Name="vat" ColumnName="vat" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="dic" ColumnName="dic" />
+                <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+                <ScalarProperty Name="supp_name_wo_dia" ColumnName="supp_name_wo_dia" />
+                <ScalarProperty Name="supp_name" ColumnName="supp_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Unit">
+            <EntityTypeMapping TypeName="ScmDemandModel.Unit">
+              <MappingFragment StoreEntitySet="Unit">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Setting">
+            <EntityTypeMapping TypeName="ScmDemandModel.User_Setting">
+              <MappingFragment StoreEntitySet="User_Setting">
+                <ScalarProperty Name="culture" ColumnName="culture" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="User_Role" TypeName="ScmDemandModel.User_Role" StoreEntitySet="User_Role">
+            <EndProperty Name="ScmUser">
+              <ScalarProperty Name="id" ColumnName="user_id" />
+            </EndProperty>
+            <EndProperty Name="Role">
+              <ScalarProperty Name="id" ColumnName="role_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Active_Demand">
+            <EntityTypeMapping TypeName="ScmDemandModel.Active_Demand">
+              <MappingFragment StoreEntitySet="Active_Demand">
+                <ScalarProperty Name="is_app_man_active" ColumnName="is_app_man_active" />
+                <ScalarProperty Name="is_requestor_acive" ColumnName="is_requestor_acive" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Active_Nomenclature">
+            <EntityTypeMapping TypeName="ScmDemandModel.Active_Nomenclature">
+              <MappingFragment StoreEntitySet="Active_Nomenclature">
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Last_Import">
+            <EntityTypeMapping TypeName="ScmDemandModel.Last_Import">
+              <MappingFragment StoreEntitySet="Last_Import">
+                <ScalarProperty Name="last_nomenclature_import_date" ColumnName="last_nomenclature_import_date" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supplier_Contact">
+            <EntityTypeMapping TypeName="ScmDemandModel.Supplier_Contact">
+              <MappingFragment StoreEntitySet="Supplier_Contact">
+                <ScalarProperty Name="phone_nr2" ColumnName="phone_nr2" />
+                <ScalarProperty Name="modif_user_id" ColumnName="modif_user_id" />
+                <ScalarProperty Name="modif_date" ColumnName="modif_date" />
+                <ScalarProperty Name="phone_nr" ColumnName="phone_nr" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Source_File">
+            <EntityTypeMapping TypeName="ScmDemandModel.Source_File">
+              <MappingFragment StoreEntitySet="Source_File">
+                <ScalarProperty Name="import_user_id" ColumnName="import_user_id" />
+                <ScalarProperty Name="import_date" ColumnName="import_date" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="last_modification_date" ColumnName="last_modification_date" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Demand_Nomenclature">
+            <EntityTypeMapping TypeName="ScmDemandModel.Demand_Nomenclature">
+              <MappingFragment StoreEntitySet="Demand_Nomenclature">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="modif_date" ColumnName="modif_date" />
+                <ScalarProperty Name="modif_user_id" ColumnName="modif_user_id" />
+                <ScalarProperty Name="locked_by_demand_version" ColumnName="locked_by_demand_version" />
+                <ScalarProperty Name="locked_by_demand_id" ColumnName="locked_by_demand_id" />
+                <ScalarProperty Name="currency_id" ColumnName="currency_id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="nomenclature_version" ColumnName="nomenclature_version" />
+                <ScalarProperty Name="nomenclature_id" ColumnName="nomenclature_id" />
+                <ScalarProperty Name="demand_version" ColumnName="demand_version" />
+                <ScalarProperty Name="demand_id" ColumnName="demand_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Remark">
+            <EntityTypeMapping TypeName="ScmDemandModel.Remark">
+              <MappingFragment StoreEntitySet="Remark">
+                <ScalarProperty Name="modif_date" ColumnName="modif_date" />
+                <ScalarProperty Name="modif_user_id" ColumnName="modif_user_id" />
+                <ScalarProperty Name="read_date" ColumnName="read_date" />
+                <ScalarProperty Name="remark_text" ColumnName="remark_text" />
+                <ScalarProperty Name="demand_version" ColumnName="demand_version" />
+                <ScalarProperty Name="demand_id" ColumnName="demand_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nomenclature_Source">
+            <EntityTypeMapping TypeName="ScmDemandModel.Nomenclature_Source">
+              <MappingFragment StoreEntitySet="Nomenclature_Source">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

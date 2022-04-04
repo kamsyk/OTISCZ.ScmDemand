@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="89a414b7e6d54685a9b0ef57a733c2ea" Name="Diagram1">
+        <EntityTypeShape EntityType="ScmDemandModel.Attachment" Width="1.5" PointX="5.25" PointY="30.125" />
+        <EntityTypeShape EntityType="ScmDemandModel.Company" Width="1.5" PointX="3" PointY="18.625" />
+        <EntityTypeShape EntityType="ScmDemandModel.Currency" Width="1.5" PointX="3" PointY="21" />
+        <EntityTypeShape EntityType="ScmDemandModel.Demand" Width="1.5" PointX="7.5" PointY="15.625" />
+        <EntityTypeShape EntityType="ScmDemandModel.Demand_Attachment" Width="1.5" PointX="9.75" PointY="23" />
+        <EntityTypeShape EntityType="ScmDemandModel.Demand_LastNr" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ScmDemandModel.Demand_Status" Width="1.5" PointX="9.75" PointY="20" />
+        <EntityTypeShape EntityType="ScmDemandModel.EvaluationMethod" Width="1.5" PointX="3" PointY="10.25" />
+        <EntityTypeShape EntityType="ScmDemandModel.Material_Group" Width="1.5" PointX="3" PointY="5.375" />
+        <EntityTypeShape EntityType="ScmDemandModel.Nomenclature" Width="1.5" PointX="5.25" PointY="9" />
+        <EntityTypeShape EntityType="ScmDemandModel.Nomenclature_Status" Width="1.5" PointX="3" PointY="23.875" />
+        <EntityTypeShape EntityType="ScmDemandModel.Role" Width="1.5" PointX="0.75" PointY="14.625" />
+        <EntityTypeShape EntityType="ScmDemandModel.ScmSetting" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ScmDemandModel.ScmUser" Width="1.5" PointX="3" PointY="13.125" />
+        <EntityTypeShape EntityType="ScmDemandModel.Supplier" Width="1.5" PointX="5.25" PointY="17.375" />
+        <EntityTypeShape EntityType="ScmDemandModel.Unit" Width="1.5" PointX="3" PointY="7.75" />
+        <EntityTypeShape EntityType="ScmDemandModel.User_Setting" Width="1.5" PointX="5.25" PointY="33.375" />
+        <AssociationConnector Association="ScmDemandModel.FK_Attachment_ScmUser" />
+        <AssociationConnector Association="ScmDemandModel.FK_Demand_Attachment_Attachment" />
+        <AssociationConnector Association="ScmDemandModel.FK_Demand_Company" />
+        <AssociationConnector Association="ScmDemandModel.FK_Nomenclature_Currency" />
+        <AssociationConnector Association="ScmDemandModel.FK_Demand_Attachment_Demand" />
+        <AssociationConnector Association="ScmDemandModel.FK_Demand_Demand_Status" />
+        <AssociationConnector Association="ScmDemandModel.FK_Demand_ScmUser3" />
+        <AssociationConnector Association="ScmDemandModel.FK_Demand_ScmUser4" />
+        <AssociationConnector Association="ScmDemandModel.FK_Demand_ScmUser5" />
+        <AssociationConnector Association="ScmDemandModel.FK_Demand_Supplier" />
+        <AssociationConnector Association="ScmDemandModel.FK_Nomenclature_EvaluationMethod" />
+        <AssociationConnector Association="ScmDemandModel.FK_Demand_Material_Group" />
+        <AssociationConnector Association="ScmDemandModel.FK_Demand_ScmUser" />
+        <AssociationConnector Association="ScmDemandModel.FK_Demand_ScmUser1" />
+        <AssociationConnector Association="ScmDemandModel.FK_Demand_ScmUser2" />
+        <AssociationConnector Association="ScmDemandModel.FK_Demand_Unit" />
+        <AssociationConnector Association="ScmDemandModel.FK_Nomenclature_Nomenclature_Status" />
+        <AssociationConnector Association="ScmDemandModel.FK_Supplier_ScmUser" />
+        <AssociationConnector Association="ScmDemandModel.FK_User_Setting_ScmUser" />
+        <AssociationConnector Association="ScmDemandModel.User_Role" />
+        <EntityTypeShape EntityType="ScmDemandModel.Active_Demand" Width="1.5" PointX="12" PointY="17.625" />
+        <AssociationConnector Association="ScmDemandModel.FK_Active_Demand_Demand" />
+        <AssociationConnector Association="ScmDemandModel.FK_Active_Demand_Demand_Status" />
+        <EntityTypeShape EntityType="ScmDemandModel.Active_Nomenclature" Width="1.5" PointX="7.5" PointY="11.75" />
+        <AssociationConnector Association="ScmDemandModel.FK_Active_Nomenclature_Nomenclature" />
+        <EntityTypeShape EntityType="ScmDemandModel.Last_Import" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ScmDemandModel.Supplier_Contact" Width="1.5" PointX="7.5" PointY="21.625" />
+        <AssociationConnector Association="ScmDemandModel.FK_Supplier_Contact_Supplier" />
+        <AssociationConnector Association="ScmDemandModel.FK_Supplier_Contact_ScmUser" />
+        <EntityTypeShape EntityType="ScmDemandModel.Source_File" Width="1.5" PointX="5.25" PointY="5.625" />
+        <AssociationConnector Association="ScmDemandModel.FK_Source_Files_ScmUser" />
+        <EntityTypeShape EntityType="ScmDemandModel.Demand_Nomenclature" Width="2.375" PointX="9.75" PointY="14.25" />
+        <AssociationConnector Association="ScmDemandModel.FK_Demand_Nomenclature_Currency" />
+        <AssociationConnector Association="ScmDemandModel.FK_Demand_Nomenclature_Demand" />
+        <AssociationConnector Association="ScmDemandModel.FK_Demand_Nomenclature_Demand1" />
+        <AssociationConnector Association="ScmDemandModel.FK_Demand_Nomenclature_Nomenclature" />
+        <AssociationConnector Association="ScmDemandModel.FK_Demand_Nomenclature_Nomenclature_Status" />
+        <AssociationConnector Association="ScmDemandModel.FK_Demand_Nomenclature_ScmUser" />
+        <EntityTypeShape EntityType="ScmDemandModel.Remark" Width="1.5" PointX="13.75" PointY="13.75" />
+        <AssociationConnector Association="ScmDemandModel.FK_Remark_Demand" />
+        <AssociationConnector Association="ScmDemandModel.FK_Remark_ScmUser" />
+        <EntityTypeShape EntityType="ScmDemandModel.Nomenclature_Source" Width="1.5" PointX="7.375" PointY="0.875" />
+        <AssociationConnector Association="ScmDemandModel.FK_Nomenclature_Nomenclature_Source" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

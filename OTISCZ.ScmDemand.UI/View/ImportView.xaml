@@ -1,0 +1,135 @@
+﻿<UserControl x:Class="OTISCZ.ScmDemand.UI.View.ImportView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OTISCZ.ScmDemand.UI.View"
+             xmlns:ucScmControl="clr-namespace:OTISCZ.ScmDemand.UI.ScmUserControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Loaded="UcImportView_Loaded" 
+             x:Name="ucImportView" Unloaded="UcImportView_Unloaded">
+    <Border Style="{StaticResource BorderPlaceHolder}" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <DockPanel Grid.Row="0">
+                <ucScmControl:UcWindowHeader x:Name="ucWindowHeader" HorizontalAlignment="Stretch" />
+            </DockPanel>
+            <DockPanel Grid.Row="1">
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <DockPanel Grid.Row="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="40"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Import Source Folder:" VerticalAlignment="Bottom" Padding="0,0,0,2" Margin="0,0,10,0" FontWeight="Bold"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Last Import Date:" VerticalAlignment="Bottom" FontWeight="Bold" />
+
+                            <TextBox x:Name="txtFolder" Grid.Row="0" Grid.Column="1" 
+                                 Text="{Binding Path=ProdisFolder, Mode=TwoWay, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}" 
+                                 Style="{StaticResource ScmTextBoxErrMsg}" 
+                                 VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                                 Width="Auto" MinWidth="170"  MaxWidth="600" Margin="0,0,5,0"
+                                 Visibility="{Binding Path=BtnFolderVisibility}" />
+
+                            <TextBlock x:Name="lblFolder" Grid.Row="0" Grid.Column="1" 
+                                 Text="{Binding Path=ProdisFolder, Mode=TwoWay, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}" 
+                                 VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                                 Width="Auto" MinWidth="170"  MaxWidth="600" Margin="0,0,0,0"
+                                 Visibility="{Binding Path=ReadOnlyVisibility}" />
+
+                            <TextBlock x:Name="lblLastImportDate" Grid.Row="1" Grid.Column="1" 
+                                 Text="{Binding Path=LastImportDate, Mode=TwoWay, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}" 
+                                 VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                                 Width="Auto" MinWidth="170"  MaxWidth="400" Margin="0,0,0,0"/>
+
+                            <Button Grid.Row="0" Grid.Column="2" x:Name="btnFolder"
+                                Content="..." 
+                                Height="22" Width="22" VerticalAlignment="Bottom" 
+                                Visibility="{Binding Path=BtnFolderVisibility}"
+                                Click="BtnFolder_Click" />
+                        </Grid>
+
+                    </DockPanel>
+
+                    <Button x:Name="btnImport" Grid.Row="1" Style="{StaticResource ButtonStandard}" Width="Auto" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Margin="0,30,0,0" Click="BtnImport_Click">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/ProdisImportWhite.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,0,4.8,0" Grid.RowSpan="2"/>
+                            <TextBlock Grid.Column="1" Text="Import" Margin="0.2,0,-0.2,0" Grid.RowSpan="2" ></TextBlock>
+                        </Grid>
+                    </Button>
+
+                </Grid>
+            </DockPanel>
+            <DockPanel Grid.Row="2" Visibility="{Binding Path=ProgressBarVisibility, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--<TextBlock x:Name="txtImportInfo" Grid.Row="0" TextWrapping="Wrap" 
+                           Text="{Binding Path=ImportInfo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                           VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="20,0"/>
+                <ProgressBar x:Name="pbLoadInfo" Grid.Row="1" Height="20" HorizontalAlignment="Stretch"
+                         Value="{Binding Path=PbLineNr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  />-->
+                    <Border Grid.Row="0" Grid.Column="0" BorderThickness="1" BorderBrush="#c5c5c5" VerticalAlignment="Stretch">
+                        <TextBlock Text="{Binding Path=ImportInfo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Padding="5,0" VerticalAlignment="Stretch" />
+                    </Border>
+                    <ProgressBar 
+                    Grid.Row="0" Grid.Column="1"
+                    Minimum="0" 
+                    Maximum="{Binding Path=PbLineCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                    Value="{Binding Path=PbLineNr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                    x:Name="pbStatus" />
+                    <TextBlock x:Name="txtBpInfo" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1">
+                        <TextBlock.Text>
+                            <MultiBinding x:Name="txtPbBind" StringFormat="{}{0}/{1}">
+                                <Binding Path="Value" ElementName="pbStatus" />
+                                <Binding Path="Maximum" ElementName="pbStatus" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                    <!--<TextBlock Text="{Binding ElementName=pbStatus, Path=Value, StringFormat={}{0:0}%}" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" />-->
+                </Grid>
+
+            </DockPanel>
+        </Grid>
+    </Border>
+</UserControl>

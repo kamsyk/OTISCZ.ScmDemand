@@ -1,0 +1,99 @@
+﻿<UserControl x:Class="OTISCZ.ScmDemand.UI.View.NomenclatureDetail"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OTISCZ.ScmDemand.UI.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+
+        <DockPanel Grid.Row="0" Margin="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="Nomenclature:" Style="{StaticResource ScmLabelBold}" Margin="0,0,10,0"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource ScmTextBlock}" Text="{Binding Path=Nomenclature.nomenclature_key, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                <Label Grid.Row="1" Grid.Column="0" Content="Name:" Style="{StaticResource ScmLabelBold}" Margin="0,0,10,0"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource ScmTextBlock}" Text="{Binding Path=Nomenclature.name, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                <Label Grid.Row="2" Grid.Column="0" Content="Status:" Style="{StaticResource ScmLabelBold}" Margin="0,0,10,0"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource ScmTextBlock}" Text="{Binding Path=StatusText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                <Label Grid.Row="3" Grid.Column="0" Content="Evaluation Method:" Style="{StaticResource ScmLabelBold}" Margin="0,0,10,0"/>
+                <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Path=Nomenclature.evaluation_methods, Mode=TwoWay}" DisplayMemberPath="name" SelectedValuePath="id"
+                          Style="{StaticResource ScmComboBox}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                <Label Grid.Row="4" Grid.Column="0" Content="Price:" Style="{StaticResource ScmLabelBold}" Margin="0,0,10,0"/>
+                <TextBox Grid.Row="4" Grid.Column="1" Style="{StaticResource ScmTextBox}" Text="{Binding Path=Nomenclature.status_text, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            </Grid>
+        </DockPanel>
+
+        <DockPanel Grid.Row="1" Margin="20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="btnSave" Grid.Column="0" Style="{StaticResource ButtonStandard}" 
+                                                                Visibility="{Binding PreviousVisibility, Mode=TwoWay}"
+                                                                Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Height="40"
+                                                                Margin="20,15,20,15" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Mail.png" HorizontalAlignment="Center" Width="24" Height="16" Margin="0,0,10,0" />
+                        <TextBlock Grid.Column="1" Text="Save" Margin="0"  ></TextBlock>
+                    </Grid>
+                </Button>
+
+                <Button x:Name="btnSendForApproval" Grid.Column="1" Style="{StaticResource ButtonGreen}" 
+                                                                Visibility="{Binding PreviousVisibility, Mode=TwoWay}"
+                                                                Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                                                Margin="20,15,20,15" Click="BtnSendForApproval_Click" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Mail.png" HorizontalAlignment="Center" Width="24" Height="16" Margin="0,0,10,0" />
+                        <TextBlock Grid.Column="1" Text="Send Price For Approval" Margin="0"  ></TextBlock>
+                    </Grid>
+                </Button>
+            </Grid>
+        </DockPanel>
+        
+    </Grid>
+
+    
+</UserControl>

@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C9832E4D-9A14-4732-9FDD-6A88EB09E4CA}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>OTISCZ.ScmDemand.ScheduledTasks</RootNamespace>
+    <AssemblyName>OTISCZ.ScmDemand.ScheduledTasks</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;RELEASE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NomenclatureImport.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WsScmDemandDebug\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WsScmDemand\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\Currency.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\DemandExtend.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\DemandNomenclatureExtend.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\Demand_Status.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\Material_Group.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\NomenclatureDetailExtend.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\NomenclatureExtend.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\Nomenclature_Source.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\RemarkExtend.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\ScmDemand.wsdl" />
+    <None Include="Web References\WsScmDemandDebug\ScmDemand.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\ScmDemand0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\ScmDemand1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\ScmDemand2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\ScmDemand3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\ScmDemand4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\ScmDemand5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\ScmSetting.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\ScmUser.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\ScmUserExtend.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\Supplier.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\SupplierExtend.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemandDebug\Unit.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemand\Currency.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemand\DemandExtend.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemand\DemandNomenclatureExtend.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemand\Demand_Status.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemand\Material_Group.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemand\NomenclatureDetailExtend.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemand\NomenclatureExtend.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemand\Nomenclature_Source.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemand\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WsScmDemand\RemarkExtend.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemand\ScmDemand.wsdl" />
+    <None Include="Web References\WsScmDemand\ScmDemand.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\WsScmDemand\ScmDemand0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\WsScmDemand\ScmDemand1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\WsScmDemand\ScmDemand2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\WsScmDemand\ScmDemand3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\WsScmDemand\ScmDemand4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\WsScmDemand\ScmDemand5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\WsScmDemand\ScmSetting.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemand\ScmUser.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemand\ScmUserExtend.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemand\Supplier.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemand\SupplierExtend.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WsScmDemand\Unit.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\OTISCZ.OtisUser\OTISCZ.OtisUser.csproj">
+      <Project>{814a642a-e5f5-42cc-9101-19e5f2c465f3}</Project>
+      <Name>OTISCZ.OtisUser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OTISCZ.ScmDemand.Interface\OTISCZ.ScmDemand.Interface.csproj">
+      <Project>{32938fe4-bc2e-4d50-8478-9e9e2e7fdf3e}</Project>
+      <Name>OTISCZ.ScmDemand.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OTISCZ.ScmDemand.Model\OTISCZ.ScmDemand.Model.csproj">
+      <Project>{47cec730-32ad-47f1-b7fa-05b1f9f0772d}</Project>
+      <Name>OTISCZ.ScmDemand.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:55039/ScmDemand.svc">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WsScmDemandDebug\</RelPath>
+      <UpdateFromURL>http://localhost:55039/ScmDemand.svc</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>OTISCZ_ScmDemand_ScheduledTasks_WsScmDemandDebug_ScmDemand</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://oczbrd03/wcfscmdemand/scmdemand.svc">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WsScmDemand\</RelPath>
+      <UpdateFromURL>http://oczbrd03/wcfscmdemand/scmdemand.svc</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>OTISCZ_ScmDemand_ScheduledTasks_WsScmDemand_ScmDemand</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WsScmDemandDebug\ScmDemand.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WsScmDemand\ScmDemand.disco" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,678 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Attachments" xml:space="preserve">
+    <value>Přílohy</value>
+  </data>
+  <data name="AuthorizationFailed" xml:space="preserve">
+    <value>Došlo k chybě. Ověření uživatele selhalo</value>
+  </data>
+  <data name="Demand" xml:space="preserve">
+    <value>Poptávka</value>
+  </data>
+  <data name="Demands" xml:space="preserve">
+    <value>Poptávky</value>
+  </data>
+  <data name="DisplayingFromToOf" xml:space="preserve">
+    <value>od {0} do {1} z {2}</value>
+  </data>
+  <data name="EnterMandatoryTitle" xml:space="preserve">
+    <value>Zkontrolujte formulář</value>
+  </data>
+  <data name="EnterMandatoryValues" xml:space="preserve">
+    <value>Zadejte povinné položky</value>
+  </data>
+  <data name="ErrorMsg" xml:space="preserve">
+    <value>Došlo k chybě</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Scm Demand - Chyba</value>
+  </data>
+  <data name="FolderDoesNotExist" xml:space="preserve">
+    <value>Adresář neexistuje.</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Import dat</value>
+  </data>
+  <data name="ImportProdisFile" xml:space="preserve">
+    <value>Importovat soubor z Prodisu</value>
+  </data>
+  <data name="LoadingData" xml:space="preserve">
+    <value>Načítám data ...</value>
+  </data>
+  <data name="Mails" xml:space="preserve">
+    <value>Maily</value>
+  </data>
+  <data name="MaterialGroup" xml:space="preserve">
+    <value>Materiálová skupina</value>
+  </data>
+  <data name="NameIt" xml:space="preserve">
+    <value>Název</value>
+  </data>
+  <data name="Never" xml:space="preserve">
+    <value>Nikdy</value>
+  </data>
+  <data name="NewDemand" xml:space="preserve">
+    <value>Nová poptávka</value>
+  </data>
+  <data name="NextPage" xml:space="preserve">
+    <value>Další strana</value>
+  </data>
+  <data name="Nomenclature" xml:space="preserve">
+    <value>Nomenklatura</value>
+  </data>
+  <data name="Nomenclatures" xml:space="preserve">
+    <value>Nomenklatury</value>
+  </data>
+  <data name="Of" xml:space="preserve">
+    <value>z</value>
+  </data>
+  <data name="SelectedNomenclature" xml:space="preserve">
+    <value>Vybrané nomenklatury</value>
+  </data>
+  <data name="SelectedSuppliers" xml:space="preserve">
+    <value>Vybraní dodavatelé</value>
+  </data>
+  <data name="SelectFolder" xml:space="preserve">
+    <value>Vyberte adresář</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Nastavení</value>
+  </data>
+  <data name="Suppliers" xml:space="preserve">
+    <value>Dodavatelé</value>
+  </data>
+  <data name="YouAreNotAuthorized" xml:space="preserve">
+    <value>Uživatel {0} není oprávněn používat aplikaci 'SCM Demand'</value>
+  </data>
+  <data name="StatusLoaded" xml:space="preserve">
+    <value>Načtena</value>
+  </data>
+  <data name="StatusSentToSupplier" xml:space="preserve">
+    <value>Odesláno dodavateli</value>
+  </data>
+  <data name="StatusSupplierReplied" xml:space="preserve">
+    <value>Dodavatel odpověděl </value>
+  </data>
+  <data name="StatusUnknown" xml:space="preserve">
+    <value>Neznámý</value>
+  </data>
+  <data name="StatusWaitForApproval" xml:space="preserve">
+    <value>Čeká na schválení</value>
+  </data>
+  <data name="Before" xml:space="preserve">
+    <value>Dříve</value>
+  </data>
+  <data name="LastWeek" xml:space="preserve">
+    <value>Poslední týden</value>
+  </data>
+  <data name="PendingDemands" xml:space="preserve">
+    <value>Nevyřízené poptávky</value>
+  </data>
+  <data name="PendingNomenclatures" xml:space="preserve">
+    <value>Nevyřízené nomenklatury</value>
+  </data>
+  <data name="TimePeriod" xml:space="preserve">
+    <value>Časové období</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>Dnes</value>
+  </data>
+  <data name="Yesterday" xml:space="preserve">
+    <value>Včera</value>
+  </data>
+  <data name="NoLimit" xml:space="preserve">
+    <value>Bez omezení</value>
+  </data>
+  <data name="SelectNomenclatures" xml:space="preserve">
+    <value>Vyberte nomenklatury</value>
+  </data>
+  <data name="DemandNr" xml:space="preserve">
+    <value>Číslo poptávky</value>
+  </data>
+  <data name="OnlyMyDemands" xml:space="preserve">
+    <value>Pouze poptávky čekající na mé zpracování</value>
+  </data>
+  <data name="PendingDemandsNomenclatures" xml:space="preserve">
+    <value>Nevyřízené poptávky a nomenklatury</value>
+  </data>
+  <data name="Requestor" xml:space="preserve">
+    <value>Žadatel</value>
+  </data>
+  <data name="StatusWoDemand" xml:space="preserve">
+    <value>Ceník</value>
+  </data>
+  <data name="Supplier" xml:space="preserve">
+    <value>Dodavatel</value>
+  </data>
+  <data name="PriceList" xml:space="preserve">
+    <value>Ceník</value>
+  </data>
+  <data name="CreatedDate" xml:space="preserve">
+    <value>Vytvořeno</value>
+  </data>
+  <data name="FromToFrom" xml:space="preserve">
+    <value>Od</value>
+  </data>
+  <data name="FromToTo" xml:space="preserve">
+    <value>Do</value>
+  </data>
+  <data name="Approved" xml:space="preserve">
+    <value>Schváleno</value>
+  </data>
+  <data name="Rejected" xml:space="preserve">
+    <value>Zamítnuto</value>
+  </data>
+  <data name="StatusDraft" xml:space="preserve">
+    <value>Návrh</value>
+  </data>
+  <data name="NomenclaturesLoadedFailed" xml:space="preserve">
+    <value>Některé nomenklatury nebyly načteny</value>
+  </data>
+  <data name="NomenclaturesLoadedSuccessfully" xml:space="preserve">
+    <value>Nomenklatury byly načteny úspěšně</value>
+  </data>
+  <data name="SendForApproval" xml:space="preserve">
+    <value>Odeslat ke schválení</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Zavřít okno</value>
+  </data>
+  <data name="Approve" xml:space="preserve">
+    <value>Schválit</value>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>Zamítnout</value>
+  </data>
+  <data name="DataWasNotSaved" xml:space="preserve">
+    <value>Při ukládání došlo k chybě !!!</value>
+  </data>
+  <data name="SelectAppMan" xml:space="preserve">
+    <value>Vyberte schvalovatele</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Smazat</value>
+  </data>
+  <data name="TakeOver" xml:space="preserve">
+    <value>Převzít</value>
+  </data>
+  <data name="NomenclatureWillBeEvaluatedAsPartOf" xml:space="preserve">
+    <value>Nomenkladtura {0} bude naceněna jako součást poptávky č. {1}. 
+Nomenklaturu můžete z této poptávky odstranit.</value>
+  </data>
+  <data name="BackToPreviousStatus" xml:space="preserve">
+    <value>Zpět do předchozího stavu</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Měna</value>
+  </data>
+  <data name="OtherDemands" xml:space="preserve">
+    <value>Další poptávky</value>
+  </data>
+  <data name="OtisAttachment" xml:space="preserve">
+    <value>Přílohy Otis</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Cena</value>
+  </data>
+  <data name="Remark" xml:space="preserve">
+    <value>Poznámka</value>
+  </data>
+  <data name="SuggestedPrice" xml:space="preserve">
+    <value>Návrh ceny</value>
+  </data>
+  <data name="SupplierAttachment" xml:space="preserve">
+    <value>Přílohy dodavatele</value>
+  </data>
+  <data name="StatusPriceWasSet" xml:space="preserve">
+    <value>Cena v Prodisu nastavena</value>
+  </data>
+  <data name="SelectSupplier" xml:space="preserve">
+    <value>Vyberte dodavatele</value>
+  </data>
+  <data name="ApprovalManager" xml:space="preserve">
+    <value>Schvalovatel</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Vytvořeno</value>
+  </data>
+  <data name="DaysInStatus" xml:space="preserve">
+    <value>Počet dnů beze změny</value>
+  </data>
+  <data name="LastImportDate" xml:space="preserve">
+    <value>Datum posledního importu</value>
+  </data>
+  <data name="LastStatusModifDate" xml:space="preserve">
+    <value>Poslední změna stavu</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Stav</value>
+  </data>
+  <data name="DocCertificates" xml:space="preserve">
+    <value>Cerifikáty</value>
+  </data>
+  <data name="DocCurrency" xml:space="preserve">
+    <value>Měna</value>
+  </data>
+  <data name="DocDapOtis" xml:space="preserve">
+    <value>DAP OTIS Břeclav včetně balení</value>
+  </data>
+  <data name="DocDeliveryConditions" xml:space="preserve">
+    <value>Dodací podmínka
+Incoterms 2020</value>
+  </data>
+  <data name="DocDemandDeadline" xml:space="preserve">
+    <value>Termín zadání</value>
+  </data>
+  <data name="DocDemandRequestor" xml:space="preserve">
+    <value>Žadatel nabídky</value>
+  </data>
+  <data name="DocDepartment" xml:space="preserve">
+    <value>Oddělení</value>
+  </data>
+  <data name="DocEUR1Request" xml:space="preserve">
+    <value>Požadavek na EUR1</value>
+  </data>
+  <data name="DocLT" xml:space="preserve">
+    <value>LT</value>
+  </data>
+  <data name="DocMj" xml:space="preserve">
+    <value>MJ</value>
+  </data>
+  <data name="DocMOQ" xml:space="preserve">
+    <value>MOQ</value>
+  </data>
+  <data name="DocNomenclature" xml:space="preserve">
+    <value>Nomenclatura</value>
+  </data>
+  <data name="DocOfferCreatedBy" xml:space="preserve">
+    <value>Nabídku vypracoval</value>
+  </data>
+  <data name="DocOfferDeadline" xml:space="preserve">
+    <value>Termín nabídky</value>
+  </data>
+  <data name="DocOfferExpireDate" xml:space="preserve">
+    <value>Platnost nabídky</value>
+  </data>
+  <data name="DocOfferFollows" xml:space="preserve">
+    <value>Nabídka splňuje EUR1</value>
+  </data>
+  <data name="DocOtherConditions" xml:space="preserve">
+    <value>Další podmínky</value>
+  </data>
+  <data name="DocOtisDrawNr" xml:space="preserve">
+    <value>OTIS Výkres č.</value>
+  </data>
+  <data name="DocPaletsConditions" xml:space="preserve">
+    <value>Palety - zboží smí být baleno jedině na EUR paletách. Jiné typy palet jsou zakázány. Palety musí být kalkulovány v ceně zboží.</value>
+  </data>
+  <data name="DocPartNane" xml:space="preserve">
+    <value>Název dílu</value>
+  </data>
+  <data name="DocPcs" xml:space="preserve">
+    <value>Ks</value>
+  </data>
+  <data name="DocPhoneNr" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="DocPriceUnit" xml:space="preserve">
+    <value>Cena jedn.
+(FCA/DAP)</value>
+  </data>
+  <data name="DocProjectName" xml:space="preserve">
+    <value>Název projektu</value>
+  </data>
+  <data name="DocProjectNr" xml:space="preserve">
+    <value>Číslo projektu</value>
+  </data>
+  <data name="DocRequestedCertificates" xml:space="preserve">
+    <value>Požadované certfikáty</value>
+  </data>
+  <data name="DocRfqDocument" xml:space="preserve">
+    <value>RFQ Dokument</value>
+  </data>
+  <data name="DocSupplierName" xml:space="preserve">
+    <value>Název dodvatele</value>
+  </data>
+  <data name="DocSupplierOfferNr" xml:space="preserve">
+    <value>Číslo nabídky dodav.</value>
+  </data>
+  <data name="DocSupplierPartNr" xml:space="preserve">
+    <value>Číslo dílu dodavatele</value>
+  </data>
+  <data name="MailBody" xml:space="preserve">
+    <value>Vážený dodavateli,
+v příloze posíláme poptávku č. {0}.
+
+S pozdravem</value>
+  </data>
+  <data name="DataWasImported" xml:space="preserve">
+    <value>Data byla načtena</value>
+  </data>
+  <data name="Specification" xml:space="preserve">
+    <value>Specifikace</value>
+  </data>
+  <data name="NewSupplier" xml:space="preserve">
+    <value>Nový dodavatel</value>
+  </data>
+  <data name="PendingItems" xml:space="preserve">
+    <value>Nevyřízené položky</value>
+  </data>
+  <data name="SupplierId" xml:space="preserve">
+    <value>Ičo</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Kontakty</value>
+  </data>
+  <data name="ApprovedSupplier" xml:space="preserve">
+    <value>Schválený dodavatel</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editovat</value>
+  </data>
+  <data name="ExportToExcel" xml:space="preserve">
+    <value>Export do Excelu</value>
+  </data>
+  <data name="FirstPage" xml:space="preserve">
+    <value>První strana</value>
+  </data>
+  <data name="GoToPage" xml:space="preserve">
+    <value>Jít na stránu</value>
+  </data>
+  <data name="LastPage" xml:space="preserve">
+    <value>Poslední strana</value>
+  </data>
+  <data name="PageSize" xml:space="preserve">
+    <value>Velikost strany</value>
+  </data>
+  <data name="PreviousPage" xml:space="preserve">
+    <value>Předchozí strana</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Načíst</value>
+  </data>
+  <data name="MailFormatError" xml:space="preserve">
+    <value>Mailová adresa není správná</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Město</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Země</value>
+  </data>
+  <data name="eMail" xml:space="preserve">
+    <value>eMailová adresa</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Jméno</value>
+  </data>
+  <data name="MobilePhone" xml:space="preserve">
+    <value>Mobil</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Ulice</value>
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value>Příjmení</value>
+  </data>
+  <data name="Zip" xml:space="preserve">
+    <value>PSČ</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Aktivní</value>
+  </data>
+  <data name="MailBcc" xml:space="preserve">
+    <value>Odeslat mě poptávku ve skryté kopii</value>
+  </data>
+  <data name="MailCc" xml:space="preserve">
+    <value>Příjemce (Kopie)</value>
+  </data>
+  <data name="MailLanguage" xml:space="preserve">
+    <value>Jazyk mailu</value>
+  </data>
+  <data name="MailRecipient" xml:space="preserve">
+    <value>Příjemce</value>
+  </data>
+  <data name="MailSender" xml:space="preserve">
+    <value>Odesílatel</value>
+  </data>
+  <data name="MailSubject" xml:space="preserve">
+    <value>Předmět</value>
+  </data>
+  <data name="EnterValidMailAddresses" xml:space="preserve">
+    <value>Zadejte platné emailové adresy</value>
+  </data>
+  <data name="SelectLang" xml:space="preserve">
+    <value>Vyberte jazyk</value>
+  </data>
+  <data name="CannotTakeOverDemand" xml:space="preserve">
+    <value>Nemáte oprávnění převzít poptávku</value>
+  </data>
+  <data name="CannotBeSent" xml:space="preserve">
+    <value>Mail nemůže být odeslán.</value>
+  </data>
+  <data name="FixErrors" xml:space="preserve">
+    <value>Opravte chyby.</value>
+  </data>
+  <data name="MailWasSent" xml:space="preserve">
+    <value>Mail byl odeslán.</value>
+  </data>
+  <data name="SendToMe" xml:space="preserve">
+    <value>Odeslat mně</value>
+  </data>
+  <data name="SendToSupplier" xml:space="preserve">
+    <value>Odeslat dodavateli</value>
+  </data>
+  <data name="NotAuthorized" xml:space="preserve">
+    <value>Nejste oprávněn pro tuto operaci</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Zrušit</value>
+  </data>
+  <data name="EnterPrice" xml:space="preserve">
+    <value>Zadejte cenu</value>
+  </data>
+  <data name="SelectCurrency" xml:space="preserve">
+    <value>Vyberte měnu</value>
+  </data>
+  <data name="StatusApproved" xml:space="preserve">
+    <value>Schváleno</value>
+  </data>
+  <data name="StatusRejected" xml:space="preserve">
+    <value>Zamítnuto</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="PriceWasSetConfirmed" xml:space="preserve">
+    <value>Cena v Prodisu byla nastavena. Cena = {0}</value>
+  </data>
+  <data name="InsertRemark" xml:space="preserve">
+    <value>Vložit poznámku</value>
+  </data>
+  <data name="StatusPriceWasSetConfirmed" xml:space="preserve">
+    <value>Cena v Prodisu byla potvrzena</value>
+  </data>
+  <data name="FinishDemand" xml:space="preserve">
+    <value>Ukončit poptávku</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Potvrzení</value>
+  </data>
+  <data name="DemandDeleteConfirmation" xml:space="preserve">
+    <value>Opravdu chcete smazat Poptávku č. {0} ? </value>
+  </data>
+  <data name="StatusClosed" xml:space="preserve">
+    <value>Ukončena referentem</value>
+  </data>
+  <data name="ProdisPriceSet" xml:space="preserve">
+    <value>Cena v Prodisu nastavena</value>
+  </data>
+  <data name="CopyNomKey" xml:space="preserve">
+    <value>Kopírovat číslo nomenklatury</value>
+  </data>
+  <data name="Activate" xml:space="preserve">
+    <value>Aktivovat</value>
+  </data>
+  <data name="CmbFilterAll" xml:space="preserve">
+    <value>--- Vše ---</value>
+  </data>
+  <data name="NomenclatureSource" xml:space="preserve">
+    <value>Zdroj</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Ne</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ano</value>
+  </data>
+  <data name="AddNomencaltures" xml:space="preserve">
+    <value>Přidat další nomenklatury</value>
+  </data>
+  <data name="EnterNomenclatureKey" xml:space="preserve">
+    <value>Zadejte číslo nomenklatury</value>
+  </data>
+  <data name="EnterNomenclatureName" xml:space="preserve">
+    <value>Zadejte název nomenklatury</value>
+  </data>
+  <data name="EnterValidData" xml:space="preserve">
+    <value>Zadejte správná data. Zkontrolujte chybová hlášení ve formuláři.</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Varování</value>
+  </data>
+  <data name="AddNomenclature" xml:space="preserve">
+    <value>Přidat nomenklaturu</value>
+  </data>
+  <data name="UserNomenclature" xml:space="preserve">
+    <value>Uživatelská nomenklatura</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Uložit</value>
+  </data>
+  <data name="AttachmentCopyFailed" xml:space="preserve">
+    <value>Pri kopírování přílohy '{0}' došlo k chybě !!!</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Kopírovat</value>
+  </data>
+</root>

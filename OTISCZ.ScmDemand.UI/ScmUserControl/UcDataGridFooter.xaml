@@ -1,0 +1,197 @@
+﻿<UserControl x:Class="OTISCZ.ScmDemand.UI.ScmUserControl.UcDataGridFooter"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OTISCZ.ScmDemand.UI.ScmUserControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel x:Name="dpBusy"  Grid.Row="0" Visibility="{Binding Path=ProgressBarVisibility, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Row="0" Grid.Column="0" BorderThickness="1" BorderBrush="#c5c5c5" VerticalAlignment="Stretch">
+                    <TextBlock Text="{Binding Path=ImportInfo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Padding="5,0" VerticalAlignment="Stretch" />
+                </Border>
+                <ProgressBar 
+                    Grid.Row="0" Grid.Column="1"
+                    Minimum="0" 
+                    Maximum="{Binding Path=PbLineCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                    Value="{Binding Path=PbLineNr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                    x:Name="pbStatus" />
+                <TextBlock x:Name="txtBpInfo" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1">
+                    <TextBlock.Text>
+                        <MultiBinding x:Name="txtPbBind" StringFormat="{}{0}/{1}">
+                            <Binding Path="Value" ElementName="pbStatus" />
+                            <Binding Path="Maximum" ElementName="pbStatus" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+
+            </Grid>
+
+        </DockPanel>
+
+        <DockPanel x:Name="dpPanel" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Style="{StaticResource DpGrdFooter}">
+            <Border BorderThickness="0,1,0,0" BorderBrush="#AAA" HorizontalAlignment="Stretch" Padding="15,10,15,10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/> <!--9-->
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/> <!--15-->
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/> <!--19-->
+                    </Grid.ColumnDefinitions>
+                    
+
+                    <ComboBox 
+                        Grid.Column="0"
+                        x:Name="cmbPageSize"
+                        Style="{StaticResource ScmComboBox}"
+                        Background="Transparent"
+                        IsEditable="True"
+                        ItemsSource="{Binding PageSizeList, Mode=OneWay}" 
+                        SelectedValue="{Binding PageSize, Mode=TwoWay}"
+                        VerticalAlignment="Center"
+                       >
+                        <!--<ComboBox.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="Yellow" />
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Yellow" />
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Red" />
+                            <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrush}" Color="Yellow" />
+                            <SolidColorBrush x:Key="{x:Static SystemColors.ControlColor}" Color="Yellow" />
+                            
+                        </ComboBox.Resources>-->
+
+                    </ComboBox>
+                    
+                    <Rectangle VerticalAlignment="Stretch" Width="1" Grid.Column="1" Margin="10,0,10,0" Fill="#AAA"/>
+
+                    <Button x:Name="btnFirst" Grid.Column="2" Style="{StaticResource ButtonGridFooter}" Width="Auto" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="{Binding Path=PreviousEnabledButtonVisibility, Mode=TwoWay}"
+                        Margin="0,0,0,0" Click="BtnFirst_Click" IsEnabled="{Binding Path=IsGridButtonsEnabled, Mode=TwoWay}">
+                        <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Grid/First.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,0,0,0">
+                            
+                        </Image>
+                    </Button>
+                    <Button x:Name="btnFirstDisabled" Grid.Column="2" Style="{StaticResource ButtonGridFooter}" Width="Auto" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="{Binding Path=PreviousDisabledButtonVisibility, Mode=TwoWay}"
+                        Margin="0,0,0,0" IsEnabled="False">
+                        <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Grid/FirstDisabled.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,0,0,0" />
+                    </Button>
+                    <Button x:Name="btnPrevious" Grid.Column="3" Style="{StaticResource ButtonGridFooter}" Width="Auto" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="{Binding Path=PreviousEnabledButtonVisibility, Mode=TwoWay}"
+                        Margin="0,0,0,0" IsEnabled="{Binding Path=IsGridButtonsEnabled, Mode=TwoWay}" Click="BtnPrevious_Click">
+                        <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Grid/Previous.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,0,0,0" />
+                    </Button>
+                    <Button x:Name="btnPreviousDisabled" Grid.Column="3" Style="{StaticResource ButtonGridFooter}" Width="Auto" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="{Binding Path=PreviousDisabledButtonVisibility, Mode=TwoWay}"
+                        Margin="0,0,0,0" IsEnabled="False">
+                        <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Grid/PreviousDisabled.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,0,0,0" />
+                    </Button>
+
+                    <Rectangle VerticalAlignment="Stretch" Width="1" Grid.Column="4" Margin="10,0,10,0" Fill="#AAA"/>
+
+                    <TextBox Grid.Column="5" x:Name="txtPageNr" Text="{Binding Path=PageNr, Mode=TwoWay}"
+                             Style="{StaticResource ScmTextBox}"
+                             PreviewTextInput="NumberValidationTextBox" 
+                             IsEnabled="{Binding Path=IsGridButtonsEnabled, Mode=TwoWay}"
+                             VerticalAlignment="Center" Padding="5,3,5,3" Margin="10,0,10,0" MinWidth="25" />
+
+                    <TextBlock x:Name="txtOf" Grid.Column="6" Text="of" VerticalAlignment="Center" Padding="5,3,5,3" ></TextBlock>
+
+                    <TextBlock x:Name="txtPagesCount"  Grid.Column="7" Text="{Binding Path=PagesCount, Mode=TwoWay}" VerticalAlignment="Center" Padding="3,3,5,3" ></TextBlock>
+
+                    <Rectangle VerticalAlignment="Stretch" Width="1" Grid.Column="8" Margin="10,0,10,0" Fill="#AAA"/>
+
+                    <Button x:Name="btnNext" Grid.Column="9" Style="{StaticResource ButtonGridFooter}" Width="Auto" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="{Binding Path=NextEnabledButtonVisibility, Mode=TwoWay}"
+                        Margin="0,0,0,0" IsEnabled="{Binding Path=IsGridButtonsEnabled, Mode=TwoWay}" Click="BtnNext_Click">
+                        <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Grid/Next.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,0,0,0" />
+                    </Button>
+                    <Button x:Name="btnNextDisabled" Grid.Column="9" Style="{StaticResource ButtonGridFooter}" Width="Auto" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="{Binding Path=NextDisabledButtonVisibility, Mode=TwoWay}"
+                        Margin="0,0,0,0" IsEnabled="False">
+                        <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Grid/NextDisabled.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,0,0,0" />
+                    </Button>
+
+                    <Button x:Name="btnLast" Grid.Column="10" Style="{StaticResource ButtonGridFooter}" Width="Auto" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="{Binding Path=NextEnabledButtonVisibility, Mode=TwoWay}"
+                        Margin="0,0,0,0" IsEnabled="{Binding Path=IsGridButtonsEnabled, Mode=TwoWay}" Click="BtnLast_Click">
+                        <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Grid/Last.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,0,0,0" />
+                    </Button>
+                    <Button x:Name="btnLastDisabled" Grid.Column="10" Style="{StaticResource ButtonGridFooter}" Width="Auto" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="{Binding Path=NextDisabledButtonVisibility, Mode=TwoWay}"
+                        Margin="0,0,0,0" IsEnabled="False">
+                        <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Grid/LastDisabled.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,0,0,0" />
+                    </Button>
+
+                    <Rectangle VerticalAlignment="Stretch" Width="1" Grid.Column="11" Margin="10,0,10,0" Fill="#AAA"/>
+
+                    <Button x:Name="btnRefresh" Grid.Column="12" Style="{StaticResource ButtonGridFooter}" Width="Auto" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                        Margin="0,0,0,0" IsEnabled="{Binding Path=IsGridButtonsEnabled, Mode=TwoWay}" Click="BtnRefresh_Click" >
+                        <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Grid/Refresh.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,0,0,0" />
+                    </Button>
+                    
+                    
+                    <Rectangle VerticalAlignment="Stretch" Width="1" Grid.Column="13" Margin="10,0,10,0" Fill="#AAA"/>
+
+                    <Button x:Name="btnExcel" Grid.Column="14" Style="{StaticResource ButtonGridFooter}" 
+                            IsEnabled="{Binding Path=IsGridButtonsEnabled, Mode=TwoWay}"
+                            Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Click="BtnExcel_Click" >
+                        
+                            <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Grid/Excel.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,0,0,0" Grid.RowSpan="2"/>
+                           
+                    </Button>
+
+                    <Rectangle VerticalAlignment="Stretch" Width="1" Grid.Column="15" Margin="10,0,10,0" Fill="#AAA"/>
+
+                    <Button x:Name="btnImport" Grid.Column="16" Style="{StaticResource ButtonGridFooter}" Width="Auto" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                        Margin="0,0,0,0" Click="BtnImport_Click" >
+                        <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Grid/Import.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,0,0,0" />
+                    </Button>
+
+                    <Rectangle x:Name="lnDelimiterAddNew" VerticalAlignment="Stretch" Width="1" Grid.Column="17" Margin="10,0,10,0" Fill="#AAA"/>
+                    
+                    <Button x:Name="btnAdd" Grid.Column="18" Style="{StaticResource ButtonGridFooter}" Width="Auto" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                        Margin="0,0,0,0" Click="BtnAdd_Click" >
+                        <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Grid/NewRow.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,0,0,0" />
+                    </Button>
+
+                    <TextBlock x:Name="txtDiplayingRows"  Grid.Column="19" Text="{Binding Path=DisplayingRows, Mode=TwoWay}" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                </Grid>
+            </Border>
+        </DockPanel> 
+    </Grid>
+</UserControl>

@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ScmDemand" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpBinding_IScmDemand_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <http:NegotiateAuthentication xmlns:http="http://schemas.microsoft.com/ws/06/2004/policy/http" />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:55039/ScmDemand.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:55039/ScmDemand.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:55039/ScmDemand.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/OTISCZ.ScmDemand.Model" />
+      <xsd:import schemaLocation="http://localhost:55039/ScmDemand.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/OTISCZ.ScmDemand.Model.ExtendedModel" />
+      <xsd:import schemaLocation="http://localhost:55039/ScmDemand.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:55039/ScmDemand.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System.Windows" />
+      <xsd:import schemaLocation="http://localhost:55039/ScmDemand.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/OTISCZ.ScmDemand.Model.Repository" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IScmDemand_GetUserData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserData" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetUserData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_SetUserCulture_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetUserCulture" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_SetUserCulture_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetUserCultureResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetScmSetting_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetScmSetting" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetScmSetting_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetScmSettingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_SetImportFolder_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetImportFolder" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_SetImportFolder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetImportFolderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_ImportNomenclature_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImportNomenclature" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_ImportNomenclature_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImportNomenclatureResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetUnits_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnits" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetUnits_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetMaterialGroups_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMaterialGroups" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetMaterialGroups_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMaterialGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetNomenclatures_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNomenclatures" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetNomenclatures_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNomenclaturesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetNomenclatureById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNomenclatureById" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetNomenclatureById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNomenclatureByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_SaveNomenclature_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveNomenclature" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_SaveNomenclature_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveNomenclatureResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetNomenclaturesReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNomenclaturesReport" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetNomenclaturesReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNomenclaturesReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetSupplierBySupplierId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSupplierBySupplierId" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetSupplierBySupplierId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSupplierBySupplierIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_DeactiveSuppliers_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeactiveSuppliers" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_DeactiveSuppliers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeactiveSuppliersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetSuppliers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSuppliers" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetSuppliers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSuppliersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_SaveDemand_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveDemand" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_SaveDemand_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveDemandResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_SaveDemandWasSent_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveDemandWasSent" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_SaveDemandWasSent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveDemandWasSentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetNewDemandRequestNr_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNewDemandRequestNr" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetNewDemandRequestNr_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNewDemandRequestNrResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetDemands_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDemands" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetDemands_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDemandsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetDemandsReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDemandsReport" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetDemandsReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDemandsReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetPendingNomenclaturesNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPendingNomenclaturesNumber" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetPendingNomenclaturesNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPendingNomenclaturesNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetPendingDemandsNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPendingDemandsNumber" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetPendingDemandsNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPendingDemandsNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetDemandDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDemandDetail" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetDemandDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDemandDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetAttachmentContent_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAttachmentContent" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetAttachmentContent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAttachmentContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_AddAttachment_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddAttachment" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_AddAttachment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddAttachmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetActiveAppMen_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveAppMen" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetActiveAppMen_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveAppMenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetActiveCurrencies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveCurrencies" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetActiveCurrencies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveCurrenciesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_SaveDemandNomenclature_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveDemandNomenclature" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_SaveDemandNomenclature_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveDemandNomenclatureResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetMaterialGroupId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMaterialGroupId" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetMaterialGroupId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMaterialGroupIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetDemandPreviousStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDemandPreviousStatus" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetDemandPreviousStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDemandPreviousStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetLastImportDateText_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastImportDateText" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetLastImportDateText_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastImportDateTextResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_SetLastImportDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetLastImportDate" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_SetLastImportDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetLastImportDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetSupplierById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSupplierById" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_GetSupplierById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSupplierByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_SaveSupplier_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveSupplier" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_SaveSupplier_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveSupplierResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_SaveSupplierContact_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveSupplierContact" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_SaveSupplierContact_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveSupplierContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_SaveImportInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveImportInfo" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_SaveImportInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveImportInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_IsFileLoaded_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsFileLoaded" />
+  </wsdl:message>
+  <wsdl:message name="IScmDemand_IsFileLoaded_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsFileLoadedResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IScmDemand">
+    <wsdl:operation name="GetUserData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/GetUserData" message="tns:IScmDemand_GetUserData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/GetUserDataResponse" message="tns:IScmDemand_GetUserData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetUserCulture">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/SetUserCulture" message="tns:IScmDemand_SetUserCulture_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/SetUserCultureResponse" message="tns:IScmDemand_SetUserCulture_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetScmSetting">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/GetScmSetting" message="tns:IScmDemand_GetScmSetting_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/GetScmSettingResponse" message="tns:IScmDemand_GetScmSetting_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetImportFolder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/SetImportFolder" message="tns:IScmDemand_SetImportFolder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/SetImportFolderResponse" message="tns:IScmDemand_SetImportFolder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportNomenclature">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/ImportNomenclature" message="tns:IScmDemand_ImportNomenclature_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/ImportNomenclatureResponse" message="tns:IScmDemand_ImportNomenclature_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnits">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/GetUnits" message="tns:IScmDemand_GetUnits_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/GetUnitsResponse" message="tns:IScmDemand_GetUnits_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMaterialGroups">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/GetMaterialGroups" message="tns:IScmDemand_GetMaterialGroups_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/GetMaterialGroupsResponse" message="tns:IScmDemand_GetMaterialGroups_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNomenclatures">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/GetNomenclatures" message="tns:IScmDemand_GetNomenclatures_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/GetNomenclaturesResponse" message="tns:IScmDemand_GetNomenclatures_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNomenclatureById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/GetNomenclatureById" message="tns:IScmDemand_GetNomenclatureById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/GetNomenclatureByIdResponse" message="tns:IScmDemand_GetNomenclatureById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveNomenclature">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/SaveNomenclature" message="tns:IScmDemand_SaveNomenclature_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/SaveNomenclatureResponse" message="tns:IScmDemand_SaveNomenclature_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNomenclaturesReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/GetNomenclaturesReport" message="tns:IScmDemand_GetNomenclaturesReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/GetNomenclaturesReportResponse" message="tns:IScmDemand_GetNomenclaturesReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplierBySupplierId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/GetSupplierBySupplierId" message="tns:IScmDemand_GetSupplierBySupplierId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/GetSupplierBySupplierIdResponse" message="tns:IScmDemand_GetSupplierBySupplierId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeactiveSuppliers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/DeactiveSuppliers" message="tns:IScmDemand_DeactiveSuppliers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/DeactiveSuppliersResponse" message="tns:IScmDemand_DeactiveSuppliers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSuppliers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/GetSuppliers" message="tns:IScmDemand_GetSuppliers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/GetSuppliersResponse" message="tns:IScmDemand_GetSuppliers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveDemand">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/SaveDemand" message="tns:IScmDemand_SaveDemand_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/SaveDemandResponse" message="tns:IScmDemand_SaveDemand_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveDemandWasSent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/SaveDemandWasSent" message="tns:IScmDemand_SaveDemandWasSent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/SaveDemandWasSentResponse" message="tns:IScmDemand_SaveDemandWasSent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewDemandRequestNr">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/GetNewDemandRequestNr" message="tns:IScmDemand_GetNewDemandRequestNr_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/GetNewDemandRequestNrResponse" message="tns:IScmDemand_GetNewDemandRequestNr_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDemands">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/GetDemands" message="tns:IScmDemand_GetDemands_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/GetDemandsResponse" message="tns:IScmDemand_GetDemands_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDemandsReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/GetDemandsReport" message="tns:IScmDemand_GetDemandsReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/GetDemandsReportResponse" message="tns:IScmDemand_GetDemandsReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPendingNomenclaturesNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/GetPendingNomenclaturesNumber" message="tns:IScmDemand_GetPendingNomenclaturesNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/GetPendingNomenclaturesNumberResponse" message="tns:IScmDemand_GetPendingNomenclaturesNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPendingDemandsNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/GetPendingDemandsNumber" message="tns:IScmDemand_GetPendingDemandsNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/GetPendingDemandsNumberResponse" message="tns:IScmDemand_GetPendingDemandsNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDemandDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/GetDemandDetail" message="tns:IScmDemand_GetDemandDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/GetDemandDetailResponse" message="tns:IScmDemand_GetDemandDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachmentContent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/GetAttachmentContent" message="tns:IScmDemand_GetAttachmentContent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/GetAttachmentContentResponse" message="tns:IScmDemand_GetAttachmentContent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAttachment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/AddAttachment" message="tns:IScmDemand_AddAttachment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/AddAttachmentResponse" message="tns:IScmDemand_AddAttachment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveAppMen">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/GetActiveAppMen" message="tns:IScmDemand_GetActiveAppMen_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/GetActiveAppMenResponse" message="tns:IScmDemand_GetActiveAppMen_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveCurrencies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/GetActiveCurrencies" message="tns:IScmDemand_GetActiveCurrencies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/GetActiveCurrenciesResponse" message="tns:IScmDemand_GetActiveCurrencies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveDemandNomenclature">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/SaveDemandNomenclature" message="tns:IScmDemand_SaveDemandNomenclature_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/SaveDemandNomenclatureResponse" message="tns:IScmDemand_SaveDemandNomenclature_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMaterialGroupId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/GetMaterialGroupId" message="tns:IScmDemand_GetMaterialGroupId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/GetMaterialGroupIdResponse" message="tns:IScmDemand_GetMaterialGroupId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDemandPreviousStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/GetDemandPreviousStatus" message="tns:IScmDemand_GetDemandPreviousStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/GetDemandPreviousStatusResponse" message="tns:IScmDemand_GetDemandPreviousStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLastImportDateText">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/GetLastImportDateText" message="tns:IScmDemand_GetLastImportDateText_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/GetLastImportDateTextResponse" message="tns:IScmDemand_GetLastImportDateText_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetLastImportDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/SetLastImportDate" message="tns:IScmDemand_SetLastImportDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/SetLastImportDateResponse" message="tns:IScmDemand_SetLastImportDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplierById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/GetSupplierById" message="tns:IScmDemand_GetSupplierById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/GetSupplierByIdResponse" message="tns:IScmDemand_GetSupplierById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveSupplier">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/SaveSupplier" message="tns:IScmDemand_SaveSupplier_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/SaveSupplierResponse" message="tns:IScmDemand_SaveSupplier_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveSupplierContact">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/SaveSupplierContact" message="tns:IScmDemand_SaveSupplierContact_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/SaveSupplierContactResponse" message="tns:IScmDemand_SaveSupplierContact_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveImportInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/SaveImportInfo" message="tns:IScmDemand_SaveImportInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/SaveImportInfoResponse" message="tns:IScmDemand_SaveImportInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsFileLoaded">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScmDemand/IsFileLoaded" message="tns:IScmDemand_IsFileLoaded_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScmDemand/IsFileLoadedResponse" message="tns:IScmDemand_IsFileLoaded_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IScmDemand" type="tns:IScmDemand">
+    <wsp:PolicyReference URI="#BasicHttpBinding_IScmDemand_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUserData">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/GetUserData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUserCulture">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/SetUserCulture" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetScmSetting">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/GetScmSetting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetImportFolder">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/SetImportFolder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportNomenclature">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/ImportNomenclature" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnits">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/GetUnits" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMaterialGroups">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/GetMaterialGroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNomenclatures">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/GetNomenclatures" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNomenclatureById">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/GetNomenclatureById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveNomenclature">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/SaveNomenclature" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNomenclaturesReport">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/GetNomenclaturesReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplierBySupplierId">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/GetSupplierBySupplierId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeactiveSuppliers">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/DeactiveSuppliers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSuppliers">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/GetSuppliers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDemand">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/SaveDemand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDemandWasSent">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/SaveDemandWasSent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewDemandRequestNr">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/GetNewDemandRequestNr" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDemands">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/GetDemands" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDemandsReport">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/GetDemandsReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPendingNomenclaturesNumber">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/GetPendingNomenclaturesNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPendingDemandsNumber">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/GetPendingDemandsNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDemandDetail">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/GetDemandDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachmentContent">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/GetAttachmentContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAttachment">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/AddAttachment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveAppMen">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/GetActiveAppMen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveCurrencies">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/GetActiveCurrencies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDemandNomenclature">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/SaveDemandNomenclature" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMaterialGroupId">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/GetMaterialGroupId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDemandPreviousStatus">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/GetDemandPreviousStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastImportDateText">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/GetLastImportDateText" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetLastImportDate">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/SetLastImportDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplierById">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/GetSupplierById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveSupplier">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/SaveSupplier" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveSupplierContact">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/SaveSupplierContact" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveImportInfo">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/SaveImportInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsFileLoaded">
+      <soap:operation soapAction="http://tempuri.org/IScmDemand/IsFileLoaded" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ScmDemand">
+    <wsdl:port name="BasicHttpBinding_IScmDemand" binding="tns:BasicHttpBinding_IScmDemand">
+      <soap:address location="http://localhost:55039/ScmDemand.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

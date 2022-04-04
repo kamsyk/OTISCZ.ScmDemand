@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/OTISCZ.ScmDemand.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/OTISCZ.ScmDemand.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ScmUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Attachment" nillable="true" type="tns:ArrayOfAttachment" />
+      <xs:element minOccurs="0" name="Demand" nillable="true" type="tns:ArrayOfDemand" />
+      <xs:element minOccurs="0" name="Demand1" nillable="true" type="tns:ArrayOfDemand" />
+      <xs:element minOccurs="0" name="Demand2" nillable="true" type="tns:ArrayOfDemand" />
+      <xs:element minOccurs="0" name="Demand_Nomenclature" nillable="true" type="tns:ArrayOfDemand_Nomenclature" />
+      <xs:element minOccurs="0" name="Nomenclature" nillable="true" type="tns:ArrayOfNomenclature" />
+      <xs:element minOccurs="0" name="Nomenclature1" nillable="true" type="tns:ArrayOfNomenclature" />
+      <xs:element minOccurs="0" name="Nomenclature2" nillable="true" type="tns:ArrayOfNomenclature" />
+      <xs:element minOccurs="0" name="Remark" nillable="true" type="tns:ArrayOfRemark" />
+      <xs:element minOccurs="0" name="Role" nillable="true" type="tns:ArrayOfRole" />
+      <xs:element minOccurs="0" name="Source_File" nillable="true" type="tns:ArrayOfSource_File" />
+      <xs:element minOccurs="0" name="Supplier" nillable="true" type="tns:ArrayOfSupplier" />
+      <xs:element minOccurs="0" name="Supplier_Contact" nillable="true" type="tns:ArrayOfSupplier_Contact" />
+      <xs:element minOccurs="0" name="User_Setting" nillable="true" type="tns:User_Setting" />
+      <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="first_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="first_name_wo_dia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="is_active" type="xs:boolean" />
+      <xs:element minOccurs="0" name="phone_nr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="surname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="surname_wo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="user_name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScmUser" nillable="true" type="tns:ScmUser" />
+  <xs:complexType name="ArrayOfAttachment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Attachment" nillable="true" type="tns:Attachment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAttachment" nillable="true" type="tns:ArrayOfAttachment" />
+  <xs:complexType name="Attachment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Demand_Attachment" nillable="true" type="tns:ArrayOfDemand_Attachment" />
+      <xs:element minOccurs="0" name="ScmUser" nillable="true" type="tns:ScmUser" />
+      <xs:element minOccurs="0" name="file_content" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="file_icon" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="file_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="modif_date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="modif_user_id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Attachment" nillable="true" type="tns:Attachment" />
+  <xs:complexType name="ArrayOfDemand_Attachment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Demand_Attachment" nillable="true" type="tns:Demand_Attachment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDemand_Attachment" nillable="true" type="tns:ArrayOfDemand_Attachment" />
+  <xs:complexType name="Demand_Attachment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Attachment" nillable="true" type="tns:Attachment" />
+      <xs:element minOccurs="0" name="Demand" nillable="true" type="tns:Demand" />
+      <xs:element minOccurs="0" name="att_type" type="xs:int" />
+      <xs:element minOccurs="0" name="attachment_id" type="xs:int" />
+      <xs:element minOccurs="0" name="demand_id" type="xs:int" />
+      <xs:element minOccurs="0" name="demand_version" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Demand_Attachment" nillable="true" type="tns:Demand_Attachment" />
+  <xs:complexType name="Demand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Active_Demand" nillable="true" type="tns:Active_Demand" />
+      <xs:element minOccurs="0" name="AppMan" nillable="true" type="tns:ScmUser" />
+      <xs:element minOccurs="0" name="DemandNomenclatureLock" nillable="true" type="tns:ArrayOfDemand_Nomenclature" />
+      <xs:element minOccurs="0" name="Demand_Attachment" nillable="true" type="tns:ArrayOfDemand_Attachment" />
+      <xs:element minOccurs="0" name="Demand_Nomenclature" nillable="true" type="tns:ArrayOfDemand_Nomenclature" />
+      <xs:element minOccurs="0" name="Demand_Status" nillable="true" type="tns:Demand_Status" />
+      <xs:element minOccurs="0" name="Remark" nillable="true" type="tns:ArrayOfRemark" />
+      <xs:element minOccurs="0" name="Requestor" nillable="true" type="tns:ScmUser" />
+      <xs:element minOccurs="0" name="ScmUser1" nillable="true" type="tns:ScmUser" />
+      <xs:element minOccurs="0" name="Supplier" nillable="true" type="tns:Supplier" />
+      <xs:element minOccurs="0" name="app_man_id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="created_date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="demand_nr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="is_active" type="xs:boolean" />
+      <xs:element minOccurs="0" name="last_status_modif_date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="last_version" type="xs:boolean" />
+      <xs:element minOccurs="0" name="modif_date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="modif_user_id" type="xs:int" />
+      <xs:element minOccurs="0" name="requestor_id" type="xs:int" />
+      <xs:element minOccurs="0" name="status_id" type="xs:int" />
+      <xs:element minOccurs="0" name="supplier_id" type="xs:int" />
+      <xs:element minOccurs="0" name="version" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Demand" nillable="true" type="tns:Demand" />
+  <xs:complexType name="Active_Demand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Demand" nillable="true" type="tns:Demand" />
+      <xs:element minOccurs="0" name="Demand_Status" nillable="true" type="tns:Demand_Status" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="is_app_man_active" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="is_requestor_acive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="status_id" type="xs:int" />
+      <xs:element minOccurs="0" name="version" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Active_Demand" nillable="true" type="tns:Active_Demand" />
+  <xs:complexType name="Demand_Status">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Active_Demand" nillable="true" type="tns:ArrayOfActive_Demand" />
+      <xs:element minOccurs="0" name="Demand" nillable="true" type="tns:ArrayOfDemand" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Demand_Status" nillable="true" type="tns:Demand_Status" />
+  <xs:complexType name="ArrayOfActive_Demand">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Active_Demand" nillable="true" type="tns:Active_Demand" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfActive_Demand" nillable="true" type="tns:ArrayOfActive_Demand" />
+  <xs:complexType name="ArrayOfDemand">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Demand" nillable="true" type="tns:Demand" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDemand" nillable="true" type="tns:ArrayOfDemand" />
+  <xs:complexType name="ArrayOfDemand_Nomenclature">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Demand_Nomenclature" nillable="true" type="tns:Demand_Nomenclature" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDemand_Nomenclature" nillable="true" type="tns:ArrayOfDemand_Nomenclature" />
+  <xs:complexType name="Demand_Nomenclature">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Currency" nillable="true" type="tns:Currency" />
+      <xs:element minOccurs="0" name="Demand" nillable="true" type="tns:Demand" />
+      <xs:element minOccurs="0" name="DemandLock" nillable="true" type="tns:Demand" />
+      <xs:element minOccurs="0" name="Nomenclature" nillable="true" type="tns:Nomenclature" />
+      <xs:element minOccurs="0" name="Nomenclature_Status" nillable="true" type="tns:Nomenclature_Status" />
+      <xs:element minOccurs="0" name="ScmUser" nillable="true" type="tns:ScmUser" />
+      <xs:element minOccurs="0" name="currency_id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="demand_id" type="xs:int" />
+      <xs:element minOccurs="0" name="demand_version" type="xs:int" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="locked_by_demand_id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="locked_by_demand_version" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="modif_date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="modif_user_id" type="xs:int" />
+      <xs:element minOccurs="0" name="nomenclature_id" type="xs:int" />
+      <xs:element minOccurs="0" name="nomenclature_version" type="xs:int" />
+      <xs:element minOccurs="0" name="price" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="status_id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Demand_Nomenclature" nillable="true" type="tns:Demand_Nomenclature" />
+  <xs:complexType name="Currency">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Demand_Nomenclature" nillable="true" type="tns:ArrayOfDemand_Nomenclature" />
+      <xs:element minOccurs="0" name="Nomenclature" nillable="true" type="tns:ArrayOfNomenclature" />
+      <xs:element minOccurs="0" name="currency_code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="currency_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="is_active" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Currency" nillable="true" type="tns:Currency" />
+  <xs:complexType name="ArrayOfNomenclature">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Nomenclature" nillable="true" type="tns:Nomenclature" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNomenclature" nillable="true" type="tns:ArrayOfNomenclature" />
+  <xs:complexType name="Nomenclature">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Active_Nomenclature" nillable="true" type="tns:Active_Nomenclature" />
+      <xs:element minOccurs="0" name="Company" nillable="true" type="tns:Company" />
+      <xs:element minOccurs="0" name="Currency" nillable="true" type="tns:Currency" />
+      <xs:element minOccurs="0" name="Demand_Nomenclature" nillable="true" type="tns:ArrayOfDemand_Nomenclature" />
+      <xs:element minOccurs="0" name="EvaluationMethod" nillable="true" type="tns:EvaluationMethod" />
+      <xs:element minOccurs="0" name="Material_Group" nillable="true" type="tns:Material_Group" />
+      <xs:element minOccurs="0" name="Nomenclature_Source" nillable="true" type="tns:Nomenclature_Source" />
+      <xs:element minOccurs="0" name="Nomenclature_Status" nillable="true" type="tns:Nomenclature_Status" />
+      <xs:element minOccurs="0" name="ScmUser" nillable="true" type="tns:ScmUser" />
+      <xs:element minOccurs="0" name="ScmUser1" nillable="true" type="tns:ScmUser" />
+      <xs:element minOccurs="0" name="ScmUser2" nillable="true" type="tns:ScmUser" />
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="tns:Unit" />
+      <xs:element minOccurs="0" name="buyer_id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="company_id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="create_user_id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="created_date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="currency_id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="evaluation_method_id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="import_date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="is_active" type="xs:boolean" />
+      <xs:element minOccurs="0" name="is_plnaknavrh" type="xs:boolean" />
+      <xs:element minOccurs="0" name="last_status_modif_date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="last_version" type="xs:boolean" />
+      <xs:element minOccurs="0" name="material_group_id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="modif_date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="modif_user_id" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="name_wo_dia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nomenclature_key" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="price" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="source_id" type="xs:int" />
+      <xs:element minOccurs="0" name="specification" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="specification_wo_dia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="status_id" type="xs:int" />
+      <xs:element minOccurs="0" name="unit_id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="version" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Nomenclature" nillable="true" type="tns:Nomenclature" />
+  <xs:complexType name="Active_Nomenclature">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Nomenclature" nillable="true" type="tns:Nomenclature" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="version" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Active_Nomenclature" nillable="true" type="tns:Active_Nomenclature" />
+  <xs:complexType name="Company">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Nomenclature" nillable="true" type="tns:ArrayOfNomenclature" />
+      <xs:element minOccurs="0" name="company1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Company" nillable="true" type="tns:Company" />
+  <xs:complexType name="EvaluationMethod">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Nomenclature" nillable="true" type="tns:ArrayOfNomenclature" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EvaluationMethod" nillable="true" type="tns:EvaluationMethod" />
+  <xs:complexType name="Material_Group">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Nomenclature" nillable="true" type="tns:ArrayOfNomenclature" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Material_Group" nillable="true" type="tns:Material_Group" />
+  <xs:complexType name="Nomenclature_Source">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Nomenclature" nillable="true" type="tns:ArrayOfNomenclature" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Nomenclature_Source" nillable="true" type="tns:Nomenclature_Source" />
+  <xs:complexType name="Nomenclature_Status">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Demand_Nomenclature" nillable="true" type="tns:ArrayOfDemand_Nomenclature" />
+      <xs:element minOccurs="0" name="Nomenclature" nillable="true" type="tns:ArrayOfNomenclature" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="status_name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Nomenclature_Status" nillable="true" type="tns:Nomenclature_Status" />
+  <xs:complexType name="Unit">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Nomenclature" nillable="true" type="tns:ArrayOfNomenclature" />
+      <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Unit" nillable="true" type="tns:Unit" />
+  <xs:complexType name="ArrayOfRemark">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Remark" nillable="true" type="tns:Remark" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRemark" nillable="true" type="tns:ArrayOfRemark" />
+  <xs:complexType name="Remark">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Demand" nillable="true" type="tns:Demand" />
+      <xs:element minOccurs="0" name="ScmUser" nillable="true" type="tns:ScmUser" />
+      <xs:element minOccurs="0" name="demand_id" type="xs:int" />
+      <xs:element minOccurs="0" name="demand_version" type="xs:int" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="modif_date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="modif_user_id" type="xs:int" />
+      <xs:element minOccurs="0" name="read_date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="remark_text" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Remark" nillable="true" type="tns:Remark" />
+  <xs:complexType name="Supplier">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Demand" nillable="true" type="tns:ArrayOfDemand" />
+      <xs:element minOccurs="0" name="ScmUser" nillable="true" type="tns:ScmUser" />
+      <xs:element minOccurs="0" name="Supplier_Contact" nillable="true" type="tns:ArrayOfSupplier_Contact" />
+      <xs:element minOccurs="0" name="active" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bank_account" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="city_wo_dia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="contact_person" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="country_wo_dia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="creditor_group" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="dic" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="email_used" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fax" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="is_approved" type="xs:boolean" />
+      <xs:element minOccurs="0" name="lang" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="mobile_phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="modif_date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="modif_user_id" type="xs:int" />
+      <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="street_part1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="street_part1_wo_dia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="street_part2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="street_part2_wo_dia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="supp_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="supp_name_wo_dia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="supplier_id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="vat" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="zip" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Supplier" nillable="true" type="tns:Supplier" />
+  <xs:complexType name="ArrayOfSupplier_Contact">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Supplier_Contact" nillable="true" type="tns:Supplier_Contact" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSupplier_Contact" nillable="true" type="tns:ArrayOfSupplier_Contact" />
+  <xs:complexType name="Supplier_Contact">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ScmUser" nillable="true" type="tns:ScmUser" />
+      <xs:element minOccurs="0" name="Supplier" nillable="true" type="tns:Supplier" />
+      <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="first_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="modif_date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="modif_user_id" type="xs:int" />
+      <xs:element minOccurs="0" name="phone_nr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="phone_nr2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="supplier_id" type="xs:int" />
+      <xs:element minOccurs="0" name="surname" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Supplier_Contact" nillable="true" type="tns:Supplier_Contact" />
+  <xs:complexType name="ArrayOfRole">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Role" nillable="true" type="tns:Role" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRole" nillable="true" type="tns:ArrayOfRole" />
+  <xs:complexType name="Role">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ScmUser" nillable="true" type="tns:ArrayOfScmUser" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="role_name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Role" nillable="true" type="tns:Role" />
+  <xs:complexType name="ArrayOfScmUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ScmUser" nillable="true" type="tns:ScmUser" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfScmUser" nillable="true" type="tns:ArrayOfScmUser" />
+  <xs:complexType name="ArrayOfSource_File">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Source_File" nillable="true" type="tns:Source_File" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSource_File" nillable="true" type="tns:ArrayOfSource_File" />
+  <xs:complexType name="Source_File">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ScmUser" nillable="true" type="tns:ScmUser" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="import_date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="import_user_id" type="xs:int" />
+      <xs:element minOccurs="0" name="last_modification_date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="status" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Source_File" nillable="true" type="tns:Source_File" />
+  <xs:complexType name="ArrayOfSupplier">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Supplier" nillable="true" type="tns:Supplier" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSupplier" nillable="true" type="tns:ArrayOfSupplier" />
+  <xs:complexType name="User_Setting">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ScmUser" nillable="true" type="tns:ScmUser" />
+      <xs:element minOccurs="0" name="culture" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="user_id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User_Setting" nillable="true" type="tns:User_Setting" />
+  <xs:complexType name="ScmSetting">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="last_import_date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="prodis_input_folder" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="prodis_price_input_folder" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScmSetting" nillable="true" type="tns:ScmSetting" />
+  <xs:complexType name="ArrayOfUnit">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Unit" nillable="true" type="tns:Unit" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUnit" nillable="true" type="tns:ArrayOfUnit" />
+  <xs:complexType name="ArrayOfMaterial_Group">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Material_Group" nillable="true" type="tns:Material_Group" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMaterial_Group" nillable="true" type="tns:ArrayOfMaterial_Group" />
+  <xs:complexType name="ArrayOfEvaluationMethod">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EvaluationMethod" nillable="true" type="tns:EvaluationMethod" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEvaluationMethod" nillable="true" type="tns:ArrayOfEvaluationMethod" />
+  <xs:complexType name="ArrayOfCurrency">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Currency" nillable="true" type="tns:Currency" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCurrency" nillable="true" type="tns:ArrayOfCurrency" />
+  <xs:complexType name="ArrayOfDemand_Status">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Demand_Status" nillable="true" type="tns:Demand_Status" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDemand_Status" nillable="true" type="tns:ArrayOfDemand_Status" />
+  <xs:complexType name="ArrayOfNomenclature_Source">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Nomenclature_Source" nillable="true" type="tns:Nomenclature_Source" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNomenclature_Source" nillable="true" type="tns:ArrayOfNomenclature_Source" />
+</xs:schema>

@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="OTISCZ.ScmDemand.WcfScmDemand.ScmDemand" CodeBehind="ScmDemand.svc.cs" %>

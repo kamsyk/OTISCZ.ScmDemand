@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetActiveCreditors">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cxalVersion" type="tns:CXALVersion" />
+            <s:element minOccurs="1" maxOccurs="1" name="bProductive" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="CXALVersion">
+        <s:restriction base="s:string">
+          <s:enumeration value="CZ" />
+          <s:enumeration value="SK" />
+          <s:enumeration value="ESC" />
+          <s:enumeration value="PL" />
+          <s:enumeration value="PSV" />
+          <s:enumeration value="VMH" />
+          <s:enumeration value="Undefined" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetActiveCreditorsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetActiveCreditorsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthHeader" type="tns:AuthHeader" />
+      <s:complexType name="AuthHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetActiveCreditorsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetActiveCreditors" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveCreditorsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetActiveCreditorsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveCreditorsAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:portType name="InternalRequestSoap">
+    <wsdl:operation name="GetActiveCreditors">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Active Creditors (not blocked) Data</wsdl:documentation>
+      <wsdl:input message="tns:GetActiveCreditorsSoapIn" />
+      <wsdl:output message="tns:GetActiveCreditorsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InternalRequestSoap" type="tns:InternalRequestSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetActiveCreditors">
+      <soap:operation soapAction="http://tempuri.org/GetActiveCreditors" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetActiveCreditorsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InternalRequestSoap12" type="tns:InternalRequestSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetActiveCreditors">
+      <soap12:operation soapAction="http://tempuri.org/GetActiveCreditors" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetActiveCreditorsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InternalRequest">
+    <wsdl:port name="InternalRequestSoap" binding="tns:InternalRequestSoap">
+      <soap:address location="http://intranetcz.cz.otis.com/ConcordeWebService/internalrequest.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InternalRequestSoap12" binding="tns:InternalRequestSoap12">
+      <soap12:address location="http://intranetcz.cz.otis.com/ConcordeWebService/internalrequest.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

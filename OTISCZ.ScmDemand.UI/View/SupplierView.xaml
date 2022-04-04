@@ -1,0 +1,287 @@
+﻿<UserControl x:Class="OTISCZ.ScmDemand.UI.View.SupplierView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OTISCZ.ScmDemand.UI.View"
+             xmlns:ucScmControl="clr-namespace:OTISCZ.ScmDemand.UI.ScmUserControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Style="{StaticResource GrdBkg}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="0" Margin="0">
+            <Border Style="{StaticResource ScmBorder}" Padding="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        
+                    </Grid.RowDefinitions>
+                    
+
+                    <Grid Grid.Row="0" Margin="0,0,0,15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label x:Name="lblSupplierName" Grid.Row="0" Grid.Column="0" Content="Supplier Id:" Style="{StaticResource ScmLabel}" VerticalAlignment="Center" />
+                        <TextBox x:Name="txtSupplierName" Grid.Row="0" Grid.Column="1" Width="Auto" MinWidth="250" Style="{StaticResource ScmTextBoxErrMsg}" Text="{Binding SupplierName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnExceptions=True}"
+                                 IsReadOnly="{Binding SupplierExtend.is_approved}" FontWeight="Bold" />
+
+                        <Label x:Name="lblSupplierIco" Grid.Row="1" Grid.Column="0" Content="Supplier Ico:" Style="{StaticResource ScmLabel}" VerticalAlignment="Center" />
+                        <TextBox x:Name="txtSupplierIco" Grid.Row="1" Grid.Column="1" Width="Auto"  MinWidth="150" Style="{StaticResource ScmTextBoxErrMsg}" Text="{Binding SupplierExtend.supplier_id, Mode=TwoWay, ValidatesOnExceptions=True}" 
+                                 IsReadOnly="{Binding SupplierExtend.is_approved}"/>
+
+                        <StackPanel Grid.Row="2" Grid.Column="1">
+                            <Label x:Name="lblApprovedSupplier" Content="{Binding ApprovedSupplierInfo, Mode=TwoWay}" Style="{StaticResource ScmLabel}" VerticalAlignment="Center" />
+                        </StackPanel>
+                        
+                        
+                    </Grid>
+                    
+                    <DockPanel Grid.Row="1" Grid.ColumnSpan="3">
+                        <Border Style="{StaticResource GridBorder}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <DockPanel Grid.Row="0">
+                                    <DockPanel x:Name="hdContacts" HorizontalAlignment="Stretch" VerticalAlignment="Top" Style="{StaticResource DpGrdHeader}" >
+
+                                        <Border BorderThickness="0, 0, 0, 1" BorderBrush="#AAA" HorizontalAlignment="Stretch">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <TextBlock Grid.Column="0" x:Name="txtGridColContacts"  Text="Header" Margin="10,5,10,5" FontWeight="Bold" FontSize="14" Style="{StaticResource TxtGrdHeader}"/>
+                                                
+                                            </Grid>
+                                        </Border>
+                                    </DockPanel>
+                                </DockPanel>
+
+                                <DockPanel Grid.Row="1">
+                                    <ScrollViewer x:Name="svGrdNomenclature" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Style="{StaticResource GrdScroll}">
+                                        <DataGrid x:Name="grdContact" 
+                                                ItemsSource="{Binding SupplierExtend.supplier_contact_extended, Mode=TwoWay}"
+                                                IsReadOnly="False"
+                                                AutoGenerateColumns="False"
+                                                CanUserAddRows="True"
+                                                VerticalAlignment="Top" HorizontalAlignment="Left" Width="Auto"
+                                                HorizontalGridLinesBrush="{StaticResource GridHorizontalLine}"
+                                                VerticalGridLinesBrush="{StaticResource GridVerticalLine}" 
+                                                  Style="{StaticResource ScmDataGrid}"
+                                                  AddingNewItem="GrdContact_AddingNewItem" 
+                                                  RowEditEnding="GrdContact_RowEditEnding" 
+                                                  SourceUpdated="GrdContact_SourceUpdated" 
+                                                  CellEditEnding="GrdContact_CellEditEnding" 
+                                                  SelectionChanged="GrdContact_SelectionChanged"
+                                                  LostFocus="GrdContact_LostFocus">
+
+                                            <DataGrid.Resources>
+                                                <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource ScmDataGridColumnHeader}" >
+                                                    
+                                                </Style>
+                                            </DataGrid.Resources>
+
+                                            <!--<DataGrid.RowValidationRules>
+                                                <local:CourseValidationRule ValidationStep="UpdatedValue"/>
+                                            </DataGrid.RowValidationRules>-->
+
+                                            <DataGrid.Columns>
+                                                <!--<DataGridTextColumn Header="First Name" IsReadOnly="False" Binding="{Binding Path=first_name, Mode=TwoWay}" 
+                                                                    local:DataGridUtil.ScmColumnName="first_name"
+                                                                            ElementStyle="{StaticResource GridColumnElementStyleTextBlock}" >
+                                                    <DataGridTextColumn.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <StackPanel>
+                                                                <ucScmControl:UcGrdColHeaderFilterText 
+                                                                    Title="{Binding Content, RelativeSource={RelativeSource Mode=TemplatedParent}}"  
+                                                                    FieldName="first_name"
+                                                                    HorizontalAlignment="Left" MinWidth="150" />
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </DataGridTextColumn.HeaderTemplate>
+                                                </DataGridTextColumn>-->
+
+
+                                                <DataGridTextColumn Header="first Name" IsReadOnly="False"  Binding="{Binding Path=first_name, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                                                                    local:DataGridUtil.ScmColumnName="first_name"
+                                                                    ElementStyle="{StaticResource GridColumnElementStyleTextBlock}" MinWidth="150">
+
+                                                    
+                                                    <DataGridTextColumn.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <StackPanel>
+                                                                <ucScmControl:UcGrdColHeaderNoFilterText 
+                                                                    Title="{Binding Content, RelativeSource={RelativeSource Mode=TemplatedParent}}"  
+                                                                    HorizontalAlignment="Left" MinWidth="150" />
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </DataGridTextColumn.HeaderTemplate>
+                                                    <DataGridTextColumn.EditingElementStyle>
+                                                        <Style TargetType="TextBox">
+                                                            <Setter Property="Padding" Value="5" />
+                                                        </Style>
+                                                    </DataGridTextColumn.EditingElementStyle>
+                                                </DataGridTextColumn>
+
+                                                <DataGridTextColumn Header="Surname" IsReadOnly="False" Binding="{Binding Path=surname, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                                                                    local:DataGridUtil.ScmColumnName="surname"
+                                                                           ElementStyle="{StaticResource GridColumnElementStyleTextBlock}" MinWidth="150">
+                                                    <DataGridTextColumn.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <StackPanel>
+                                                                <ucScmControl:UcGrdColHeaderNoFilterText 
+                                                                    Title="{Binding Content, RelativeSource={RelativeSource Mode=TemplatedParent}}"  
+                                                                    HorizontalAlignment="Left" MinWidth="150" />
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </DataGridTextColumn.HeaderTemplate>
+                                                    <DataGridTextColumn.EditingElementStyle>
+                                                        <Style TargetType="TextBox">
+                                                            <Setter Property="Padding" Value="5" />
+                                                        </Style>
+                                                    </DataGridTextColumn.EditingElementStyle>
+                                                </DataGridTextColumn>
+
+                                                <DataGridTextColumn Header="eMail" IsReadOnly="False" 
+                                                                    local:DataGridUtil.ScmColumnName="email"
+                                                                           ElementStyle="{StaticResource GridColumnElementStyleTextBlock}" MinWidth="150">
+
+                                                    <DataGridTextColumn.Binding>
+                                                        <Binding Path="email" Mode="TwoWay" UpdateSourceTrigger="LostFocus">
+                                                            <Binding.ValidationRules>
+                                                                <local:SupplierContactValidationRule ValidationStep="UpdatedValue"/>
+                                                                <!--<valRule:NiveautredeValidationRule  />-->
+                                                            </Binding.ValidationRules>
+                                                        </Binding>
+                                                    </DataGridTextColumn.Binding>
+
+                                                    <DataGridTextColumn.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <StackPanel>
+                                                                <ucScmControl:UcGrdColHeaderNoFilterText 
+                                                                    Title="{Binding Content, RelativeSource={RelativeSource Mode=TemplatedParent}}"  
+                                                                    HorizontalAlignment="Left" MinWidth="150" />
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </DataGridTextColumn.HeaderTemplate>
+
+                                                    <DataGridTextColumn.EditingElementStyle>
+                                                        <Style TargetType="TextBox">
+                                                            <Setter Property="Padding" Value="5" />
+                                                        </Style>
+                                                    </DataGridTextColumn.EditingElementStyle>
+                                                </DataGridTextColumn>
+
+                                                <DataGridTextColumn Header="Phone" IsReadOnly="False" Binding="{Binding Path=phone_nr, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                                                                    local:DataGridUtil.ScmColumnName="phone_nr"
+                                                                           ElementStyle="{StaticResource GridColumnElementStyleTextBlock}" MinWidth="150">
+                                                    <DataGridTextColumn.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <StackPanel>
+                                                                <ucScmControl:UcGrdColHeaderNoFilterText 
+                                                                    Title="{Binding Content, RelativeSource={RelativeSource Mode=TemplatedParent}}"  
+                                                                    HorizontalAlignment="Left" MinWidth="150" />
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </DataGridTextColumn.HeaderTemplate>
+
+                                                    <DataGridTextColumn.EditingElementStyle>
+                                                        <Style TargetType="TextBox">
+                                                            <Setter Property="Padding" Value="5" />
+                                                        </Style>
+                                                    </DataGridTextColumn.EditingElementStyle>
+                                                </DataGridTextColumn>
+
+                                                <DataGridTextColumn Header="Mobile Phone" IsReadOnly="False" Binding="{Binding Path=phone_nr2, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                                                                    local:DataGridUtil.ScmColumnName="phone_nr2"
+                                                                           ElementStyle="{StaticResource GridColumnElementStyleTextBlock}" MinWidth="150">
+                                                    <DataGridTextColumn.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <StackPanel>
+                                                                <ucScmControl:UcGrdColHeaderNoFilterText 
+                                                                    Title="{Binding Content, RelativeSource={RelativeSource Mode=TemplatedParent}}"  
+                                                                    HorizontalAlignment="Left" MinWidth="150" />
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </DataGridTextColumn.HeaderTemplate>
+
+                                                    <DataGridTextColumn.EditingElementStyle>
+                                                        <Style TargetType="TextBox">
+                                                            <Setter Property="Padding" Value="5" />
+                                                        </Style>
+                                                    </DataGridTextColumn.EditingElementStyle>
+                                                </DataGridTextColumn>
+
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                    </ScrollViewer>
+
+                                </DockPanel>
+
+                                
+                            </Grid>
+                        </Border>
+                        
+                    </DockPanel>
+                </Grid>
+            </Border>
+        </DockPanel>
+
+        <DockPanel Grid.Row="1" Margin="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition  Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="btnSave" Grid.Column="0" Style="{StaticResource ButtonGreen}" 
+                        Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Visibility="{Binding BtnNewVisibility}"
+                        Margin="20,10,20,10" Click="BtnSave_Click" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Column="0" Source="/OTISCZ.ScmDemand.UI;component/Images/Check.png" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,0,5,0" VerticalAlignment="Top"/>
+                        <TextBlock Grid.Column="1" Text="Save" Margin="0" ></TextBlock>
+                    </Grid>
+                </Button>
+
+                <Button x:Name="btnClose" Grid.Column="1" Style="{StaticResource ButtonStandard}" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                            MinHeight="40" Margin="20,10,20,10" Click="BtnClose_Click" 
+                             >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/OTISCZ.ScmDemand.UI;component/Images/Exit.png" HorizontalAlignment="Center" Width="20" Height="20" Margin="0,0,10,0" Grid.RowSpan="2"/>
+                        <TextBlock Text="{Binding LocCloseText}" Margin="0" VerticalAlignment="Center" ></TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</UserControl>

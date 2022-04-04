@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/OTISCZ.ScmDemand.Model.ExtendedModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/OTISCZ.ScmDemand.Model.ExtendedModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:55039/ScmDemand.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/OTISCZ.ScmDemand.Model" />
+  <xs:import schemaLocation="http://localhost:55039/ScmDemand.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System.Windows" />
+  <xs:import schemaLocation="http://localhost:55039/ScmDemand.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ArrayOfNomenclatureExtend">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NomenclatureExtend" nillable="true" type="tns:NomenclatureExtend" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNomenclatureExtend" nillable="true" type="tns:ArrayOfNomenclatureExtend" />
+  <xs:complexType name="NomenclatureExtend">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/OTISCZ.ScmDemand.Model" base="q1:Nomenclature">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="created_date_text" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="days_in_status" type="xs:int" />
+          <xs:element minOccurs="0" name="img_status_path" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="import_date_text" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="is_selected" type="xs:boolean" />
+          <xs:element minOccurs="0" name="last_status_modif_date_text" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="material_group_text" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="modif_date_text" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="new_demand_text" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="row_index" type="xs:int" />
+          <xs:element minOccurs="0" name="status_text" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="NomenclatureExtend" nillable="true" type="tns:NomenclatureExtend" />
+  <xs:complexType name="NomenclatureDetailExtend">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:NomenclatureExtend">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/OTISCZ.ScmDemand.Model" minOccurs="0" name="evaluation_methods" nillable="true" type="q2:ArrayOfEvaluationMethod" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="NomenclatureDetailExtend" nillable="true" type="tns:NomenclatureDetailExtend" />
+  <xs:complexType name="ArrayOfSupplierExtend">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SupplierExtend" nillable="true" type="tns:SupplierExtend" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSupplierExtend" nillable="true" type="tns:ArrayOfSupplierExtend" />
+  <xs:complexType name="SupplierExtend">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/OTISCZ.ScmDemand.Model" base="q3:Supplier">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/System.Windows" minOccurs="0" name="approved_visibility" type="q4:Visibility" />
+          <xs:element minOccurs="0" name="img_approved_path" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="is_selected" type="xs:boolean" />
+          <xs:element minOccurs="0" name="row_index" type="xs:int" />
+          <xs:element minOccurs="0" name="supplier_contact_extended" nillable="true" type="tns:ArrayOfSupplierContactExtended" />
+          <xs:element minOccurs="0" name="tooltip_approved" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SupplierExtend" nillable="true" type="tns:SupplierExtend" />
+  <xs:complexType name="ArrayOfSupplierContactExtended">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SupplierContactExtended" nillable="true" type="tns:SupplierContactExtended" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSupplierContactExtended" nillable="true" type="tns:ArrayOfSupplierContactExtended" />
+  <xs:complexType name="SupplierContactExtended">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="entity_error" nillable="true" type="tns:ArrayOfEntityError" />
+      <xs:element minOccurs="0" name="first_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="modif_date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="modif_user_id" type="xs:int" />
+      <xs:element minOccurs="0" name="phone_nr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="phone_nr2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="supplier_id" type="xs:int" />
+      <xs:element minOccurs="0" name="surname" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SupplierContactExtended" nillable="true" type="tns:SupplierContactExtended" />
+  <xs:complexType name="ArrayOfEntityError">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EntityError" nillable="true" type="tns:EntityError" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEntityError" nillable="true" type="tns:ArrayOfEntityError" />
+  <xs:complexType name="EntityError">
+    <xs:sequence>
+      <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="errors" nillable="true" type="q5:ArrayOfstring" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EntityError" nillable="true" type="tns:EntityError" />
+  <xs:complexType name="DemandExtend">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/OTISCZ.ScmDemand.Model" base="q6:Demand">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="app_man_name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="created_date_text" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="days_in_status" type="xs:int" />
+          <xs:element minOccurs="0" name="demand_nomenclatures_extend" nillable="true" type="tns:ArrayOfDemandNomenclatureExtend" />
+          <xs:element minOccurs="0" name="img_status_path" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="last_status_modif_date_text" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="nomenclatures_text" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="recipient_attachments_extend" nillable="true" type="tns:ArrayOfAttachmentExtend" />
+          <xs:element minOccurs="0" name="requestor_name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="row_index" type="xs:int" />
+          <xs:element minOccurs="0" name="status_text" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="supplier_attachments_extend" nillable="true" type="tns:ArrayOfAttachmentExtend" />
+          <xs:element minOccurs="0" name="supplier_text" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DemandExtend" nillable="true" type="tns:DemandExtend" />
+  <xs:complexType name="ArrayOfDemandNomenclatureExtend">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DemandNomenclatureExtend" nillable="true" type="tns:DemandNomenclatureExtend" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDemandNomenclatureExtend" nillable="true" type="tns:ArrayOfDemandNomenclatureExtend" />
+  <xs:complexType name="DemandNomenclatureExtend">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/OTISCZ.ScmDemand.Model" base="q7:Demand_Nomenclature">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="currency_text" nillable="true" type="xs:string" />
+          <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/System.Windows" minOccurs="0" name="edit_visibility" type="q8:Visibility" />
+          <xs:element minOccurs="0" name="is_locked" type="xs:boolean" />
+          <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/System.Windows" minOccurs="0" name="lock_visibility" type="q9:Visibility" />
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="nomenclature_key" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="other_demands" nillable="true" type="tns:ArrayOfDemandLight" />
+          <xs:element minOccurs="0" name="price_text" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="price_text_orig" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="remark" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="status" type="xs:int" />
+          <xs:element minOccurs="0" name="status_text" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DemandNomenclatureExtend" nillable="true" type="tns:DemandNomenclatureExtend" />
+  <xs:complexType name="ArrayOfDemandLight">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DemandLight" nillable="true" type="tns:DemandLight" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDemandLight" nillable="true" type="tns:ArrayOfDemandLight" />
+  <xs:complexType name="DemandLight">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="demand_nr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="img_status_path" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="price_text" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="status_id" type="xs:int" />
+      <xs:element minOccurs="0" name="status_text" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="supplier_name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DemandLight" nillable="true" type="tns:DemandLight" />
+  <xs:complexType name="ArrayOfAttachmentExtend">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AttachmentExtend" nillable="true" type="tns:AttachmentExtend" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAttachmentExtend" nillable="true" type="tns:ArrayOfAttachmentExtend" />
+  <xs:complexType name="AttachmentExtend">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q10="http://schemas.datacontract.org/2004/07/OTISCZ.ScmDemand.Model" base="q10:Attachment">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="added_by" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="att_type" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AttachmentExtend" nillable="true" type="tns:AttachmentExtend" />
+  <xs:complexType name="ArrayOfDemandExtend">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DemandExtend" nillable="true" type="tns:DemandExtend" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDemandExtend" nillable="true" type="tns:ArrayOfDemandExtend" />
+  <xs:complexType name="ArrayOfScmUserExtend">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ScmUserExtend" nillable="true" type="tns:ScmUserExtend" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfScmUserExtend" nillable="true" type="tns:ArrayOfScmUserExtend" />
+  <xs:complexType name="ScmUserExtend">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q11="http://schemas.datacontract.org/2004/07/OTISCZ.ScmDemand.Model" base="q11:ScmUser">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ScmUserExtend" nillable="true" type="tns:ScmUserExtend" />
+</xs:schema>

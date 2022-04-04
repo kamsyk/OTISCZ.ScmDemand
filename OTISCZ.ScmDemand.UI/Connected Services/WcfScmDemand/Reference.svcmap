@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="139ee83e-2945-47c6-ad80-9689fd8cc810" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://oczbrd03/wcfscmdemand/scmdemand.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ScmDemand.xsd" MetadataType="Schema" ID="65a3bb2f-bc59-4082-9f7e-cab44b65026f" SourceId="1" SourceUrl="http://oczbrd03/wcfscmdemand/ScmDemand.svc?xsd=xsd4" />
+    <MetadataFile FileName="ScmDemand1.xsd" MetadataType="Schema" ID="73c36809-3a62-4295-b1c7-5a24bcbad251" SourceId="1" SourceUrl="http://oczbrd03/wcfscmdemand/ScmDemand.svc?xsd=xsd1" />
+    <MetadataFile FileName="ScmDemand2.xsd" MetadataType="Schema" ID="3d983c4f-1362-46df-8aa4-e59103563801" SourceId="1" SourceUrl="http://oczbrd03/wcfscmdemand/ScmDemand.svc?xsd=xsd2" />
+    <MetadataFile FileName="ScmDemand3.xsd" MetadataType="Schema" ID="e824a520-2c94-4fd4-ae19-3814de1225c1" SourceId="1" SourceUrl="http://oczbrd03/wcfscmdemand/ScmDemand.svc?xsd=xsd0" />
+    <MetadataFile FileName="ScmDemand.disco" MetadataType="Disco" ID="c7c6e413-1232-4785-8878-6c82106650ee" SourceId="1" SourceUrl="http://oczbrd03/wcfscmdemand/ScmDemand.svc?disco" />
+    <MetadataFile FileName="ScmDemand.wsdl" MetadataType="Wsdl" ID="468738f3-a9d2-45d3-ae09-1b51909a18ff" SourceId="1" SourceUrl="http://oczbrd03/wcfscmdemand/ScmDemand.svc?wsdl" />
+    <MetadataFile FileName="ScmDemand4.xsd" MetadataType="Schema" ID="55d27609-c697-45a0-8d74-9f24e03524d7" SourceId="1" SourceUrl="http://oczbrd03/wcfscmdemand/ScmDemand.svc?xsd=xsd3" />
+    <MetadataFile FileName="ScmDemand5.xsd" MetadataType="Schema" ID="380885c7-5528-48e5-9485-56d20a34d537" SourceId="1" SourceUrl="http://oczbrd03/wcfscmdemand/ScmDemand.svc?xsd=xsd5" />
+    <MetadataFile FileName="ScmDemand6.xsd" MetadataType="Schema" ID="e578e145-c383-4463-8044-c4aeec16abcc" SourceId="1" SourceUrl="http://oczbrd03/wcfscmdemand/ScmDemand.svc?xsd=xsd6" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

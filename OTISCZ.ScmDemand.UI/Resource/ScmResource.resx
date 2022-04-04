@@ -1,0 +1,691 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Attachments" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
+  <data name="AuthorizationFailed" xml:space="preserve">
+    <value>An Error Occured. Authorization Failed</value>
+  </data>
+  <data name="Demand" xml:space="preserve">
+    <value>Demand</value>
+  </data>
+  <data name="Demands" xml:space="preserve">
+    <value>Demands</value>
+  </data>
+  <data name="DisplayingFromToOf" xml:space="preserve">
+    <value>from {0} to {1} from {2}</value>
+  </data>
+  <data name="EnterMandatoryTitle" xml:space="preserve">
+    <value>Check Form Fields</value>
+  </data>
+  <data name="EnterMandatoryValues" xml:space="preserve">
+    <value>Enter Mandatory Values</value>
+  </data>
+  <data name="ErrorMsg" xml:space="preserve">
+    <value>An Error Occured</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Scm Demand Error</value>
+  </data>
+  <data name="FolderDoesNotExist" xml:space="preserve">
+    <value>Folder does not exist.</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Data Import</value>
+  </data>
+  <data name="ImportProdisFile" xml:space="preserve">
+    <value>Import Prodis File</value>
+  </data>
+  <data name="LoadingData" xml:space="preserve">
+    <value>Loading Data ...</value>
+  </data>
+  <data name="Mails" xml:space="preserve">
+    <value>Mails</value>
+  </data>
+  <data name="MaterialGroup" xml:space="preserve">
+    <value>Material Group</value>
+  </data>
+  <data name="NameIt" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Never" xml:space="preserve">
+    <value>Never</value>
+  </data>
+  <data name="NewDemand" xml:space="preserve">
+    <value>New Demand</value>
+  </data>
+  <data name="NextPage" xml:space="preserve">
+    <value>Next Page</value>
+  </data>
+  <data name="Nomenclature" xml:space="preserve">
+    <value>Nomenclature</value>
+  </data>
+  <data name="Nomenclatures" xml:space="preserve">
+    <value>Nomenclatures</value>
+  </data>
+  <data name="Of" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="SelectedNomenclature" xml:space="preserve">
+    <value>Selected Nomenclatures</value>
+  </data>
+  <data name="SelectedSuppliers" xml:space="preserve">
+    <value>Selected Suppliers</value>
+  </data>
+  <data name="SelectFolder" xml:space="preserve">
+    <value>Select Folder</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Suppliers" xml:space="preserve">
+    <value>Suppliers</value>
+  </data>
+  <data name="YouAreNotAuthorized" xml:space="preserve">
+    <value>You ({0}) are not Authorized to Use the 'SCM Demand' application</value>
+  </data>
+  <data name="StatusLoaded" xml:space="preserve">
+    <value>Loaded</value>
+  </data>
+  <data name="StatusSentToSupplier" xml:space="preserve">
+    <value>Sent to Supplier</value>
+  </data>
+  <data name="StatusSupplierReplied" xml:space="preserve">
+    <value>Supplier Replied</value>
+  </data>
+  <data name="StatusUnknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="StatusWaitForApproval" xml:space="preserve">
+    <value>Wait for Approval</value>
+  </data>
+  <data name="Before" xml:space="preserve">
+    <value>Before</value>
+  </data>
+  <data name="LastWeek" xml:space="preserve">
+    <value>Last Week</value>
+  </data>
+  <data name="PendingDemands" xml:space="preserve">
+    <value>Pending Demands</value>
+  </data>
+  <data name="PendingNomenclatures" xml:space="preserve">
+    <value>Pending Nomenclatures</value>
+  </data>
+  <data name="TimePeriod" xml:space="preserve">
+    <value>Time Period</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>Today</value>
+  </data>
+  <data name="Yesterday" xml:space="preserve">
+    <value>Yesterday</value>
+  </data>
+  <data name="NoLimit" xml:space="preserve">
+    <value>No Limit</value>
+  </data>
+  <data name="SelectNomenclatures" xml:space="preserve">
+    <value>Select Nomenclatures</value>
+  </data>
+  <data name="DemandNr" xml:space="preserve">
+    <value>Demand Nr.</value>
+  </data>
+  <data name="OnlyMyDemands" xml:space="preserve">
+    <value>Only Demands Waiting for my action</value>
+  </data>
+  <data name="PendingDemandsNomenclatures" xml:space="preserve">
+    <value>Pending Demands and Nomenclatures</value>
+  </data>
+  <data name="Requestor" xml:space="preserve">
+    <value>Requestor</value>
+  </data>
+  <data name="StatusWoDemand" xml:space="preserve">
+    <value>Price List</value>
+  </data>
+  <data name="Supplier" xml:space="preserve">
+    <value>Supplier</value>
+  </data>
+  <data name="PriceList" xml:space="preserve">
+    <value>Price List</value>
+  </data>
+  <data name="CreatedDate" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="FromToFrom" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="FromToTo" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="Approved" xml:space="preserve">
+    <value>Approved</value>
+  </data>
+  <data name="Rejected" xml:space="preserve">
+    <value>Rejected</value>
+  </data>
+  <data name="StatusDraft" xml:space="preserve">
+    <value>Draft</value>
+  </data>
+  <data name="NomenclaturesLoadedFailed" xml:space="preserve">
+    <value>Some Nomenclatures were not loaded</value>
+  </data>
+  <data name="NomenclaturesLoadedSuccessfully" xml:space="preserve">
+    <value>Nomenclatures were loaded successfully</value>
+  </data>
+  <data name="SendForApproval" xml:space="preserve">
+    <value>Send for Approval</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close Window</value>
+  </data>
+  <data name="Approve" xml:space="preserve">
+    <value>Approve</value>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>Reject</value>
+  </data>
+  <data name="DataWasNotSaved" xml:space="preserve">
+    <value>An error occured during saving process !!!</value>
+  </data>
+  <data name="SelectAppMan" xml:space="preserve">
+    <value>Select Approval Manager</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="TakeOver" xml:space="preserve">
+    <value>Take Over</value>
+  </data>
+  <data name="NomenclatureWillBeEvaluatedAsPartOf" xml:space="preserve">
+    <value>Nomenclature {0} will be evaluated as part of Demand nr. {1}. 
+You can remove the nomenclature from this Demand</value>
+  </data>
+  <data name="BackToPreviousStatus" xml:space="preserve">
+    <value>Back to Previous Status</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="OtherDemands" xml:space="preserve">
+    <value>Other Demands</value>
+  </data>
+  <data name="OtisAttachment" xml:space="preserve">
+    <value>Otis Attachment</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="Remark" xml:space="preserve">
+    <value>Remark</value>
+  </data>
+  <data name="SuggestedPrice" xml:space="preserve">
+    <value>Suggested Price</value>
+  </data>
+  <data name="SupplierAttachment" xml:space="preserve">
+    <value>Supplier's Attachments</value>
+  </data>
+  <data name="DocCertificates" xml:space="preserve">
+    <value>Certificates</value>
+  </data>
+  <data name="DocCurrency" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="DocDapOtis" xml:space="preserve">
+    <value>DAP OTIS Breclav package included</value>
+  </data>
+  <data name="DocDeliveryConditions" xml:space="preserve">
+    <value>Delivery Condition
+Incoterms 2020</value>
+  </data>
+  <data name="DocDemandDeadline" xml:space="preserve">
+    <value>Demand Deadline</value>
+  </data>
+  <data name="DocDemandRequestor" xml:space="preserve">
+    <value>Demand Requestor</value>
+  </data>
+  <data name="DocDepartment" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="DocEUR1Request" xml:space="preserve">
+    <value>Request for EUR1</value>
+  </data>
+  <data name="DocLT" xml:space="preserve">
+    <value>LT</value>
+  </data>
+  <data name="DocMj" xml:space="preserve">
+    <value>MJ</value>
+  </data>
+  <data name="DocMOQ" xml:space="preserve">
+    <value>MOQ</value>
+  </data>
+  <data name="DocNomenclature" xml:space="preserve">
+    <value>Nomenclature</value>
+  </data>
+  <data name="DocOfferCreatedBy" xml:space="preserve">
+    <value>Offer was created by</value>
+  </data>
+  <data name="DocOfferDeadline" xml:space="preserve">
+    <value>Offer Deadline</value>
+  </data>
+  <data name="DocOfferExpireDate" xml:space="preserve">
+    <value>Offer's Expire Date</value>
+  </data>
+  <data name="DocOfferFollows" xml:space="preserve">
+    <value>Offer Follows EUR1</value>
+  </data>
+  <data name="DocOtherConditions" xml:space="preserve">
+    <value>Other Conditions</value>
+  </data>
+  <data name="DocOtisDrawNr" xml:space="preserve">
+    <value>OTIS Drawing Nr.</value>
+  </data>
+  <data name="DocPaletsConditions" xml:space="preserve">
+    <value>Pallets - goods may only be packed on EUR pallets. Other types of pallets are prohibited. Pallets must be calculated in the price of the goods.</value>
+  </data>
+  <data name="DocPartNane" xml:space="preserve">
+    <value>Part name</value>
+  </data>
+  <data name="DocPcs" xml:space="preserve">
+    <value>Pcs</value>
+  </data>
+  <data name="DocPhoneNr" xml:space="preserve">
+    <value>Phone nr.</value>
+  </data>
+  <data name="DocPriceUnit" xml:space="preserve">
+    <value>Unit Price
+(FCA/DAP)</value>
+  </data>
+  <data name="DocProjectName" xml:space="preserve">
+    <value>Project name</value>
+  </data>
+  <data name="DocProjectNr" xml:space="preserve">
+    <value>Project nr:</value>
+  </data>
+  <data name="DocRequestedCertificates" xml:space="preserve">
+    <value>Requested Certificates</value>
+  </data>
+  <data name="DocRfqDocument" xml:space="preserve">
+    <value>RFQ Document</value>
+  </data>
+  <data name="DocSupplierName" xml:space="preserve">
+    <value>Supplier Name</value>
+  </data>
+  <data name="DocSupplierOfferNr" xml:space="preserve">
+    <value>Supplier's Offer Nr</value>
+  </data>
+  <data name="DocSupplierPartNr" xml:space="preserve">
+    <value>Suppliers Part Nr.</value>
+  </data>
+  <data name="StatusPriceWasSet" xml:space="preserve">
+    <value>Price was set in Prodis</value>
+  </data>
+  <data name="SelectSupplier" xml:space="preserve">
+    <value>Select Supplier(s)</value>
+  </data>
+  <data name="ApprovalManager" xml:space="preserve">
+    <value>Approval Manager</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="DaysInStatus" xml:space="preserve">
+    <value>Days in Status</value>
+  </data>
+  <data name="LastImportDate" xml:space="preserve">
+    <value>Last Import Date</value>
+  </data>
+  <data name="LastStatusModifDate" xml:space="preserve">
+    <value>Status modif. date</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="MailBody" xml:space="preserve">
+    <value>Dear Supplier,
+we send Demand nr. {0} in attachment.
+
+Best regards</value>
+  </data>
+  <data name="DataWasImported" xml:space="preserve">
+    <value>Data was imported</value>
+  </data>
+  <data name="Specification" xml:space="preserve">
+    <value>Specification</value>
+  </data>
+  <data name="NewSupplier" xml:space="preserve">
+    <value>New Supplier</value>
+  </data>
+  <data name="PendingItems" xml:space="preserve">
+    <value>Pending Items</value>
+  </data>
+  <data name="SupplierId" xml:space="preserve">
+    <value>Supplier Id</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="ApprovedSupplier" xml:space="preserve">
+    <value>Approved Supplier</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="ExportToExcel" xml:space="preserve">
+    <value>Export to Excel</value>
+  </data>
+  <data name="FirstPage" xml:space="preserve">
+    <value>First Page</value>
+  </data>
+  <data name="GoToPage" xml:space="preserve">
+    <value>Go to Page</value>
+  </data>
+  <data name="LastPage" xml:space="preserve">
+    <value>LastPage</value>
+  </data>
+  <data name="PageSize" xml:space="preserve">
+    <value>Page Size</value>
+  </data>
+  <data name="PreviousPage" xml:space="preserve">
+    <value>Previous Page</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Reload</value>
+  </data>
+  <data name="MailFormatError" xml:space="preserve">
+    <value>Mail Address is not in correct format</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="eMail" xml:space="preserve">
+    <value>eMail Address</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="MobilePhone" xml:space="preserve">
+    <value>Mobile Phone Nr.</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone Nr.</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value>Surname</value>
+  </data>
+  <data name="Zip" xml:space="preserve">
+    <value>Zip code</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="MailBcc" xml:space="preserve">
+    <value>Send me the Demand in Bcc</value>
+  </data>
+  <data name="MailCc" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="MailLanguage" xml:space="preserve">
+    <value>Mail Language</value>
+  </data>
+  <data name="MailRecipient" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="MailSender" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="MailSubject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="EnterValidMailAddresses" xml:space="preserve">
+    <value>Enter Valid Mail Addresses</value>
+  </data>
+  <data name="SelectLang" xml:space="preserve">
+    <value>Select Language</value>
+  </data>
+  <data name="CannotTakeOverDemand" xml:space="preserve">
+    <value>You are not authorized to Take Over the Demand</value>
+  </data>
+  <data name="CannotBeSent" xml:space="preserve">
+    <value>Mail cannot be sent.</value>
+  </data>
+  <data name="FixErrors" xml:space="preserve">
+    <value>Fix errors.</value>
+  </data>
+  <data name="MailWasSent" xml:space="preserve">
+    <value>MailWasSent</value>
+  </data>
+  <data name="SendToMe" xml:space="preserve">
+    <value>Send to me</value>
+  </data>
+  <data name="SendToSupplier" xml:space="preserve">
+    <value>Send to Supplier</value>
+  </data>
+  <data name="NotAuthorized" xml:space="preserve">
+    <value>You are not authorized for this operation</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="EnterPrice" xml:space="preserve">
+    <value>Enter Price</value>
+  </data>
+  <data name="SelectCurrency" xml:space="preserve">
+    <value>Select Currency</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="AppExit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\AppExit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Dashboard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Dashboard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ScmDemand" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\ScmDemand.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StatusApproved" xml:space="preserve">
+    <value>Approved</value>
+  </data>
+  <data name="StatusRejected" xml:space="preserve">
+    <value>Rejected</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="PriceWasSetConfirmed" xml:space="preserve">
+    <value>Price was set in Prodis. Price = {0}</value>
+  </data>
+  <data name="InsertRemark" xml:space="preserve">
+    <value>Insert Remark</value>
+  </data>
+  <data name="Referent" xml:space="preserve">
+    <value>SCM Referent</value>
+  </data>
+  <data name="StatusPriceWasSetConfirmed" xml:space="preserve">
+    <value>Price was confirmed in Prodis</value>
+  </data>
+  <data name="FinishDemand" xml:space="preserve">
+    <value>Finish Demand</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="DemandDeleteConfirmation" xml:space="preserve">
+    <value>Are you sure to delete Demand nr. {0} ?</value>
+  </data>
+  <data name="StatusClosed" xml:space="preserve">
+    <value>Closed by Referent</value>
+  </data>
+  <data name="ProdisPriceSet" xml:space="preserve">
+    <value>Prodis Price Set</value>
+  </data>
+  <data name="CopyNomKey" xml:space="preserve">
+    <value>Copy Nomenclature Key</value>
+  </data>
+  <data name="Activate" xml:space="preserve">
+    <value>Activate</value>
+  </data>
+  <data name="CmbFilterAll" xml:space="preserve">
+    <value>--- All ---</value>
+  </data>
+  <data name="NomenclatureSource" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="AddNomencaltures" xml:space="preserve">
+    <value>Add Other Nomenclatures</value>
+  </data>
+  <data name="EnterNomenclatureKey" xml:space="preserve">
+    <value>Enter Nomenclature Number</value>
+  </data>
+  <data name="EnterNomenclatureName" xml:space="preserve">
+    <value>Enter Nomenclature Name</value>
+  </data>
+  <data name="EnterValidData" xml:space="preserve">
+    <value>Enter valid data. Check error message in in Form.</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="AddNomenclature" xml:space="preserve">
+    <value>Add Nomenclature</value>
+  </data>
+  <data name="UserNomenclature" xml:space="preserve">
+    <value>User Nomenclature</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="AttachmentCopyFailed" xml:space="preserve">
+    <value>Copying of '{0}' failed !!!</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+</root>
